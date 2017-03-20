@@ -323,6 +323,9 @@ you should place your code here."
   ;; Spell check faces
   (set-face-attribute 'flyspell-duplicate nil :underline '(:style line :color "#dc752f"))
   (set-face-attribute 'flyspell-incorrect nil :underline '(:style line :color "#e0211d"))
+  ;; Spell check camel case
+  (setq ispell-program-name "aspell")
+  (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US" "--run-together" "--run-together-limit=5" "--run-together-min=2"))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
