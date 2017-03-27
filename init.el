@@ -309,6 +309,8 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   ;; Disable line wrapping
   (add-hook 'hack-local-variables-hook (lambda () (spacemacs/toggle-truncate-lines-on)))
+  ;; Enable hungry delete mode
+  (add-hook 'prog-mode-hook (lambda () (spacemacs/toggle-hungry-delete-on)))
   ;; Powerline separator settings
   (setq powerline-default-separator 'bar)
   ;; Indentation settings
