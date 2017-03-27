@@ -329,6 +329,10 @@ you should place your code here."
   ;; Spell check camel case
   (setq ispell-program-name "aspell")
   (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US" "--run-together" "--run-together-limit=5" "--run-together-min=2"))
+  ;; Output colors in eshell
+  (add-hook 'eshell-preoutput-filter-functions 'ansi-color-apply)
+  ;; Eshell visual commands
+  (add-to-list 'eshell-visual-commands "htop")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
