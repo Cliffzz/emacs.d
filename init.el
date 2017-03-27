@@ -317,6 +317,7 @@ you should place your code here."
   (setq-default js2-basic-offset 4)
   (setq-default js-switch-indent-offset 4)
   (setq-default js-indent-level 4)
+  (setq-default coffee-tab-width 2)
   (add-hook 'json-mode-hook
             '(lambda()
                (make-local-variable 'js-indent-level)
