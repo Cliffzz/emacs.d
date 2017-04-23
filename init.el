@@ -52,7 +52,7 @@ values."
             shell-default-shell 'eshell
             shell-protect-eshell-prompt nil)
      shell-scripts
-     (spell-checking :variables enable-flyspell-auto-completion t)
+     (spell-checking :variables enable-flyspell-auto-completion nil)
      syntax-checking
      (version-control :variables
                       version-control-diff-tool 'diff-hl
