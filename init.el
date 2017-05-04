@@ -382,8 +382,8 @@ you should place your code here."
 
 ;; Custom variables file.
 (cond ((eq system-type 'windows-nt)
-       (setq custom-file "~/.spacemacs.d/custom-windows-nt.el")
+       (setq custom-file "~/.spacemacs.d/layers/custom-windows-nt.el")
        (load custom-file))
       ((eq system-type 'darwin)
-       (setq custom-file "~/.spacemacs.d/custom-mac-os.el")
+       (setq custom-file "~/.spacemacs.d/layers/custom-mac-os.el")
        (load custom-file)))
