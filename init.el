@@ -29,16 +29,11 @@ values."
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
+   ;; This list should only contain layers to be loaded on every system.
    dotspacemacs-configuration-layers
    '(
-     ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
-     ;; <M-m f e R> (Emacs style) to install them.
-     ;; ----------------------------------------------------------------
      auto-completion
      autohotkey
-     (csharp :variables omnisharp-server-executable-path "/usr/local/bin/omnisharp")
      csv
      emacs-lisp
      git
@@ -48,9 +43,6 @@ values."
      (markdown :variables markdown-live-preview-engine 'vmd)
      osx
      plantuml
-     (shell :variables
-            shell-default-shell 'eshell
-            shell-protect-eshell-prompt nil)
      shell-scripts
      (spell-checking :variables enable-flyspell-auto-completion nil)
      syntax-checking
@@ -59,6 +51,48 @@ values."
                       version-control-global-margin t)
      windows-scripts
      )
+   )
+
+  ;; ----------------------------------------------------------------
+  ;; These lists layers to load for specific systems.
+  ;; ----------------------------------------------------------------
+  (setq
+   ;; Layers to load on Microsoft Windows.
+   cliffz-windows-nt-layers
+   '(
+     (csharp :variables
+             omnisharp-server-executable-path "C:\\bin\\omnisharp-roslyn\\OmniSharp.exe"
+             omnisharp--curl-executable-path "C:\\bin\\curl\\curl.exe"
+             omnisharp-use-http t)
+     (shell :variables
+            shell-default-shell 'eshell
+            shell-protect-eshell-prompt nil)
+     )
+   ;; Layers to load on macOS.
+   cliffz-darwin-layers
+   '(
+     (csharp :variables omnisharp-server-executable-path "/usr/local/bin/omnisharp")
+     osx
+     (shell :variables
+            shell-default-shell 'ansi-term
+            shell-default-term-shell "/bin/zsh")
+     )
+   )
+
+  ;; ----------------------------------------------------------------
+  ;; Append layers lists depending on system.
+  ;; ----------------------------------------------------------------
+  (setq cliffz-layers dotspacemacs-configuration-layers)
+  (cond ((eq system-type 'windows-nt)
+         (setq cliffz-layers (append cliffz-layers cliffz-windows-nt-layers)))
+        ((eq system-type 'darwin)
+         (setq cliffz-layers (append cliffz-layers cliffz-darwin-layers))))
+
+  (setq-default
+   ;; ----------------------------------------------------------------
+   ;; Set appended layers.
+   ;; ----------------------------------------------------------------
+   dotspacemacs-configuration-layers cliffz-layers
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
