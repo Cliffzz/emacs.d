@@ -41,7 +41,6 @@ values."
      html
      (javascript :variables javascript-disable-tern-port-files nil)
      (markdown :variables markdown-live-preview-engine 'vmd)
-     osx
      plantuml
      shell-scripts
      (spell-checking :variables enable-flyspell-auto-completion nil)
