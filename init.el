@@ -318,13 +318,13 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  ;; Disable line wrapping
+  ;; Disable line wrapping.
   (add-hook 'hack-local-variables-hook (lambda () (spacemacs/toggle-truncate-lines-on)))
-  ;; Enable hungry delete mode
+  ;; Enable hungry delete mode.
   (add-hook 'prog-mode-hook (lambda () (spacemacs/toggle-hungry-delete-on)))
-  ;; Powerline separator settings
+  ;; Powerline separator settings.
   (setq powerline-default-separator 'bar)
-  ;; Indentation settings
+  ;; Indentation settings.
   (setq-default js2-basic-offset 4)
   (setq-default js-switch-indent-offset 4)
   (setq-default js-indent-level 4)
@@ -334,15 +334,15 @@ you should place your code here."
                (make-local-variable 'js-indent-level)
                (setq js-indent-level 2)
                (setq json-reformat:indent-width 2)))
-  ;; Spell check faces
+  ;; Spell check faces.
   (set-face-attribute 'flyspell-duplicate nil :underline '(:style line :color "#dc752f"))
   (set-face-attribute 'flyspell-incorrect nil :underline '(:style line :color "#e0211d"))
-  ;; Spell check camel case
+  ;; Spell check camel case.
   (setq ispell-program-name "aspell")
   (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US" "--run-together" "--run-together-limit=5" "--run-together-min=2"))
-  ;; Output colors in eshell
+  ;; Output colors in eshell.
   (add-hook 'eshell-preoutput-filter-functions 'ansi-color-apply)
-  ;; Eshell visual commands
+  ;; Eshell visual commands.
   (add-to-list 'eshell-visual-commands "htop")
   )
 
