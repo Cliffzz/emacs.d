@@ -376,7 +376,9 @@ you should place your code here."
   ;; Output colors in eshell.
   (add-hook 'eshell-preoutput-filter-functions 'ansi-color-apply)
   ;; Eshell visual commands.
-  (add-to-list 'eshell-visual-commands "htop")
+  (add-hook 'eshell-mode-hook
+            '(lambda()
+               (add-to-list 'eshell-visual-commands "htop")))
   )
 
 ;; Custom variables file.
