@@ -378,6 +378,8 @@ you should place your code here."
   (add-hook 'eshell-mode-hook
             '(lambda()
                (add-to-list 'eshell-visual-commands "htop")))
+  ;; Disable eshell company mode
+  (spacemacs|disable-company eshell-mode)
   )
 
 ;; Custom variables file.
