@@ -64,8 +64,7 @@ values."
              omnisharp--curl-executable-path "C:\\bin\\curl\\curl.exe"
              omnisharp-use-http t)
      (shell :variables
-            shell-default-shell 'eshell
-            shell-protect-eshell-prompt nil)
+            shell-default-shell 'eshell)
      )
    ;; Layers to load on macOS.
    cliffz-darwin-layers
@@ -73,7 +72,7 @@ values."
      (csharp :variables omnisharp-server-executable-path "/usr/local/bin/omnisharp")
      osx
      (shell :variables
-            shell-default-shell 'ansi-term
+            shell-default-shell 'eshell
             shell-default-term-shell "/bin/zsh")
      )
    )
