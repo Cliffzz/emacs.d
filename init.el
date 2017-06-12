@@ -37,6 +37,7 @@ values."
      csv
      emacs-lisp
      git
+     graphql
      helm
      html
      (javascript :variables javascript-disable-tern-port-files nil)
@@ -380,6 +381,8 @@ you should place your code here."
                (add-to-list 'eshell-visual-commands "htop")))
   ;; Disable eshell company mode
   (spacemacs|disable-company eshell-mode)
+  ;; Graphql indent
+  (setq-default graphql-indent-level 4)
   )
 
 ;; Custom variables file.

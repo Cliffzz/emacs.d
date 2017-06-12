@@ -1,0 +1,37 @@
+#+TITLE: GraphQL layer
+
+[[img/graphql.png]]
+
+* Table of Contents                                        :TOC_4_gh:noexport:
+- [[#description][Description]]
+  - [[#features][Features:]]
+- [[#install][Install]]
+- [[#configuration][Configuration]]
+  - [[#indentation][Indentation]]
+- [[#key-bindings][Key bindings]]
+
+* Description
+This layer adds support for GraphQL using [[https://github.com/davazp/graphql-mode][graphql-mode]].
+
+** Features:
+- Syntax highlight
+- Automatic indentation
+- Sending GraphQL queries to an end-point URL.
+
+* Install
+To use this configuration layer, add it to your =~/.spacemacs=. You will need to
+add =graphql= to the existing =dotspacemacs-configuration-layers= list in this
+file.
+
+* Configuration
+** Indentation
+To change how graphql-mode indents code, set the variable =graphql-indent-level=, as such:
+
+#+BEGIN_SRC emacs-lisp
+  (setq-default graphql-indent-level 2)
+#+END_SRC
+
+* Key bindings
+| Key Binding | Description        |
+|-------------+--------------------|
+| ~SPC m s~   | send graphql query |
