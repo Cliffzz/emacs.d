@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: nock recorder
+# key: nock.rec
+# --
+nock.recorder.rec({
+    output_objects: true,
+    dont_print: true
+});
+
+console.log(JSON.stringify(nock.recorder.play()));
