@@ -20,7 +20,7 @@ values."
    ;; installation feature and you have to explicitly list a layer in the
    ;; variable `dotspacemacs-configuration-layers' to install it.
    ;; (default 'unused)
-   dotspacemacs-enable-lazy-installation 'unused
+   dotspacemacs-enable-lazy-installation 'nil
    ;; If non-nil then Spacemacs will ask for confirmation before installing
    ;; a layer lazily. (default t)
    dotspacemacs-ask-for-lazy-installation t
@@ -29,7 +29,6 @@ values."
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
-   ;; This list should only contain layers to be loaded on every system.
    dotspacemacs-configuration-layers
    '(
      (auto-completion :packages
@@ -153,47 +152,6 @@ values."
                       dos
                       powershell)
      )
-   )
-
-  ;; ----------------------------------------------------------------
-  ;; These lists layers to load for specific systems.
-  ;; ----------------------------------------------------------------
-  (setq
-   ;; Layers to load on Microsoft Windows.
-   cliffz-windows-nt-layers
-   '(
-     (csharp :variables
-             omnisharp-server-executable-path "C:\\bin\\omnisharp-roslyn\\OmniSharp.exe"
-             omnisharp--curl-executable-path "C:\\bin\\curl\\curl.exe"
-             omnisharp-use-http t)
-     (shell :variables
-            shell-default-shell 'eshell)
-     )
-   ;; Layers to load on macOS.
-   cliffz-darwin-layers
-   '(
-     (csharp :variables omnisharp-server-executable-path "/usr/local/bin/omnisharp")
-     osx
-     (shell :variables
-            shell-default-shell 'eshell
-            shell-default-term-shell "/bin/zsh")
-     )
-   )
-
-  ;; ----------------------------------------------------------------
-  ;; Append layers lists depending on system.
-  ;; ----------------------------------------------------------------
-  (setq cliffz-layers dotspacemacs-configuration-layers)
-  (cond ((eq system-type 'windows-nt)
-         (setq cliffz-layers (append cliffz-layers cliffz-windows-nt-layers)))
-        ((eq system-type 'darwin)
-         (setq cliffz-layers (append cliffz-layers cliffz-darwin-layers))))
-
-  (setq-default
-   ;; ----------------------------------------------------------------
-   ;; Set appended layers.
-   ;; ----------------------------------------------------------------
-   dotspacemacs-configuration-layers cliffz-layers
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
@@ -234,7 +192,7 @@ values."
    ;; when the current branch is not `develop'. Note that checking for
    ;; new versions works via git commands, thus it calls GitHub services
    ;; whenever you start Emacs. (default nil)
-   dotspacemacs-check-for-update t
+   dotspacemacs-check-for-update nil
    ;; If non-nil, a form that evaluates to a package directory. For example, to
    ;; use different package directories for different Emacs versions, set this
    ;; to `emacs-version'.
@@ -371,7 +329,7 @@ values."
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-maximized-at-startup t
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -454,43 +412,34 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   ;; Disable line wrapping.
-  (add-hook 'hack-local-variables-hook (lambda () (spacemacs/toggle-truncate-lines-on)))
-  ;; Enable hungry delete mode.
-  (add-hook 'prog-mode-hook (lambda () (spacemacs/toggle-hungry-delete-on)))
+  (add-hook 'hack-local-variables-hook 'spacemacs/toggle-truncate-lines-on)
   ;; Powerline separator settings.
   (setq powerline-default-separator 'bar)
-  ;; Indentation settings.
+  ;; Enable hungry delete mode globally.
+  (add-hook 'prog-mode-hook 'spacemacs/toggle-hungry-delete-on)
+  ;; Javascript indentation.
   (setq-default js2-basic-offset 4)
   (setq-default js-switch-indent-offset 4)
   (setq-default js-indent-level 4)
+  ;; Coffeescript indentation.
   (setq-default coffee-tab-width 2)
-  (add-hook 'json-mode-hook
-            '(lambda()
+  ;; Json indentation.
+  (add-hook 'json-mode-hook '(lambda()
                (make-local-variable 'js-indent-level)
                (setq js-indent-level 2)
                (setq json-reformat:indent-width 2)))
-  ;; Spell check faces.
-  (set-face-attribute 'flyspell-duplicate nil :underline '(:style line :color "#dc752f"))
-  (set-face-attribute 'flyspell-incorrect nil :underline '(:style line :color "#e0211d"))
+  ;; Graphql indentation.
+  (setq-default graphql-indent-level 4)
   ;; Spell check camel case.
   (setq ispell-program-name "aspell")
   (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US" "--run-together" "--run-together-limit=5" "--run-together-min=2"))
   ;; Output colors in eshell.
   (add-hook 'eshell-preoutput-filter-functions 'ansi-color-apply)
   ;; Eshell visual commands.
-  (add-hook 'eshell-mode-hook
-            '(lambda()
+  (add-hook 'eshell-mode-hook '(lambda()
                (add-to-list 'eshell-visual-commands "htop")))
-  ;; Disable eshell company mode
-  (spacemacs|disable-company eshell-mode)
-  ;; Graphql indent
-  (setq-default graphql-indent-level 4)
   )
 
 ;; Custom variables file.
-(cond ((eq system-type 'windows-nt)
-       (setq custom-file "~/.spacemacs.d/custom/windows-nt.el")
-       (load custom-file))
-      ((eq system-type 'darwin)
-       (setq custom-file "~/.spacemacs.d/custom/mac-os.el")
-       (load custom-file)))
+(setq custom-file "~/.spacemacs.d/custom/custom.el")
+(load custom-file)
