@@ -10,7 +10,7 @@ values."
    ;; Base distribution to use. This is a layer contained in the directory
    ;; `+distribution'. For now available distributions are `spacemacs-base'
    ;; or `spacemacs'. (default 'spacemacs)
-   dotspacemacs-distribution 'spacemacs
+   dotspacemacs-distribution 'spacemacs-base
    ;; Lazy installation of layers (i.e. layers are installed only when a file
    ;; with a supported type is opened). Possible values are `all', `unused'
    ;; and `nil'. `unused' will lazy install only unused layers (i.e. layers
@@ -32,24 +32,126 @@ values."
    ;; This list should only contain layers to be loaded on every system.
    dotspacemacs-configuration-layers
    '(
-     auto-completion
-     autohotkey
+     (auto-completion :packages
+                      company
+                      company-quickhelp
+                      company-statistics
+                      fuzzy
+                      helm-company
+                      helm-c-yasnippet
+                      hippie-exp
+                      yasnippet
+                      smartparens)
      csv
      emacs-lisp
-     git
      graphql
+     (git :packages
+          evil-magit
+          fill-column-indicator
+          gitattributes-mode
+          gitconfig-mode
+          gitignore-mode
+          git-commit
+          helm-gitignore
+          magit)
      helm
-     html
-     (javascript :variables javascript-disable-tern-port-files nil)
-     (markdown :variables markdown-live-preview-engine 'vmd)
+     (html :packages
+           company
+           company-web
+           css-mode
+           flycheck
+           pug-mode
+           smartparens
+           web-mode
+           yasnippet)
+     (javascript :packages
+                 coffee-mode
+                 company
+                 company-tern
+                 evil-matchit
+                 flycheck
+                 js-doc
+                 js2-mode
+                 js2-refactor
+                 json-mode
+                 tern
+                 :variables
+                 javascript-disable-tern-port-files nil)
+     (markdown :packages
+               company
+               gh-md
+               markdown-mode
+               markdown-toc
+               smartparens)
+     (osx :packages
+          exec-path-from-shell
+          helm
+          osx-trash
+          pbcopy)
      plantuml
-     shell-scripts
-     (spell-checking :variables enable-flyspell-auto-completion nil)
+     (react :packages
+            company
+            company-tern
+            evil-matchit
+            flycheck
+            js-doc
+            smartparens
+            tern
+            web-mode)
+     (shell :packages
+            comint
+            eshell
+            eshell-prompt-extras
+            eshell-z
+            helm
+            magit
+            org
+            projectile
+            shell-pop
+            xterm-color
+            vi-tilde-fringe)
+     (shell-scripts :packages
+                    company
+                    company-shell
+                    flycheck
+                    sh-script)
+     spacemacs-completion
+     spacemacs-editing-visual
+     (spacemacs-editing :packages
+                        hungry-delete
+                        smartparens
+                        spacemacs-whitespace-cleanup
+                        undo-tree)
+     spacemacs-evil
+     (spacemacs-misc :packages
+                     dumb-jump)
+     spacemacs-org
+     (spacemacs-ui-visual :packages
+                          ansi-colors
+                          popup
+                          popwin
+                          smooth-scrolling
+                          spaceline
+                          zoom-frm)
+     (spacemacs-ui :packages
+                   flx-ido
+                   info+
+                   restart-emacs
+                   winum)
+     (spell-checking :packages
+                     flyspell
+                     flyspell-correct
+                     flyspell-correct-helm)
      syntax-checking
-     (version-control :variables
-                      version-control-diff-tool 'diff-hl
-                      version-control-global-margin t)
-     windows-scripts
+     (version-control :packages
+                      diff-mode
+                      diff-hl
+                      evil-unimpaired
+                      smerge-mode
+                      :variables version-control-diff-tool 'diff-hl)
+     (windows-scripts :packages
+                      dos
+                      powershell)
      )
    )
 
