@@ -342,6 +342,8 @@ you should place your code here."
   ;; Eshell visual commands.
   (add-hook 'eshell-mode-hook '(lambda()
                (add-to-list 'eshell-visual-commands "htop")))
+  ;; Disable eshell company mode
+  (spacemacs|disable-company eshell-mode)
   ;; Whitespace-mode theme.
   (set-face-attribute 'trailing-whitespace nil :background "#7c6f64")
   ;; Flyspell theme.
