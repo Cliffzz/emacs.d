@@ -10,7 +10,7 @@ values."
    ;; Base distribution to use. This is a layer contained in the directory
    ;; `+distribution'. For now available distributions are `spacemacs-base'
    ;; or `spacemacs'. (default 'spacemacs)
-   dotspacemacs-distribution 'spacemacs-base
+   dotspacemacs-distribution 'spacemacs
    ;; Lazy installation of layers (i.e. layers are installed only when a file
    ;; with a supported type is opened). Possible values are `all', `unused'
    ;; and `nil'. `unused' will lazy install only unused layers (i.e. layers
@@ -31,126 +31,28 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     (auto-completion :packages
-                      company
-                      company-quickhelp
-                      company-statistics
-                      fuzzy
-                      helm-company
-                      helm-c-yasnippet
-                      hippie-exp
-                      yasnippet
-                      smartparens)
+     auto-completion
      csv
      emacs-lisp
      graphql
-     (git :packages
-          evil-magit
-          fill-column-indicator
-          gitattributes-mode
-          gitconfig-mode
-          gitignore-mode
-          git-commit
-          helm-gitignore
-          magit)
+     git
      helm
-     (html :packages
-           company
-           company-web
-           css-mode
-           flycheck
-           pug-mode
-           smartparens
-           web-mode
-           yasnippet)
-     (javascript :packages
-                 coffee-mode
-                 company
-                 company-tern
-                 evil-matchit
-                 flycheck
-                 js-doc
-                 js2-mode
-                 js2-refactor
-                 json-mode
-                 tern
-                 :variables
+     html
+     (javascript :variables
                  javascript-disable-tern-port-files nil)
-     (markdown :packages
-               company
-               gh-md
-               markdown-mode
-               markdown-toc
-               smartparens)
-     (osx :packages
-          exec-path-from-shell
-          helm
-          osx-trash
-          pbcopy)
+     markdown
+     osx
      plantuml
-     (react :packages
-            company
-            company-tern
-            evil-matchit
-            flycheck
-            js-doc
-            smartparens
-            tern
-            web-mode)
-     (shell :packages
-            comint
-            eshell
-            eshell-prompt-extras
-            eshell-z
-            helm
-            magit
-            org
-            projectile
-            shell-pop
-            xterm-color
-            vi-tilde-fringe)
-     (shell-scripts :packages
-                    company
-                    company-shell
-                    flycheck
-                    sh-script)
-     spacemacs-completion
-     spacemacs-editing-visual
-     (spacemacs-editing :packages
-                        hungry-delete
-                        smartparens
-                        spacemacs-whitespace-cleanup
-                        undo-tree)
-     spacemacs-evil
-     (spacemacs-misc :packages
-                     dumb-jump)
-     spacemacs-org
-     (spacemacs-ui-visual :packages
-                          ansi-colors
-                          popup
-                          popwin
-                          smooth-scrolling
-                          spaceline
-                          zoom-frm)
-     (spacemacs-ui :packages
-                   flx-ido
-                   info+
-                   restart-emacs
-                   winum)
-     (spell-checking :packages
-                     flyspell
-                     flyspell-correct
-                     flyspell-correct-helm)
+     react
+     (shell :variables
+            shell-default-shell 'eshell)
+     shell-scripts
+     (spell-checking :variables
+                     enable-flyspell-auto-completion nil)
      syntax-checking
-     (version-control :packages
-                      diff-mode
-                      diff-hl
-                      evil-unimpaired
-                      smerge-mode
-                      :variables version-control-diff-tool 'diff-hl)
-     (windows-scripts :packages
-                      dos
-                      powershell)
+     (version-control :variables
+                      version-control-diff-tool 'diff-hl)
+     windows-scripts
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
