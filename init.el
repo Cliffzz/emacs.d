@@ -348,8 +348,6 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-  ;; Disable line wrapping.
-  (add-hook 'hack-local-variables-hook 'spacemacs/toggle-truncate-lines-on)
   ;; Powerline separator settings.
   (setq powerline-default-separator 'bar)
   ;; Enable hungry delete mode globally.
