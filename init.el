@@ -49,6 +49,11 @@ This function should only modify configuration layer settings."
      (spell-checking :variables
                      enable-flyspell-auto-completion nil)
      syntax-checking
+     (treemacs :variables
+               treemacs-use-follow-mode t
+               treemacs-use-filewatch-mode t
+               treemacs-use-filewatch-mode t
+               treemacs-use-collapsed-directories 3)
      (version-control :variables
                       version-control-diff-tool 'diff-hl)
      windows-scripts
