@@ -413,6 +413,9 @@ before packages are loaded."
                               (set-face-attribute 'js2-error nil :underline '(:style line :color "#fb4933"))
                               (set-face-attribute 'js2-warning nil :underline '(:style line :color "#fabd2f"))
                               (set-face-attribute 'js2-external-variable nil :underline '(:style line :color "#b8bb26"))))
+  ;; Set tramp to plink mode in ms windows.
+  (cond ((eq system-type 'windows-nt)
+         (setq tramp-default-method "plink")))
   )
 
 ;; Custom variables file.
