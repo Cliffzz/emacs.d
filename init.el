@@ -404,6 +404,9 @@ before packages are loaded."
   (set-face-attribute 'spaceline-flycheck-error nil :foreground "#fb4933")
   (set-face-attribute 'spaceline-flycheck-info nil :foreground "#fabd2f")
   (set-face-attribute 'spaceline-flycheck-warning nil :foreground "#83a598")
+  (set-face-attribute 'spaceline-python-venv nil :foreground "#d3869b")
+  (set-face-attribute 'powerline-active1 nil :foreground "#fdf4c1")
+  (set-face-attribute 'powerline-active2 nil :foreground "#fdf4c1")
   ;; Diff-hl theme.
   (set-face-attribute 'diff-hl-change nil :foreground "#83a598" :background nil)
   (set-face-attribute 'diff-hl-delete nil :foreground "#fb4933")
