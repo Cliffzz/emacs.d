@@ -33,6 +33,7 @@ This function should only modify configuration layer settings."
      auto-completion
      csv
      emacs-lisp
+     docker
      graphql
      git
      helm
