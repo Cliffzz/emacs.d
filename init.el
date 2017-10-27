@@ -35,6 +35,7 @@ This function should only modify configuration layer settings."
      emacs-lisp
      docker
      graphql
+     groovy
      git
      helm
      html
