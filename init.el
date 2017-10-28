@@ -137,7 +137,8 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(gruvbox)
+   dotspacemacs-themes '(spacemacs-dark
+                         spacemacs-light)
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
    dotspacemacs-colorize-cursor-according-to-state t
@@ -383,47 +384,34 @@ before packages are loaded."
   ;; Eshell visual commands.
   (add-hook 'eshell-mode-hook '(lambda()
                (add-to-list 'eshell-visual-commands "htop")))
-  ;; Disable eshell company mode
+  ;; Disable eshell company mode.
   (spacemacs|disable-company eshell-mode)
-  ;; Whitespace-mode theme.
-  (set-face-attribute 'trailing-whitespace nil :background "#7c6f64")
-  ;; Flyspell theme.
-  (set-face-attribute 'flyspell-duplicate nil :underline '(:style line :color "#fe8019"))
-  (set-face-attribute 'flyspell-incorrect nil :underline '(:style line :color "#fe8019"))
-  ;; Flycheck theme.
-  (set-face-attribute 'flycheck-fringe-error nil :foreground "#fb4933")
-  (set-face-attribute 'flycheck-fringe-warning nil :foreground "#fabd2f")
-  (set-face-attribute 'flycheck-fringe-info nil :foreground "#83a598")
-  (set-face-attribute 'flycheck-error nil :underline '(:style line :color "#fb4933"))
-  (set-face-attribute 'flycheck-warning nil :underline '(:style line :color "#fabd2f"))
-  (set-face-attribute 'flycheck-info nil :underline '(:style line :color "#83a598"))
-  ;; Spaceline theme.
-  (set-face-attribute 'powerline-active1 nil :background "#665c54")
-  (set-face-attribute 'powerline-active2 nil :background "#504945")
-  (set-face-attribute 'mode-line nil :background "#3c3836")
-  (set-face-attribute 'powerline-inactive1 nil :background "#665c54")
-  (set-face-attribute 'powerline-inactive2 nil :background "#504945")
-  (set-face-attribute 'mode-line-inactive nil :background "#3c3836")
-  (set-face-attribute 'spaceline-flycheck-error nil :foreground "#fb4933")
-  (set-face-attribute 'spaceline-flycheck-info nil :foreground "#fabd2f")
-  (set-face-attribute 'spaceline-flycheck-warning nil :foreground "#83a598")
-  (set-face-attribute 'spaceline-python-venv nil :foreground "#d3869b")
-  (set-face-attribute 'powerline-active1 nil :foreground "#fdf4c1")
-  (set-face-attribute 'powerline-active2 nil :foreground "#fdf4c1")
-  ;; Diff-hl theme.
-  (set-face-attribute 'diff-hl-change nil :foreground "#83a598" :background nil)
-  (set-face-attribute 'diff-hl-delete nil :foreground "#fb4933")
-  (set-face-attribute 'diff-hl-insert nil :foreground "#b8bb26")
-  ;; Js2 theme.
-  (add-hook 'js2-mode-hook '(lambda()
-                              (set-face-attribute 'js2-error nil :underline '(:style line :color "#fb4933"))
-                              (set-face-attribute 'js2-warning nil :underline '(:style line :color "#fabd2f"))
-                              (set-face-attribute 'js2-external-variable nil :underline '(:style line :color "#b8bb26"))))
   ;; Set tramp to plink mode in ms windows.
   (cond ((eq system-type 'windows-nt)
          (setq tramp-default-method "plink")))
   )
 
-;; Custom variables file.
-(setq custom-file "~/.spacemacs.d/custom/custom.el")
-(load custom-file)
+;; Do not write anything past this comment. This is where Emacs will
+;; auto-generate custom variable definitions.
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(evil-want-Y-yank-to-eol nil)
+ '(package-selected-packages
+   (quote
+    (yaml-mode xterm-color ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package treemacs-projectile treemacs-evil treemacs pfuture toc-org tagedit symon string-inflection spaceline powerline smeargle slim-mode shell-pop scss-mode sass-mode reveal-in-osx-finder restart-emacs rainbow-delimiters pug-mode powershell popwin plantuml-mode persp-mode pcre2el pbcopy password-generator paradox spinner osx-trash osx-dictionary org-plus-contrib org-bullets open-junk-file multi-term move-text mmm-mode markdown-toc markdown-mode magit-gitflow macrostep lorem-ipsum livid-mode skewer-mode linum-relative link-hint less-css-mode launchctl js2-refactor multiple-cursors js2-mode js-doc insert-shebang info+ indent-guide impatient-mode htmlize simple-httpd hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-purpose window-purpose imenu-list helm-projectile helm-mode-manager helm-make projectile helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haml-mode groovy-mode groovy-imports pcache graphql-mode request google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck-bashate flycheck pkg-info epl flx-ido flx fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit git-commit with-editor evil-lisp-state smartparens evil-lion evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav editorconfig dumb-jump dockerfile-mode docker json-mode tablist magit-popup docker-tramp json-snatcher json-reformat diminish diff-hl csv-mode company-web web-completion-data company-tern dash-functional tern company-statistics company-shell company column-enforce-mode coffee-mode clean-aindent-mode browse-at-remote f dash s bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-dictionary auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core async ac-ispell auto-complete popup))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(flyspell-duplicate ((t (:underline "DarkOrange"))))
+ '(flyspell-incorrect ((t (:underline "Red1")))))
+)
