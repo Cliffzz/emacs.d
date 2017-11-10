@@ -358,7 +358,7 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
   ;; Set node bins path.
-  (add-to-list 'exec-path "~/.spacemacs.d/node-bins/node_modules" t)
+  (add-to-list 'exec-path "~/.spacemacs.d/node_modules" t)
   ;; Powerline separator settings.
   (setq powerline-default-separator 'bar)
   ;; Enable hungry delete mode globally.
