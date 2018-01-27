@@ -1,0 +1,27 @@
+{
+  "name": "node-bins",
+  "private": "true",
+  "version": "1.0.0",
+  "description": "Collection of node bins for emacs.",
+  "engines": {
+    "node": "9",
+    "npm": "5"
+  },
+  "dependencies": {
+    "coffeelint": "1.15.7",
+    "coffeelint-newline-at-eof": "0.4.1",
+    "coffeelint-no-class-fat-arrows": "0.1.0",
+    "coffeelint-no-focused-jasmine-specs": "0.1.0",
+    "eslint": "4.5.0",
+    "eslint-config-airbnb": "15.1.0",
+    "eslint-import-resolver-meteor": "0.4.0",
+    "eslint-plugin-babel": "4.1.2",
+    "eslint-plugin-cucumber": "0.1.0",
+    "eslint-plugin-import": "2.7.0",
+    "eslint-plugin-jsx-a11y": "5.1.1",
+    "eslint-plugin-react": "7.3.0",
+    "js-yaml": "3.10.0",
+    "pug-lint": "2.2.2",
+    "typescript": "2.6.2"
+  }
+}
