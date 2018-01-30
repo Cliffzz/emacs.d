@@ -476,7 +476,6 @@
 
 ;; Jade/Pug mode.
 (use-package pug-mode
-  :ensure t
   :mode
   (("\\.jade\\'" . pug-mode))
   ("\\.pug\\'" . pug-mode))
