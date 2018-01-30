@@ -441,7 +441,12 @@
   (set-face-attribute 'js2-warning nil :underline '(:style line :color "#fabd2f"))
   (set-face-attribute 'js2-external-variable nil :underline '(:style line :color "#b8bb26")))
 
-;; Javascript/typescript completion using tide and language server.
+;; Typescript mode.
+(use-package typescript-mode
+  :mode
+  ("\\.ts\\'" . typescript-mode))
+
+;; Typescript and javascript completion using tsserver.
 (use-package tide
   :delight tide-mode
   :config
@@ -455,7 +460,8 @@
     (tide-hl-identifier-mode +1)
     (company-mode +1))
   (add-hook 'js2-mode-hook 'setup-tide-mode)
-  (add-hook 'js2-jsx-mode-hook 'setup-tide-mode))
+  (add-hook 'js2-jsx-mode-hook 'setup-tide-mode)
+  (add-hook 'typescript-mode-hook 'setup-tide-mode))
 
 ;; Coffeescript mode.
 (use-package coffee-mode
