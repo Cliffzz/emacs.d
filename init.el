@@ -195,11 +195,13 @@
   (cond ((eq system-type 'windows-nt)
          (setq flycheck-javascript-eslint-executable "~/.emacs.d/node_modules/.bin/eslint.cmd"
                flycheck-coffee-coffeelint-executable "~/.emacs.d/node_modules/.bin/coffeelint.cmd"
-               flycheck-yaml-jsyaml-executable "~/.emacs.d/node_modules/.bin/js-yaml.cmd")))
+               flycheck-yaml-jsyaml-executable "~/.emacs.d/node_modules/.bin/js-yaml.cmd"
+               flycheck-typescript-tslint-executable "~/.emacs.d/node_modules/.bin/tslint.cmd")))
   (cond ((eq system-type 'darwin)
          (setq flycheck-javascript-eslint-executable "~/.emacs.d/node_modules/.bin/eslint"
                flycheck-coffee-coffeelint-executable "~/.emacs.d/node_modules/.bin/coffeelint"
-               flycheck-yaml-jsyaml-executable "~/.emacs.d/node_modules/.bin/js-yaml")))
+               flycheck-yaml-jsyaml-executable "~/.emacs.d/node_modules/.bin/js-yaml"
+               flycheck-typescript-tslint-executable "~/.emacs.d/node_modules/.bin/tslint")))
   ;; Flycheck Theme.
   (define-fringe-bitmap 'my-flycheck-fringe-indicator
     (vector #b00000000
