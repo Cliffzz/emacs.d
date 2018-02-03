@@ -436,7 +436,8 @@
   :config
   (setq-default js2-basic-offset 4
                 js-switch-indent-offset 4
-                js-indent-level 4)
+                js-indent-level 4
+                js2-strict-trailing-comma-warning nil)
   (set-face-attribute 'js2-error nil :underline '(:style line :color "#fb4934"))
   (set-face-attribute 'js2-warning nil :underline '(:style line :color "#fabd2f"))
   (set-face-attribute 'js2-external-variable nil :underline '(:style line :color "#b8bb26")))
