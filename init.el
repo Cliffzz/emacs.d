@@ -63,6 +63,12 @@
 ;; Indent using spaces.
 (setq-default indent-tabs-mode nil)
 
+;; Network security.
+(defvar network-security-level)
+(defvar nsm-settings-file)
+(setq network-security-level 'high)
+(setq nsm-settings-file "~/.emacs.d/.cache/network-security.data")
+
 ;; Smooth scrolling.
 (setq scroll-step 1
       scroll-conservatively 10000
