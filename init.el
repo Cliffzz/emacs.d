@@ -520,6 +520,13 @@
   :mode
   (("\\.yml\\'" . yaml-mode)))
 
+;; Elastic search mode.
+(use-package es-mode
+  :mode
+  (("\\.es\\'" . es-mode))
+  :commands
+  (es-command-center))
+
 (provide 'init)
 
 ;;; init.el ends here
