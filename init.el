@@ -515,7 +515,7 @@
   :mode
   (("Dockerfile\\'" . dockerfile-mode)))
 
-;; yaml mode.
+;; Yaml mode.
 (use-package yaml-mode
   :mode
   (("\\.yml\\'" . yaml-mode)))
