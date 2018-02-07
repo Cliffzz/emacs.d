@@ -1,0 +1,46 @@
+version: 2
+jobs:
+  tests:
+    docker:
+      - image: fedora:27
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - node-cache-{{ checksum "package.json" }}
+            - node-cache-
+      - restore_cache:
+          keys:
+            - elpa-cache-{{ checksum "elpa-mirror/archive-contents" }}
+      - run:
+          name: Install node
+          command: su -c 'dnf install nodejs -y'
+      - run:
+          name: Install aspell
+          command: su -c 'dnf install aspell -y'
+      - run:
+          name: Install ripgrep
+          command: su -c 'dnf install ripgrep -y'
+      - run:
+          name: Install Emacs
+          command: su -c 'dnf install emacs -y'
+      - run:
+          name: Install node dependencies
+          command: npm install
+      - run:
+          name: Start Emacs
+          command: emacs --batch --load init.el --kill
+      - save_cache:
+          key: node-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - save_cache:
+          key: elpa-cache-{{ checksum "elpa-mirror/archive-contents" }}
+          paths:
+            - elpa
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - tests
