@@ -411,6 +411,10 @@
   :bind (("C-c ." . dumb-jump-go)
          ("C-c ," . dumb-jump-back)))
 
+;; Expand region.
+(use-package expand-region
+  :bind (("C-=" . er/expand-region)))
+
 ;; Snippets.
 (use-package yasnippet
   :delight yas-minor-mode
