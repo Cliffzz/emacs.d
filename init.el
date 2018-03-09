@@ -511,6 +511,10 @@
   (defvar markdown-command)
   (setq markdown-command "multimarkdown"))
 
+;; Markdown table of contents
+(use-package markdown-toc
+  :commands (markdown-toc-generate-or-refresh-toc))
+
 ;; Dockerfile mode.
 (use-package dockerfile-mode
   :mode
