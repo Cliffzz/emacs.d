@@ -1,6 +1,7 @@
 (1
  (async . [(20180119 533) nil "Asynchronous processing in Emacs" tar])
  (autothemer . [(20170112 1324) ((dash (2 10 0)) (emacs (24)) (cl-lib (0 5))) "Conveniently define themes." tar])
+ (avy . [(20171230 220) ((emacs (24 1)) (cl-lib (0 5))) "Jump to arbitrary positions in visible text and select text quickly." tar])
  (bind-key . [(20171210 2125) nil "A simple way to manage personal keybindings" tar])
  (coffee-mode . [(20170324 240) ((emacs (24 3))) "Major mode for CoffeeScript code" tar])
  (company . [(20180222 1719) ((emacs (24 3))) "Modular text completion framework" tar])

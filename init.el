@@ -415,6 +415,10 @@
 (use-package expand-region
   :bind (("C-=" . er/expand-region)))
 
+;; Jump to character.
+(use-package avy
+  :bind (("C-'" . 'avy-goto-char)))
+
 ;; Snippets.
 (use-package yasnippet
   :delight yas-minor-mode
