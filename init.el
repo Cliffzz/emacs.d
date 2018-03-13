@@ -419,6 +419,10 @@
 (use-package avy
   :bind (("C-'" . 'avy-goto-char)))
 
+;; Jump to window.
+(use-package ace-window
+  :bind (("C-x o" . 'ace-window)))
+
 ;; Snippets.
 (use-package yasnippet
   :delight yas-minor-mode

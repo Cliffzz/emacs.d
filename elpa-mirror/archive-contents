@@ -1,4 +1,5 @@
 (1
+ (ace-window . [(20180123 1111) ((avy (0 2 0))) "Quickly switch windows." tar])
  (async . [(20180119 533) nil "Asynchronous processing in Emacs" tar])
  (autothemer . [(20170112 1324) ((dash (2 10 0)) (emacs (24)) (cl-lib (0 5))) "Conveniently define themes." tar])
  (avy . [(20171230 220) ((emacs (24 1)) (cl-lib (0 5))) "Jump to arbitrary positions in visible text and select text quickly." tar])
