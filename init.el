@@ -93,6 +93,9 @@
 ;; Highlight current line.
 (global-hl-line-mode 1)
 
+;; Truncate lines.
+(setq-default truncate-lines t)
+
 ;; Highlight parentheses.
 (show-paren-mode t)
 
