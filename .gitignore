@@ -6,3 +6,6 @@
 
 # Ignore elpa directory
 /elpa/
+
+# Ignore flycheck init
+flycheck_init.el
