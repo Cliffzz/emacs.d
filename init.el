@@ -96,6 +96,11 @@
 ;; Highlight parentheses.
 (show-paren-mode t)
 
+;; Line numbers.
+(defvar display-line-numbers-grow-only)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(setq display-line-numbers-grow-only t)
+
 ;; TRAMP
 (defvar tramp-persistency-file-name)
 (setq tramp-persistency-file-name "~/.emacs.d/.cache/tramp")
