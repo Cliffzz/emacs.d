@@ -453,6 +453,9 @@
   (("\\.js\\'" . js2-mode)
    ("\\.jsx\\'" . js2-jsx-mode))
   :config
+  (add-hook 'js2-mode-hook
+            (lambda ()
+              (setq-local eldoc-documentation-function #'ignore)))
   (setq-default js2-basic-offset 4
                 js-switch-indent-offset 4
                 js-indent-level 4
