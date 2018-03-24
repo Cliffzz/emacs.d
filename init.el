@@ -75,6 +75,10 @@
       scroll-conservatively 10000
       auto-window-vscroll nil)
 
+;; Horizontal scrolling.
+(setq mwheel-tilt-scroll-p t)
+(setq mwheel-flip-direction t)
+
 ;; Mode line.
 (setq line-number-mode t
       column-number-mode t)
