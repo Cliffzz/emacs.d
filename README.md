@@ -1,9 +1,11 @@
 .emacs.d
 ========
 
-[![CircleCI](https://circleci.com/gh/Cliffzz/.emacs.d.svg?style=shield)](https://circleci.com/gh/Cliffzz/.emacs.d) [![emacs-version](https://img.shields.io/badge/emacs-25.3.1-brightgreen.svg)](https://www.gnu.org/software/emacs/) [![node-version](https://img.shields.io/badge/node-9.6.1-brightgreen.svg)](https://github.com/nodejs/node) [![npm-version](https://img.shields.io/badge/npm-5.6.0-brightgreen.svg)](https://github.com/npm/npm) [![license](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](https://github.com/Cliffzz/.emacs.d/blob/master/LICENSE)
+[![CircleCI](https://circleci.com/gh/Cliffzz/.emacs.d.svg?style=shield)](https://circleci.com/gh/Cliffzz/.emacs.d) [![emacs-version](https://img.shields.io/badge/emacs-26.0.91-brightgreen.svg)](https://www.gnu.org/software/emacs/) [![node-version](https://img.shields.io/badge/node-9.9.0-brightgreen.svg)](https://github.com/nodejs/node) [![npm-version](https://img.shields.io/badge/npm-5.6.0-brightgreen.svg)](https://github.com/npm/npm) [![license](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](https://github.com/Cliffzz/.emacs.d/blob/master/LICENSE)
 
 Personal emacs configuration.
+
+<img width="1680" src="https://user-images.githubusercontent.com/2283434/37864222-1b12a7a0-2f6c-11e8-923c-ace01dcdee7c.png">
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
@@ -26,12 +28,12 @@ Personal emacs configuration.
 ### macOS
 - [emacs-plus](https://github.com/d12frosted/homebrew-emacs-plus)
 ```
-brew install emacs-plus --without-spacemacs-icon
+brew install emacs-plus --devel --without-spacemacs-icon
 npm install
 ```
 
 ### Windows
-- [emacs](https://sourceforge.net/projects/emacsbinw64/files/release/)
+- [emacs](https://github.com/m-parashar/emax64)
 ```
 npm install
 ```
