@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Collection of node bins for emacs.",
   "engines": {
-    "node": "9.6.1",
+    "node": "9.9.0",
     "npm": "5.6.0"
   },
   "dependencies": {
@@ -20,7 +20,7 @@
     "eslint-plugin-import": "2.7.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
     "eslint-plugin-react": "7.3.0",
-    "js-yaml": "3.10.0",
+    "js-yaml": "3.11.0",
     "pug-lint": "2.2.2",
     "tslint": "5.9.1",
     "typescript": "2.7.2"
