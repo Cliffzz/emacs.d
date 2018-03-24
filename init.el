@@ -108,6 +108,9 @@
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (setq display-line-numbers-grow-only t)
 
+;; Disable eldoc mode.
+(global-eldoc-mode -1)
+
 ;; TRAMP
 (defvar tramp-persistency-file-name)
 (setq tramp-persistency-file-name "~/.emacs.d/.cache/tramp")
@@ -465,9 +468,6 @@
   (("\\.js\\'" . js2-mode)
    ("\\.jsx\\'" . js2-jsx-mode))
   :config
-  (add-hook 'js2-mode-hook
-            (lambda ()
-              (setq-local eldoc-documentation-function #'ignore)))
   (setq-default js2-basic-offset 4
                 js-switch-indent-offset 4
                 js-indent-level 4
