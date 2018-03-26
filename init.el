@@ -215,15 +215,9 @@
   :hook (prog-mode . global-flycheck-mode)
   :config
   (cond ((eq system-type 'windows-nt)
-         (setq flycheck-javascript-eslint-executable "~/.emacs.d/node_modules/.bin/eslint.cmd"
-               flycheck-coffee-coffeelint-executable "~/.emacs.d/node_modules/.bin/coffeelint.cmd"
-               flycheck-yaml-jsyaml-executable "~/.emacs.d/node_modules/.bin/js-yaml.cmd"
-               flycheck-typescript-tslint-executable "~/.emacs.d/node_modules/.bin/tslint.cmd")))
+         (setq flycheck-yaml-jsyaml-executable "~/.emacs.d/node_modules/.bin/js-yaml.cmd")))
   (cond ((eq system-type 'darwin)
-         (setq flycheck-javascript-eslint-executable "~/.emacs.d/node_modules/.bin/eslint"
-               flycheck-coffee-coffeelint-executable "~/.emacs.d/node_modules/.bin/coffeelint"
-               flycheck-yaml-jsyaml-executable "~/.emacs.d/node_modules/.bin/js-yaml"
-               flycheck-typescript-tslint-executable "~/.emacs.d/node_modules/.bin/tslint")))
+         (setq flycheck-yaml-jsyaml-executable "~/.emacs.d/node_modules/.bin/js-yaml")))
   ;; Flycheck Theme.
   (define-fringe-bitmap 'my-flycheck-fringe-indicator
     (vector #b00000000
@@ -505,6 +499,10 @@
   :config
   (defvar coffee-tab-width)
   (setq coffee-tab-width 2))
+
+;; Add project node modules to path.
+(use-package add-node-modules-path
+    :hook ((typescript-mode js2-mode web-mode) . add-node-modules-path))
 
 ;; Web mode.
 (use-package web-mode
