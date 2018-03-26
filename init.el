@@ -339,6 +339,9 @@
   (declare-function swiper "swiper")
   :bind (("\C-s" . 'swiper)))
 
+;; Search with ripgrep.
+(use-package ripgrep)
+
 (use-package eshell
   :init
   ;; Don't pause the output through $PAGER

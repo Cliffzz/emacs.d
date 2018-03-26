@@ -1,5 +1,6 @@
 (1
  (ace-window . [(20180123 1111) ((avy (0 2 0))) "Quickly switch windows." tar])
+ (add-node-modules-path . [(20170914 1912) nil "Add node_modules to your exec-path" tar])
  (async . [(20180119 533) nil "Asynchronous processing in Emacs" tar])
  (autothemer . [(20170112 1324) ((dash (2 10 0)) (emacs (24)) (cl-lib (0 5))) "Conveniently define themes." tar])
  (avy . [(20180322 1333) ((emacs (24 1)) (cl-lib (0 5))) "Jump to arbitrary positions in visible text and select text quickly." tar])
@@ -55,5 +56,5 @@
  (xterm-color . [(20180202 1518) ((cl-lib (0 5))) "ANSI & XTERM 256 color support" tar])
  (yaml-mode . [(20180212 1556) ((emacs (24 1))) "Major mode for editing YAML files" tar])
  (yasnippet . [(20180319 607) ((cl-lib (0 5))) "Yet another snippet extension for Emacs." tar])
- (add-node-modules-path . [(20170914 1912) nil "Add node_modules to your exec-path" tar])
+ (ripgrep . [(20180323 920) nil "Front-end for ripgrep, a command line search tool" tar])
 )
