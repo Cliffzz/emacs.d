@@ -524,6 +524,12 @@
   (("\\.jade\\'" . pug-mode))
   ("\\.pug\\'" . pug-mode))
 
+;; Stylus mode.
+(use-package stylus-mode
+  :load-path "lisp/stylus-mode"
+  :mode
+  (("\\.styl\\'" . stylus-mode)))
+
 ;; Graphql mode.
 (use-package graphql-mode
   :mode
