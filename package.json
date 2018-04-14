@@ -4,11 +4,11 @@
   "version": "1.0.0",
   "description": "Collection of node bins for emacs.",
   "engines": {
-    "node": "9.9.0",
+    "node": "9.11.1",
     "npm": "5.6.0"
   },
   "dependencies": {
     "js-yaml": "3.11.0",
-    "typescript": "2.7.2"
+    "typescript": "2.8.1"
   }
 }

@@ -1,11 +1,11 @@
 .emacs.d
 ========
 
-[![CircleCI](https://circleci.com/gh/Cliffzz/.emacs.d.svg?style=shield)](https://circleci.com/gh/Cliffzz/.emacs.d) [![emacs-version](https://img.shields.io/badge/emacs-26.0.91-brightgreen.svg)](https://www.gnu.org/software/emacs/) [![node-version](https://img.shields.io/badge/node-9.9.0-brightgreen.svg)](https://github.com/nodejs/node) [![npm-version](https://img.shields.io/badge/npm-5.6.0-brightgreen.svg)](https://github.com/npm/npm) [![license](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](https://github.com/Cliffzz/.emacs.d/blob/master/LICENSE)
+[![CircleCI](https://circleci.com/gh/Cliffzz/.emacs.d.svg?style=shield)](https://circleci.com/gh/Cliffzz/.emacs.d) [![emacs-version](https://img.shields.io/badge/emacs-26.0.91-brightgreen.svg)](https://www.gnu.org/software/emacs/) [![node-version](https://img.shields.io/badge/node-9.11.1-brightgreen.fsvg)](https://github.com/nodejs/node) [![npm-version](https://img.shields.io/badge/npm-5.6.0-brightgreen.svg)](https://github.com/npm/npm) [![license](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](https://github.com/Cliffzz/.emacs.d/blob/master/LICENSE)
 
 Personal emacs configuration.
 
-<img width="1680" src="https://user-images.githubusercontent.com/2283434/37864222-1b12a7a0-2f6c-11e8-923c-ace01dcdee7c.png">
+<img width="1680" src="https://user-images.githubusercontent.com/2283434/38770578-5bdb5d2c-4015-11e8-905a-caeff3df31c1.png">
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
