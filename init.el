@@ -159,6 +159,11 @@
 (setq package-enable-at-startup nil
       package--init-file-ensured t)
 
+;; Make sure elpa directory exists.
+(eval-when-compile
+  (unless (file-directory-p "~/.emacs.d/elpa")
+    (make-directory "~/.emacs.d/elpa" t)))
+
 ;; Initialize load-path for packages.
 (eval-and-compile
   (setq load-path (append load-path (directory-files "~/.emacs.d/elpa" t "^[^.]" t)))
