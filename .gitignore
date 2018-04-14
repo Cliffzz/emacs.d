@@ -7,5 +7,11 @@
 # Ignore elpa directory
 /elpa/
 
+# Ignore server directory
+/Server/
+
 # Ignore flycheck init
 flycheck_init.el
+
+# Ignore byte compiled files
+*.elc
