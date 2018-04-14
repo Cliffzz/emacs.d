@@ -343,7 +343,8 @@
 (use-package ripgrep)
 
 (use-package eshell
-  :init
+  :commands (eshell)
+  :config
   ;; Don't pause the output through $PAGER
   (setenv "PAGER" "cat")
 
@@ -364,28 +365,32 @@
 
   ;; Visual commands
   (defvar eshell-visual-commands)
-  (add-hook 'eshell-mode-hook
-            (lambda ()
-              (add-to-list 'eshell-visual-commands "htop")
-              (add-to-list 'eshell-visual-commands "ssh")
-              (add-to-list 'eshell-visual-commands "tail"))))
+  (defun cliffz-set-eshell-visual-commands ()
+    "Set eshell visual commands."
+    (add-to-list 'eshell-visual-commands "htop")
+    (add-to-list 'eshell-visual-commands "ssh")
+    (add-to-list 'eshell-visual-commands "tail"))
+  (add-hook 'eshell-mode-hook 'cliffz-set-eshell-visual-commands))
 
 ;; Eshell prompt settings.
 (use-package eshell-prompt-extras
-  :after (eshell)
-  :commands epe-theme-lambda
-  :init
+  :after (esh-opt)
+  :config
+  (defvar eshell-highlight-prompt)
   (defvar eshell-prompt-function)
-  (setq eshell-prompt-function 'epe-theme-lambda))
+  (autoload 'epe-theme-lambda "eshell-prompt-extras")
+  (setq eshell-highlight-prompt nil
+        eshell-prompt-function 'epe-theme-lambda))
 
 ;; Eshell color output.
 (use-package xterm-color
-  :after (eshell)
-  :init
+  :after (em-prompt)
+  :config
   (defvar xterm-color-preserve-properties)
-  (add-hook 'eshell-before-prompt-hook
-            (lambda ()
-              (setq xterm-color-preserve-properties t)))
+  (defun cliffz-set-xterm-color-properties ()
+    "Set xterm color properties."
+         (setq xterm-color-preserve-properties t))
+  (add-hook 'eshell-before-prompt-hook 'cliffz-set-xterm-color-properties)
   (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
   (setq eshell-output-filter-functions (remove 'eshell-handle-ansi-color eshell-output-filter-functions)))
 
