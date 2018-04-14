@@ -37,3 +37,9 @@ npm install
 ```
 npm install
 ```
+
+### Byte compile
+To improve performance run:
+```
+C-c c compile-files
+```

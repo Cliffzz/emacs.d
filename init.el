@@ -209,6 +209,11 @@
   :init
   (load-theme 'gruvbox-dark-medium t))
 
+;; Bind compile files command.
+(use-package compile-files
+  :load-path "lisp/compile-files"
+  :bind (("C-c c" . 'compile-files)))
+
 ;; Fix path variables in macOS.
 (use-package exec-path-from-shell
   :if (eq system-type 'darwin)
