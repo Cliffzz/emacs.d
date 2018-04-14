@@ -383,7 +383,7 @@
   :after (eshell)
   :init
   (defvar xterm-color-preserve-properties)
-  (add-hook 'eshell-mode-hook
+  (add-hook 'eshell-before-prompt-hook
             (lambda ()
               (setq xterm-color-preserve-properties t)))
   (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
