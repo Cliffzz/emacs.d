@@ -6,9 +6,16 @@
 ;;
 ;;; Code:
 
-;; Increase init performance by increasing garbage collect treshold.
-(setq gc-cons-threshold 100000000)
-(add-hook 'after-init-hook (lambda () (setq gc-cons-threshold 800000)))
+;; Increase init performance by increasing garbage collect threshold.
+(eval-and-compile
+  (setq gc-cons-threshold 402653184
+        gc-cons-percentage 0.6)
+  (defun cliffz-reset-gc-cons ()
+    "Reset gc-cons to default."
+    (setq gc-cons-threshold 16777216
+          gc-cons-percentage 0.1))
+
+  (add-hook 'emacs-startup-hook 'cliffz-reset-gc-cons))
 
 ;; Setup external file for custom settings
 (setq custom-file "~/.emacs.d/custom-settings.el")
