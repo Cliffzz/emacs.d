@@ -155,28 +155,40 @@
       auto-save-file-name-transforms `((".*" ,autosave-dir t))
       tramp-auto-save-directory autosave-dir)
 
-;; Initialize package.el
-(require 'package)
-(setq package-enable-at-startup nil)
-(setq package-archives
-      '(("ELPA Mirror"  . "https://raw.githubusercontent.com/Cliffzz/.emacs.d/master/elpa-mirror/")
-        ("MELPA"        . "https://melpa.org/packages/")
-        ("MELPA Stable" . "https://stable.melpa.org/packages/")
-        ("GNU ELPA"     . "http://elpa.gnu.org/packages/"))
-      package-archive-priorities
-      '(("ELPA Mirror"  . 3)
-        ("MELPA"        . 2)
-        ("MELPA Stable" . 1)
-        ("GNU ELPA"     . 0)))
-(package-initialize)
+;; Disable package.el initialization by default.
+(setq package-enable-at-startup nil
+      package--init-file-ensured t)
 
-;; Install and loadd use-package.
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
+;; Initialize load-path for packages.
+(eval-and-compile
+  (setq load-path (append load-path (directory-files "~/.emacs.d/elpa" t "^[^.]" t)))
+  (add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/gruvbox-theme-20180313.1451"))
+
+;; Initialize package.el only at compile time.
+(eval-when-compile
+  (require 'package)
+  (setq package-archives
+        '(("ELPA Mirror"  . "https://raw.githubusercontent.com/Cliffzz/.emacs.d/master/elpa-mirror/")
+          ("MELPA"        . "https://melpa.org/packages/")
+          ("MELPA Stable" . "https://stable.melpa.org/packages/")
+          ("GNU ELPA"     . "http://elpa.gnu.org/packages/"))
+        package-archive-priorities
+        '(("ELPA Mirror"  . 3)
+          ("MELPA"        . 2)
+          ("MELPA Stable" . 1)
+          ("GNU ELPA"     . 0)))
+  (package-initialize)
+
+  ;; Install and loadd use-package.
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package)))
 
 (eval-when-compile
   (require 'use-package))
+
+(eval-and-compile
+  (require 'bind-key))
 
 ;; Ensure packages are installed automatically.
 (setq use-package-always-ensure t)
@@ -195,6 +207,7 @@
 ;; Fix path variables in macOS.
 (use-package exec-path-from-shell
   :if (eq system-type 'darwin)
+  :commands (exec-path-from-shell-initialize)
   :init
   (setq exec-path-from-shell-check-startup-files nil)
   (exec-path-from-shell-initialize))
@@ -311,6 +324,7 @@
 
 ;; Mode line setup.
 (use-package smart-mode-line
+  :commands (sml/setup)
   :init
   (setq line-number-mode 1
         column-number-mode t
@@ -323,6 +337,7 @@
 ;; Emacs completion using ivy.
 (use-package ivy
   :delight ivy-mode
+  :commands (ivy-mode)
   :bind (("C-c C-r" . 'ivy-resume)
          ("<f6>" . 'ivy-resume))
   :init
@@ -412,6 +427,7 @@
 ;; Git.
 (use-package magit
   :delight auto-revert-mode
+  :commands (magit-status)
   :defer t
   :bind (("C-x g" . 'magit-status)))
 
@@ -431,6 +447,7 @@
 ;; Undo tree.
 (use-package undo-tree
   :delight undo-tree-mode
+  :commands (global-undo-tree-mode)
   :init
   (global-undo-tree-mode)
   (declare-function undo-tree-undo "undo-tree")
