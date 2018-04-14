@@ -17,6 +17,14 @@
 
   (add-hook 'emacs-startup-hook 'cliffz-reset-gc-cons))
 
+;; Increase init performance by temporary unsetting file-name-handler.
+(defvar cliffz-file-name-handler-alist file-name-handler-alist)
+(setq file-name-handler-alist nil)
+(defun cliffz-reset-file-name-handler-alist ()
+  "Reset 'file-name-handler-alist' to default."
+  (setq file-name-handler-alist cliffz-file-name-handler-alist))
+(add-hook 'emacs-startup-hook 'cliffz-reset-file-name-handler-alist)
+
 ;; Setup external file for custom settings
 (setq custom-file "~/.emacs.d/custom-settings.el")
 
