@@ -261,6 +261,8 @@
          (setq flycheck-yaml-jsyaml-executable "~/.emacs.d/node_modules/.bin/js-yaml.cmd")))
   (cond ((eq system-type 'darwin)
          (setq flycheck-yaml-jsyaml-executable "~/.emacs.d/node_modules/.bin/js-yaml")))
+  ;; Disabled checkers.
+  (add-to-list 'flycheck-disabled-checkers 'json-python-json)
   ;; Flycheck Theme.
   (declare-function flycheck-define-error-level "flycheck")
   (define-fringe-bitmap 'my-flycheck-fringe-indicator
