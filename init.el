@@ -196,13 +196,16 @@
   (require 'bind-key))
 
 ;; Ensure packages are installed automatically.
-(setq use-package-always-ensure t)
+(setq use-package-always-ensure t
+      use-package-always-defer t)
 
 ;; Change mode line names.
-(use-package delight)
+(use-package delight
+  :demand t)
 
 ;; Elpa mirror.
-(use-package elpa-mirror)
+(use-package elpa-mirror
+  :commands (elpamr-create-mirror-for-installed))
 
 ;; Set theme.
 (use-package gruvbox-theme
@@ -212,6 +215,7 @@
 ;; Bind compile files command.
 (use-package compile-files
   :load-path "lisp/compile-files"
+  :commands (compile-files)
   :bind (("C-c c" . 'compile-files)))
 
 ;; Fix path variables in macOS.
@@ -226,16 +230,17 @@
 (use-package whitespace
   :hook (before-save . whitespace-cleanup)
   :init
-  (add-hook 'prog-mode-hook
-            (lambda ()
-              (setq show-trailing-whitespace 1))))
+  (defun cliffz-show-trailing-whitespace ()
+    "Show trailing whitespace."
+    (setq show-trailing-whitespace 1))
+  (add-hook 'prog-mode-hook 'cliffz-show-trailing-whitespace))
 
 ;; Spell checking.
 (use-package flyspell
   :delight flyspell-mode
   :hook ((prog-mode . flyspell-prog-mode)
          (text-mode . flyspell-mode))
-  :init
+  :config
   (setq ispell-program-name "aspell"
         ispell-extra-args '("--sug-mode=ultra" "--lang=en_US" "--run-together" "--run-together-limit=5" "--run-together-min=2"))
   ;; Fix word correction suggestions.
@@ -257,6 +262,7 @@
   (cond ((eq system-type 'darwin)
          (setq flycheck-yaml-jsyaml-executable "~/.emacs.d/node_modules/.bin/js-yaml")))
   ;; Flycheck Theme.
+  (declare-function flycheck-define-error-level "flycheck")
   (define-fringe-bitmap 'my-flycheck-fringe-indicator
     (vector #b00000000
             #b00000000
@@ -303,6 +309,7 @@
 ;; Keybinds auto completion.
 (use-package which-key
   :delight which-key-mode
+  :commands (which-key-mode)
   :config
   (which-key-mode))
 
@@ -347,7 +354,7 @@
 ;; Emacs completion using ivy.
 (use-package ivy
   :delight ivy-mode
-  :commands (ivy-mode)
+  :commands (ivy-mode ivy-resume)
   :bind (("C-c C-r" . 'ivy-resume)
          ("<f6>" . 'ivy-resume))
   :init
@@ -364,6 +371,14 @@
 ;; Emacs commands completion using ivy.
 (use-package counsel
   :after (ivy)
+  :commands
+  (counsel-M-x
+   counsel-find-file
+   counsel-describe-function
+   counsel-describe-variable
+   counsel-info-lookup-symbol
+   counsel-unicode-char
+   counsel-rg)
   :bind (("M-x" . 'counsel-M-x)
          ("C-x C-f" . 'counsel-find-file)
          ("<f1> f" . 'counsel-describe-function)
@@ -375,12 +390,13 @@
 ;; Search replacement using ivy.
 (use-package swiper
   :after (ivy)
-  :init
-  (declare-function swiper "swiper")
+  :commands (swiper)
   :bind (("\C-s" . 'swiper)))
 
 ;; Search with ripgrep.
-(use-package ripgrep)
+(use-package ripgrep
+  :commands (ripgrep-regexp)
+  :bind (("C-c r" . 'ripgrep-regexp)))
 
 (use-package eshell
   :commands (eshell)
@@ -415,6 +431,7 @@
 ;; Eshell prompt settings.
 (use-package eshell-prompt-extras
   :after (esh-opt)
+  :demand t
   :config
   (defvar eshell-highlight-prompt)
   (defvar eshell-prompt-function)
@@ -425,6 +442,7 @@
 ;; Eshell color output.
 (use-package xterm-color
   :after (em-prompt)
+  :demand t
   :config
   (defvar xterm-color-preserve-properties)
   (defun cliffz-set-xterm-color-properties ()
@@ -438,7 +456,6 @@
 (use-package magit
   :delight auto-revert-mode
   :commands (magit-status)
-  :defer t
   :bind (("C-x g" . 'magit-status)))
 
 ;; Highlight git changes.
@@ -476,10 +493,12 @@
 
 ;; Jump to character.
 (use-package avy
+  :commands (avy-goto-char)
   :bind (("C-'" . 'avy-goto-char)))
 
 ;; Jump to window.
 (use-package ace-window
+  :commands (ace-window)
   :bind (("C-x o" . 'ace-window)))
 
 ;; Snippets.
@@ -500,11 +519,12 @@
   :config
   (defvar js-indent-level)
   (defvar json-reformat:indent-width)
-  (add-hook 'json-mode-hook
-            (lambda ()
-              (make-local-variable 'js-indent-level)
-              (setq js-indent-level 2
-                    json-reformat:indent-width 2))))
+  (defun cliffz-json-mode-indentation ()
+    "Set json-mode indentation."
+    (make-local-variable 'js-indent-level)
+    (setq js-indent-level 2
+          json-reformat:indent-width 2))
+  (add-hook 'json-mode-hook 'cliffz-json-mode-indentation))
 
 ;; Javascript mode.
 (use-package js2-mode
@@ -528,19 +548,17 @@
 ;; Typescript and javascript completion using tsserver.
 (use-package tide
   :delight tide-mode
+  :hook ((typescript-mode js2-mode js2-jsx-mode) . tide-setup)
   :config
   (defvar tide-tsserver-executable)
+  (declare-function flycheck-mode "tide")
+  (declare-function tide-hl-identifier-mode "tide")
+  (declare-function company-mode "tide")
   (setq tide-tsserver-executable "~/.emacs.d/node_modules/typescript/bin/tsserver")
-  (defun setup-tide-mode ()
-    (interactive)
-    (tide-setup)
-    (flycheck-mode +1)
-    (setq flycheck-check-syntax-automatically '(save mode-enabled))
-    (tide-hl-identifier-mode +1)
-    (company-mode +1))
-  (add-hook 'js2-mode-hook 'setup-tide-mode)
-  (add-hook 'js2-jsx-mode-hook 'setup-tide-mode)
-  (add-hook 'typescript-mode-hook 'setup-tide-mode))
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (tide-hl-identifier-mode +1)
+  (company-mode +1))
 
 ;; Coffeescript mode.
 (use-package coffee-mode
@@ -588,7 +606,7 @@
   (("README\\.md\\'" . gfm-mode)
    ("\\.md\\'" . markdown-mode)
    ("\\.markdown\\'" . markdown-mode))
-  :init
+  :config
   (defvar markdown-command)
   (setq markdown-command "multimarkdown"))
 
