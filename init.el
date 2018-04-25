@@ -90,8 +90,8 @@
       auto-window-vscroll nil)
 
 ;; Horizontal scrolling.
-(setq mwheel-tilt-scroll-p t)
-(setq mwheel-flip-direction t)
+(setq mouse-wheel-tilt-scroll t)
+(setq mouse-wheel-flip-direction t)
 
 ;; Mode line.
 (setq line-number-mode t
