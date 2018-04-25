@@ -190,14 +190,16 @@
 (eval-when-compile
   (require 'use-package))
 
-(require 'bind-key)
-
 ;; Ensure packages are installed automatically.
 (setq use-package-always-ensure t
       use-package-always-defer t)
 
 ;; Change mode line names.
 (use-package delight
+  :demand t)
+
+;; Dependency for custom keybinds.
+(use-package bind-key
   :demand t)
 
 ;; Elpa mirror.
