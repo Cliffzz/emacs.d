@@ -7,15 +7,14 @@
 ;;; Code:
 
 ;; Increase init performance by increasing garbage collect threshold.
-(eval-and-compile
-  (setq gc-cons-threshold 402653184
-        gc-cons-percentage 0.6)
-  (defun cliffz-reset-gc-cons ()
-    "Reset gc-cons to default."
-    (setq gc-cons-threshold 16777216
-          gc-cons-percentage 0.1))
+(setq gc-cons-threshold 402653184
+      gc-cons-percentage 0.6)
+(defun cliffz-reset-gc-cons ()
+  "Reset gc-cons to default."
+  (setq gc-cons-threshold 16777216
+        gc-cons-percentage 0.1))
 
-  (add-hook 'emacs-startup-hook 'cliffz-reset-gc-cons))
+(add-hook 'emacs-startup-hook 'cliffz-reset-gc-cons)
 
 ;; Increase init performance by temporary unsetting file-name-handler.
 (defvar cliffz-file-name-handler-alist file-name-handler-alist)
@@ -165,9 +164,8 @@
     (make-directory "~/.emacs.d/elpa" t)))
 
 ;; Initialize load-path for packages.
-(eval-and-compile
-  (setq load-path (append load-path (directory-files "~/.emacs.d/elpa" t "^[^.]" t)))
-  (add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/gruvbox-theme-20180313.1451"))
+(setq load-path (append load-path (directory-files "~/.emacs.d/elpa" t "^[^.]" t)))
+(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/gruvbox-theme-20180313.1451")
 
 ;; Initialize package.el only at compile time.
 (eval-when-compile
@@ -192,8 +190,7 @@
 (eval-when-compile
   (require 'use-package))
 
-(eval-and-compile
-  (require 'bind-key))
+(require 'bind-key)
 
 ;; Ensure packages are installed automatically.
 (setq use-package-always-ensure t
