@@ -554,6 +554,13 @@
   (set-face-attribute 'js2-warning nil :underline '(:style line :color "#fabd2f"))
   (set-face-attribute 'js2-external-variable nil :underline '(:style line :color "#b8bb26")))
 
+;; Javascript refactor.
+(use-package js2-refactor
+  :hook ((js2-mode js2-jsx-mode) . js2-refactor-mode)
+  :commands (js2r-add-keybindings-with-prefix)
+  :config
+  (js2r-add-keybindings-with-prefix "C-c m"))
+
 ;; Typescript mode.
 (use-package typescript-mode
   :mode
