@@ -27,6 +27,7 @@
  (gruvbox-theme . [(20180313 1451) ((autothemer (0 2))) "A retro-groove colour theme for Emacs" tar])
  (ivy . [(20180402 1858) ((emacs (24 1))) "Incremental Vertical completYon" tar])
  (js2-mode . [(20180331 2247) ((emacs (24 1)) (cl-lib (0 5))) "Improved JavaScript editing mode" tar])
+ (rjsx-mode . [(20180418 647) ((emacs (24 4)) (js2-mode (20170504))) "Real support for JSX" tar])
  (js2-refactor . [(20180410 201) ((js2-mode (20101228)) (s (1 9 0)) (multiple-cursors (1 0 0)) (dash (1 0 0)) (s (1 0 0)) (yasnippet (0 9 0 1))) "A JavaScript refactoring library for emacs." tar])
  (json-mode . [(20170719 2205) ((json-reformat (0 0 5)) (json-snatcher (1 0 0))) "Major mode for editing JSON files." tar])
  (json-reformat . [(20160212 53) nil "Reformatting tool for JSON" tar])

@@ -543,8 +543,19 @@
 ;; Javascript mode.
 (use-package js2-mode
   :mode
-  (("\\.js\\'" . js2-mode)
-   ("\\.jsx\\'" . js2-jsx-mode))
+  (("\\.js\\'" . js2-mode))
+  :config
+  (setq-default js2-basic-offset 4
+                js-switch-indent-offset 4
+                js-indent-level 4
+                js2-strict-trailing-comma-warning nil)
+  (set-face-attribute 'js2-error nil :underline '(:style line :color "#fb4934"))
+  (set-face-attribute 'js2-warning nil :underline '(:style line :color "#fabd2f"))
+  (set-face-attribute 'js2-external-variable nil :underline '(:style line :color "#b8bb26")))
+
+(use-package rjsx-mode
+  :mode
+  (("\\.jsx\\'" . rjsx-mode))
   :config
   (setq-default js2-basic-offset 4
                 js-switch-indent-offset 4
@@ -556,7 +567,7 @@
 
 ;; Javascript refactor.
 (use-package js2-refactor
-  :hook ((js2-mode js2-jsx-mode) . js2-refactor-mode)
+  :hook ((js2-mode rjsx-mode) . js2-refactor-mode)
   :commands (js2r-add-keybindings-with-prefix)
   :config
   (js2r-add-keybindings-with-prefix "C-c m"))
@@ -569,7 +580,7 @@
 ;; Typescript and javascript completion using tsserver.
 (use-package tide
   :delight tide-mode
-  :hook ((typescript-mode js2-mode js2-jsx-mode) . tide-setup)
+  :hook ((typescript-mode js2-mode rjsx-mode) . tide-setup)
   :init
   (defun cliffz-enable-tide-tsx ()
     "Enable tide for tsx files."
