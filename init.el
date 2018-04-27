@@ -221,12 +221,15 @@
 (use-package exec-path-from-shell
   :if (eq system-type 'darwin)
   :commands (exec-path-from-shell-initialize)
-  :init
+  :config
   (setq exec-path
-        (eval-when-compile
-          (setq exec-path-from-shell-check-startup-files nil)
-          (exec-path-from-shell-initialize)
-          exec-path)))
+        (or (eval-when-compile
+              (when (require 'exec-path-from-shell nil t)
+                (setq exec-path-from-shell-check-startup-files nil
+                      exec-path-from-shell-arguments (delete "-i" exec-path-from-shell-arguments))
+                (exec-path-from-shell-initialize)
+                exec-path))
+            exec-path)))
 
 ;; Delete trailing whitespaces on save.
 (use-package whitespace
