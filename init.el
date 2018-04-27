@@ -261,6 +261,7 @@
 ;; Syntax checking.
 (use-package flycheck
   :hook (prog-mode . global-flycheck-mode)
+  :commands (flycheck-add-mode)
   :config
   (cond ((eq system-type 'windows-nt)
          (setq flycheck-yaml-jsyaml-executable "~/.emacs.d/node_modules/.bin/js-yaml.cmd")))
@@ -268,6 +269,12 @@
          (setq flycheck-yaml-jsyaml-executable "~/.emacs.d/node_modules/.bin/js-yaml")))
   ;; Disabled checkers.
   (add-to-list 'flycheck-disabled-checkers 'json-python-json)
+  ;; Eanble tslint for tsx files.
+  (defun cliffz-enable-tslint-tsx ()
+    "Enable tslint for tsx files."
+    (when (string-equal "tsx" (file-name-extension buffer-file-name))
+      (flycheck-add-mode 'typescript-tslint 'web-mode)))
+  (add-hook 'web-mode-hook 'cliffz-enable-tslint-tsx)
   ;; Flycheck Theme.
   (declare-function flycheck-define-error-level "flycheck")
   (define-fringe-bitmap 'my-flycheck-fringe-indicator
@@ -556,6 +563,13 @@
 (use-package tide
   :delight tide-mode
   :hook ((typescript-mode js2-mode js2-jsx-mode) . tide-setup)
+  :init
+  (defun cliffz-enable-tide-tsx ()
+    "Enable tide for tsx files."
+    (when (string-equal "tsx" (file-name-extension buffer-file-name))
+      (tide-setup)
+      (flycheck-add-mode 'typescript-tslint 'web-mode)))
+  (add-hook 'web-mode-hook 'cliffz-enable-tide-tsx)
   :config
   (defvar tide-tsserver-executable)
   (declare-function flycheck-mode "tide")
@@ -583,7 +597,8 @@
 (use-package web-mode
   :mode
   (("\\.html\\'" . web-mode)
-   ("\\.css\\'" . web-mode))
+   ("\\.css\\'" . web-mode)
+   ("\\.tsx\\'" . web-mode))
   :config
   (defvar web-mode-markup-indent-offset)
   (defvar web-mode-css-indent-offset)
