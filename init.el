@@ -225,9 +225,10 @@
   (setq exec-path
         (or (eval-when-compile
               (when (require 'exec-path-from-shell nil t)
-                (setq exec-path-from-shell-check-startup-files nil
-                      exec-path-from-shell-arguments (delete "-i" exec-path-from-shell-arguments))
-                (exec-path-from-shell-initialize)
+                (cond ((eq system-type 'darwin)
+                       (setq exec-path-from-shell-check-startup-files nil
+                             exec-path-from-shell-arguments (delete "-i" exec-path-from-shell-arguments))
+                       (exec-path-from-shell-initialize)))
                 exec-path))
             exec-path)))
 
