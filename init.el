@@ -324,7 +324,7 @@
 (use-package which-key
   :delight which-key-mode
   :commands (which-key-mode)
-  :config
+  :init
   (which-key-mode))
 
 ;; Code auto completion.
