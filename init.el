@@ -568,6 +568,7 @@
 
 ;; Javascript refactor.
 (use-package js2-refactor
+  :delight js2-refactor-mode
   :hook ((js2-mode rjsx-mode) . js2-refactor-mode)
   :commands (js2r-add-keybindings-with-prefix)
   :config
