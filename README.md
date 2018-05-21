@@ -24,6 +24,7 @@ Personal emacs configuration.
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [node](https://github.com/nodejs/node)
 - [npm](https://github.com/npm/npm)
+- [omnisharp-roslyn](https://github.com/OmniSharp/omnisharp-roslyn)
 
 ### macOS
 - [emacs-plus](https://github.com/d12frosted/homebrew-emacs-plus)

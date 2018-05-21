@@ -674,6 +674,17 @@
   :commands
   (es-command-center))
 
+;; C# mode.
+(use-package csharp-mode
+  :mode
+  (("\\.cs\\'" . csharp-mode)))
+
+;; Omnisharp.
+(use-package omnisharp
+  :hook (csharp-mode . omnisharp-mode)
+  :config
+  (add-to-list 'company-backends 'company-omnisharp))
+
 (provide 'init)
 
 ;;; init.el ends here
