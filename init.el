@@ -508,8 +508,8 @@
 
 ;; Jump to character.
 (use-package avy
-  :commands (avy-goto-char)
-  :bind (("C-'" . 'avy-goto-char)))
+  :commands (avy-goto-char-timer)
+  :bind (("C-'" . 'avy-goto-char-timer)))
 
 ;; Jump to window.
 (use-package ace-window
