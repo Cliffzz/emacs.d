@@ -571,9 +571,32 @@
 (use-package js2-refactor
   :delight js2-refactor-mode
   :hook ((js2-mode rjsx-mode) . js2-refactor-mode)
-  :commands (js2r-add-keybindings-with-prefix)
+  :commands (js2r-add-keybindings-with-prefix cliffz-set-refactor-keybind-descriptions)
   :config
-  (js2r-add-keybindings-with-prefix "C-c m"))
+  (declare-function which-key-add-major-mode-key-based-replacements "which-key")
+  (defun cliffz-set-refactor-keybind-descriptions (mode)
+    "Set the refactor keybind descriptions for the given mode."
+    (which-key-add-major-mode-key-based-replacements mode
+      "C-c r" "refactor"
+
+      "C-c r 3" "ternary"
+      "C-c r a" "add/args"
+      "C-c r b" "barf"
+      "C-c r c" "contract"
+      "C-c r e" "expand/extract"
+      "C-c r i" "inline/inject/introduct"
+      "C-c r l" "localize/log"
+      "C-c r r" "rename"
+      "C-c r s" "split/slurp"
+      "C-c r t" "toggle"
+      "C-c r u" "unwrap"
+      "C-c r v" "var"
+      "C-c r w" "wrap"
+      "C-c r t" "text"))
+
+  (js2r-add-keybindings-with-prefix "C-c r")
+  (cliffz-set-refactor-keybind-descriptions 'js2-mode)
+  (cliffz-set-refactor-keybind-descriptions 'rjsx-mode))
 
 ;; Typescript mode.
 (use-package typescript-mode
