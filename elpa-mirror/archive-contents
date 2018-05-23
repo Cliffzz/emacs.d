@@ -41,6 +41,7 @@
  (omnisharp . [(20180121 702) ((emacs (24 4)) (flycheck (30)) (dash (2 12 0)) (auto-complete (1 4)) (popup (0 5 1)) (csharp-mode (0 8 7)) (cl-lib (0 5)) (s (1 10 0)) (shut-up (0 3 2)) (f (0 19 0))) "Omnicompletion (intellisense) and more for C#" tar])
  (pkg-info . [(20150517 443) ((epl (0 8))) "Information about packages" tar])
  (popup . [(20160709 729) ((cl-lib (0 5))) "Visual Popup User Interface" tar])
+ (prettier-js . [(20180108 2326) nil "Minor mode to format JS code on file save" tar])
  (projectile . [(20180324 2226) ((emacs (24 3)) (pkg-info (0 4))) "Manage and navigate projects in Emacs easily" tar])
  (pug-mode . [(20171208 2029) ((emacs (24 4)) (cl-lib (0 5))) "Major mode for jade/pug template files" tar])
  (rainbow-delimiters . [(20170929 432) nil "Highlight brackets according to their depth" tar])

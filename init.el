@@ -649,6 +649,33 @@
   (setq web-mode-markup-indent-offset 4
         web-mode-css-indent-offset 2))
 
+;; Prettier, code formatting.
+(use-package prettier-js
+  :commands (prettier-js)
+  :init
+  (defun cliffz-set-prettier-js-keybind-js2-mode ()
+    "Set the prettier-js keybind for js2-mode"
+    (bind-key "C-c f" 'prettier-js js2-mode-map))
+  (defun cliffz-set-prettier-js-keybind-json-mode ()
+    "Set the prettier-js keybind for json-mode."
+    (bind-key "C-c f" 'prettier-js json-mode-map))
+  (defun cliffz-set-prettier-js-keybind-rjsx-mode ()
+    "Set the prettier-js keybind for rjsx-mode."
+    (bind-key "C-c f" 'prettier-js rjsx-mode-map))
+  (defun cliffz-set-prettier-js-keybind-typescript-mode ()
+    "Set the prettier-js keybind for typescript-mode."
+    (bind-key "C-c f" 'prettier-js typescript-mode-map))
+  (add-hook 'js2-mode-hook 'cliffz-set-prettier-js-keybind-js2-mode)
+  (add-hook 'json-mode-hook 'cliffz-set-prettier-js-keybind-json-mode)
+  (add-hook 'rjsx-mode-hook 'cliffz-set-prettier-js-keybind-rjsx-mode)
+  (add-hook 'typescript-mode-hook 'cliffz-set-prettier-js-keybind-typescript-mode)
+  :config
+  (cond ((eq system-type 'windows-nt)
+         (setq prettier-js-command "~/.emacs.d/node_modules/.bin/prettier.cmd")))
+  (cond ((eq system-type 'darwin)
+         (setq prettier-js-command "~/.emacs.d/node_modules/.bin/prettier")))
+  (setq prettier-js-args '("--print-width" "120" "--tab-width" "4" "--single-quote" "--trailing-comma" "all")))
+
 ;; Jade/Pug mode.
 (use-package pug-mode
   :mode
