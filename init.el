@@ -411,7 +411,7 @@
 ;; Search with ripgrep.
 (use-package ripgrep
   :commands (ripgrep-regexp)
-  :bind (("C-c r" . 'ripgrep-regexp)))
+  :bind (("C-c S" . 'ripgrep-regexp)))
 
 (use-package eshell
   :commands (eshell)
