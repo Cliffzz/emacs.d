@@ -637,6 +637,12 @@
 (use-package add-node-modules-path
     :hook ((typescript-mode js2-mode web-mode) . add-node-modules-path))
 
+;; Javascript debugger.
+(use-package indium
+  :commands (indium-connect-to-nodejs)
+  :config
+  (set-face-attribute 'indium-breakpoint-face  nil :foreground "#fb4934"))
+
 ;; Web mode.
 (use-package web-mode
   :mode
