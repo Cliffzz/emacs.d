@@ -639,7 +639,33 @@
 
 ;; Javascript debugger.
 (use-package indium
-  :commands (indium-connect-to-nodejs)
+  :commands (indium-connect-to-nodejs cliffz-set-indium-keybind-descriptions)
+  :init
+  (declare-function which-key-add-major-mode-key-based-replacements "which-key")
+  (defun cliffz-set-indium-keybind-descriptions (mode)
+    "Set the indium keybind descriptions for the given mode."
+    (which-key-add-major-mode-key-based-replacements mode
+      "C-c d" "debugger"))
+
+  (defun cliffz-set-indium-keybinds-js2-mode ()
+    "Set the indium debugger keybinds for js2-mode"
+    (bind-key "C-c d n" 'indium-connect-to-nodejs js2-mode-map)
+    (bind-key "C-c d c" 'indium-connect-to-chrome js2-mode-map)
+    (cliffz-set-indium-keybind-descriptions 'js2-mode))
+  (defun cliffz-set-indium-keybinds-rjsx-mode ()
+    "Set the indium debugger keybinds for rjsx-mode"
+    (bind-key "C-c d n" 'indium-connect-to-nodejs rjsx-mode-map)
+    (bind-key "C-c d c" 'indium-connect-to-chrome rjsx-mode-map)
+    (cliffz-set-indium-keybind-descriptions 'rjsx-mode))
+  (defun cliffz-set-indium-keybinds-typescript-mode ()
+    "Set the prettier-js keybind for typescript-mode"
+    (bind-key "C-c d n" 'indium-connect-to-nodejs typescript-mode-map)
+    (bind-key "C-c d c" 'indium-connect-to-chrome typescript-mode-map)
+    (cliffz-set-indium-keybind-descriptions 'typescript-mode))
+
+  (add-hook 'js2-mode-hook 'cliffz-set-indium-keybinds-js2-mode)
+  (add-hook 'rjsx-mode-hook 'cliffz-set-indium-keybinds-rjsx-mode)
+  (add-hook 'typescript-mode-hook 'cliffz-set-indium-keybinds-typescript-mode)
   :config
   (set-face-attribute 'indium-breakpoint-face  nil :foreground "#fb4934"))
 
