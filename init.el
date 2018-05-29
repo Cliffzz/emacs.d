@@ -467,6 +467,16 @@
   (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
   (setq eshell-output-filter-functions (remove 'eshell-handle-ansi-color eshell-output-filter-functions)))
 
+;; Shell pop.
+(use-package shell-pop
+  :commands (shell-pop)
+  :bind (("C-c t" . 'shell-pop))
+  :config
+  (declare-function shell-pop--set-shell-type "shell-pop")
+  (setq shell-pop-shell-type '("eshell" "*eshell*" (lambda () (eshell))))
+  (shell-pop--set-shell-type 'shell-pop-shell-type shell-pop-shell-type)
+  (setq shell-pop-full-span t))
+
 ;; Git.
 (use-package magit
   :delight auto-revert-mode
