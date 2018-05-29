@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "js-yaml": "3.11.0",
-    "prettier": "1.12.1",
+    "prettier": "1.13.1",
     "typescript": "2.8.3"
   }
 }
