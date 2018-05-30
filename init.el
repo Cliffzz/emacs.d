@@ -473,9 +473,10 @@
   :bind (("C-c t" . 'shell-pop))
   :config
   (declare-function shell-pop--set-shell-type "shell-pop")
-  (setq shell-pop-shell-type '("eshell" "*eshell*" (lambda () (eshell))))
-  (shell-pop--set-shell-type 'shell-pop-shell-type shell-pop-shell-type)
-  (setq shell-pop-full-span t))
+  (setq shell-pop-shell-type '("eshell" "*eshell*" (lambda () (eshell)))
+        shell-pop-full-span t
+        shell-pop-window-size 25)
+  (shell-pop--set-shell-type 'shell-pop-shell-type shell-pop-shell-type))
 
 ;; Git.
 (use-package magit
