@@ -103,7 +103,7 @@
        (setq cliffz-font-size 100)))
 
 (set-face-attribute 'default nil
-                    :family "Source Code Pro"
+                    :family "Iosevka"
                     :height cliffz-font-size
                     :weight 'normal
                     :width 'normal)

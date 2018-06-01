@@ -5,7 +5,7 @@
 
 Personal emacs configuration.
 
-<img width="1680" src="https://user-images.githubusercontent.com/2283434/38770578-5bdb5d2c-4015-11e8-905a-caeff3df31c1.png">
+<img width="1680" src="https://user-images.githubusercontent.com/2283434/40851887-f1da2294-65c8-11e8-8595-a9fbe25f1f19.png">
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
@@ -25,6 +25,7 @@ Personal emacs configuration.
 - [node](https://github.com/nodejs/node)
 - [npm](https://github.com/npm/npm)
 - [omnisharp-roslyn](https://github.com/OmniSharp/omnisharp-roslyn)
+- [Iosevka](https://github.com/be5invis/Iosevka)
 
 ### macOS
 - [emacs-plus](https://github.com/d12frosted/homebrew-emacs-plus)
