@@ -778,6 +778,21 @@
   :config
   (add-to-list 'company-backends 'company-omnisharp))
 
+;; Lua mode.
+(use-package lua-mode
+  :mode
+  (("\\.lua\\'" . lua-mode)))
+
+;; Lua autocompletion.
+(use-package company-lua
+  :after (lua-mode)
+  :init
+  (defun cliffz-load-lua-autocompletion ()
+    "Load lua auto completion."
+    (message "foo")
+    (add-to-list 'company-backends 'company-lua))
+  (add-hook 'lua-mode-hook 'cliffz-load-lua-autocompletion))
+
 (provide 'init)
 
 ;;; init.el ends here

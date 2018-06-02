@@ -26,6 +26,7 @@ Personal emacs configuration.
 - [npm](https://github.com/npm/npm)
 - [omnisharp-roslyn](https://github.com/OmniSharp/omnisharp-roslyn)
 - [Iosevka](https://github.com/be5invis/Iosevka)
+- [luacheck](https://github.com/mpeterv/luacheck)
 
 ### macOS
 - [emacs-plus](https://github.com/d12frosted/homebrew-emacs-plus)
