@@ -35,6 +35,12 @@
 (tool-bar-mode -1)
 (toggle-scroll-bar -1)
 
+;; Themed title bar. (macOS only)
+ (cond ((eq system-type 'darwin)
+        (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+        (add-to-list 'default-frame-alist '(ns-appearance . dark))
+        (setq frame-title-format nil)))
+
 ;; Disable scrollbars on new frame.
 (defun cliffz-base-defaults-disable-scroll-bars (frame)
   "Disable FRAME scroll bars."
