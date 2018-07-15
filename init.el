@@ -171,7 +171,7 @@
 
 ;; Initialize load-path for packages.
 (setq load-path (eval-when-compile (append load-path (directory-files "~/.emacs.d/elpa" t "^[^.]" t))))
-(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/gruvbox-theme-20180430.506")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/gruvbox-theme-20180623.2009")
 
 ;; Initialize package.el only at compile time.
 (eval-when-compile
