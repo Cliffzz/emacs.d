@@ -702,6 +702,7 @@
 (use-package prettier-js
   :commands (prettier-js)
   :init
+  (defvar graphql-mode-map)
   (defun cliffz-set-prettier-js-keybind-js2-mode ()
     "Set the prettier-js keybind for js2-mode"
     (bind-key "C-c f" 'prettier-js js2-mode-map))
@@ -714,10 +715,14 @@
   (defun cliffz-set-prettier-js-keybind-typescript-mode ()
     "Set the prettier-js keybind for typescript-mode."
     (bind-key "C-c f" 'prettier-js typescript-mode-map))
+  (defun cliffz-set-prettier-js-keybind-graphql-mode ()
+    "Set the prettier-js keybind for graphql-mode."
+    (bind-key "C-c f" 'prettier-js graphql-mode-map))
   (add-hook 'js2-mode-hook 'cliffz-set-prettier-js-keybind-js2-mode)
   (add-hook 'json-mode-hook 'cliffz-set-prettier-js-keybind-json-mode)
   (add-hook 'rjsx-mode-hook 'cliffz-set-prettier-js-keybind-rjsx-mode)
   (add-hook 'typescript-mode-hook 'cliffz-set-prettier-js-keybind-typescript-mode)
+  (add-hook 'graphql-mode-hook 'cliffz-set-prettier-js-keybind-graphql-mode)
   :config
   (cond ((eq system-type 'windows-nt)
          (setq prettier-js-command "~/.emacs.d/node_modules/.bin/prettier.cmd")))
