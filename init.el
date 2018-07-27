@@ -675,7 +675,7 @@
     (bind-key "C-c d c" 'indium-connect-to-chrome rjsx-mode-map)
     (cliffz-set-indium-keybind-descriptions 'rjsx-mode))
   (defun cliffz-set-indium-keybinds-typescript-mode ()
-    "Set the prettier-js keybind for typescript-mode"
+    "Set the indium debbuger  keybinds for typescript-mode"
     (bind-key "C-c d n" 'indium-connect-to-nodejs typescript-mode-map)
     (bind-key "C-c d c" 'indium-connect-to-chrome typescript-mode-map)
     (cliffz-set-indium-keybind-descriptions 'typescript-mode))
