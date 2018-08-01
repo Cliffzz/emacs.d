@@ -708,7 +708,7 @@
          (setq prettier-js-command "~/.emacs.d/node_modules/.bin/prettier.cmd")))
   (cond ((eq system-type 'darwin)
          (setq prettier-js-command "~/.emacs.d/node_modules/.bin/prettier")))
-  (setq prettier-js-args '("--print-width" "120" "--tab-width" "4" "--single-quote" "--trailing-comma" "all"))
+  (setq prettier-js-args '("--print-width" "100" "--tab-width" "4" "--single-quote" "--trailing-comma" "all"))
 
   (defun cliffz-set-prettier-js-config-js2-mode ()
     "Set the prettier-js config for js2-mode"
@@ -716,7 +716,7 @@
   (defun cliffz-set-prettier-js-config-json-mode ()
     "Set the prettier-js keybind for json-mode."
     (make-local-variable 'prettier-js-args)
-    (setq prettier-js-args '("--print-width" "120" "--tab-width" "2" "--single-quote" "--trailing-comma" "all"))
+    (setq prettier-js-args '("--print-width" "100" "--tab-width" "2" "--single-quote" "--trailing-comma" "all"))
     (bind-key "C-c f" 'prettier-js json-mode-map))
   (defun cliffz-set-prettier-js-config-rjsx-mode ()
     "Set the prettier-js config for rjsx-mode."
