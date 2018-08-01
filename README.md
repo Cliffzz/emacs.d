@@ -1,7 +1,7 @@
 .emacs.d
 ========
 
-[![CircleCI](https://circleci.com/gh/Cliffzz/.emacs.d.svg?style=shield)](https://circleci.com/gh/Cliffzz/.emacs.d) [![emacs-version](https://img.shields.io/badge/emacs-26.1-brightgreen.svg)](https://www.gnu.org/software/emacs/) [![node-version](https://img.shields.io/badge/node-10.6.0-brightgreen.svg)](https://github.com/nodejs/node) [![npm-version](https://img.shields.io/badge/npm-6.1.0-brightgreen.svg)](https://github.com/npm/npm) [![license](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](https://github.com/Cliffzz/.emacs.d/blob/master/LICENSE)
+[![CircleCI](https://circleci.com/gh/Cliffzz/.emacs.d.svg?style=shield)](https://circleci.com/gh/Cliffzz/.emacs.d) [![emacs-version](https://img.shields.io/badge/emacs-26.1-brightgreen.svg)](https://www.gnu.org/software/emacs/) [![node-version](https://img.shields.io/badge/node-10.7.0-brightgreen.svg)](https://github.com/nodejs/node) [![npm-version](https://img.shields.io/badge/npm-6.2.0-brightgreen.svg)](https://github.com/npm/npm) [![license](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](https://github.com/Cliffzz/.emacs.d/blob/master/LICENSE)
 
 Personal emacs configuration.
 

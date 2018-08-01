@@ -11,9 +11,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
+ '(package-selected-packages
    (quote
-    ("a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" default))))
+    (company-lua lua-mode omnisharp csharp-mode es-mode yaml-mode dockerfile-mode markdown-toc markdown-mode graphql-mode pug-mode prettier-js web-mode indium add-node-modules-path coffee-mode tide typescript-mode js2-refactor rjsx-mode js2-mode json-mode yasnippet ace-window avy expand-region dumb-jump undo-tree diff-hl magit shell-pop xterm-color eshell-prompt-extras ripgrep counsel ivy smart-mode-line projectile rainbow-delimiters smartparens company which-key flycheck exec-path-from-shell gruvbox-theme elpa-mirror delight use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
