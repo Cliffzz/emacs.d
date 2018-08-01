@@ -745,7 +745,9 @@
 ;; Graphql mode.
 (use-package graphql-mode
   :mode
-  (("\\.graphql\\'" . graphql-mode)))
+  (("\\.graphql\\'" . graphql-mode))
+  :config
+  (setq graphql-indent-level 4))
 
 ;; Markdown mode.
 (use-package markdown-mode
