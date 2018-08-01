@@ -703,32 +703,33 @@
   :commands (prettier-js)
   :init
   (defvar graphql-mode-map)
-  (defun cliffz-set-prettier-js-keybind-js2-mode ()
-    "Set the prettier-js keybind for js2-mode"
-    (bind-key "C-c f" 'prettier-js js2-mode-map))
-  (defun cliffz-set-prettier-js-keybind-json-mode ()
-    "Set the prettier-js keybind for json-mode."
-    (bind-key "C-c f" 'prettier-js json-mode-map))
-  (defun cliffz-set-prettier-js-keybind-rjsx-mode ()
-    "Set the prettier-js keybind for rjsx-mode."
-    (bind-key "C-c f" 'prettier-js rjsx-mode-map))
-  (defun cliffz-set-prettier-js-keybind-typescript-mode ()
-    "Set the prettier-js keybind for typescript-mode."
-    (bind-key "C-c f" 'prettier-js typescript-mode-map))
-  (defun cliffz-set-prettier-js-keybind-graphql-mode ()
-    "Set the prettier-js keybind for graphql-mode."
-    (bind-key "C-c f" 'prettier-js graphql-mode-map))
-  (add-hook 'js2-mode-hook 'cliffz-set-prettier-js-keybind-js2-mode)
-  (add-hook 'json-mode-hook 'cliffz-set-prettier-js-keybind-json-mode)
-  (add-hook 'rjsx-mode-hook 'cliffz-set-prettier-js-keybind-rjsx-mode)
-  (add-hook 'typescript-mode-hook 'cliffz-set-prettier-js-keybind-typescript-mode)
-  (add-hook 'graphql-mode-hook 'cliffz-set-prettier-js-keybind-graphql-mode)
-  :config
+
   (cond ((eq system-type 'windows-nt)
          (setq prettier-js-command "~/.emacs.d/node_modules/.bin/prettier.cmd")))
   (cond ((eq system-type 'darwin)
          (setq prettier-js-command "~/.emacs.d/node_modules/.bin/prettier")))
-  (setq prettier-js-args '("--print-width" "120" "--tab-width" "4" "--single-quote" "--trailing-comma" "all")))
+  (setq prettier-js-args '("--print-width" "120" "--tab-width" "4" "--single-quote" "--trailing-comma" "all"))
+
+  (defun cliffz-set-prettier-js-config-js2-mode ()
+    "Set the prettier-js config for js2-mode"
+    (bind-key "C-c f" 'prettier-js js2-mode-map))
+  (defun cliffz-set-prettier-js-config-json-mode ()
+    "Set the prettier-js keybind for json-mode."
+    (bind-key "C-c f" 'prettier-js json-mode-map))
+  (defun cliffz-set-prettier-js-config-rjsx-mode ()
+    "Set the prettier-js config for rjsx-mode."
+    (bind-key "C-c f" 'prettier-js rjsx-mode-map))
+  (defun cliffz-set-prettier-js-config-typescript-mode ()
+    "Set the prettier-js keybind for typescript-mode."
+    (bind-key "C-c f" 'prettier-js typescript-mode-map))
+  (defun cliffz-set-prettier-js-config-graphql-mode ()
+    "Set the prettier-js keybind for graphql-mode."
+    (bind-key "C-c f" 'prettier-js graphql-mode-map))
+  (add-hook 'js2-mode-hook 'cliffz-set-prettier-js-config-js2-mode)
+  (add-hook 'json-mode-hook 'cliffz-set-prettier-js-config-json-mode)
+  (add-hook 'rjsx-mode-hook 'cliffz-set-prettier-js-config-rjsx-mode)
+  (add-hook 'typescript-mode-hook 'cliffz-set-prettier-js-config-typescript-mode)
+  (add-hook 'graphql-mode-hook 'cliffz-set-prettier-js-config-graphql-mode))
 
 ;; Jade/Pug mode.
 (use-package pug-mode
