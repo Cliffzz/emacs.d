@@ -712,6 +712,11 @@
 
   (defun cliffz-set-prettier-js-config-js2-mode ()
     "Set the prettier-js config for js2-mode"
+    (make-local-variable 'prettier-js-command)
+    (cond ((eq system-type 'windows-nt)
+           (setq prettier-js-command "~/.emacs.d/node_modules/.bin/prettier-eslint.cmd")))
+    (cond ((eq system-type 'darwin)
+           (setq prettier-js-command "~/.emacs.d/node_modules/.bin/prettier-eslint")))
     (bind-key "C-c f" 'prettier-js js2-mode-map))
   (defun cliffz-set-prettier-js-config-json-mode ()
     "Set the prettier-js keybind for json-mode."
@@ -720,6 +725,11 @@
     (bind-key "C-c f" 'prettier-js json-mode-map))
   (defun cliffz-set-prettier-js-config-rjsx-mode ()
     "Set the prettier-js config for rjsx-mode."
+    (make-local-variable 'prettier-js-command)
+    (cond ((eq system-type 'windows-nt)
+           (setq prettier-js-command "~/.emacs.d/node_modules/.bin/prettier-eslint.cmd")))
+    (cond ((eq system-type 'darwin)
+           (setq prettier-js-command "~/.emacs.d/node_modules/.bin/prettier-eslint")))
     (bind-key "C-c f" 'prettier-js rjsx-mode-map))
   (defun cliffz-set-prettier-js-config-typescript-mode ()
     "Set the prettier-js keybind for typescript-mode."
