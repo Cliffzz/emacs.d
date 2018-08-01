@@ -715,6 +715,8 @@
     (bind-key "C-c f" 'prettier-js js2-mode-map))
   (defun cliffz-set-prettier-js-config-json-mode ()
     "Set the prettier-js keybind for json-mode."
+    (make-local-variable 'prettier-js-args)
+    (setq prettier-js-args '("--print-width" "120" "--tab-width" "2" "--single-quote" "--trailing-comma" "all"))
     (bind-key "C-c f" 'prettier-js json-mode-map))
   (defun cliffz-set-prettier-js-config-rjsx-mode ()
     "Set the prettier-js config for rjsx-mode."
