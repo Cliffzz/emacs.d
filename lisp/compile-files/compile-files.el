@@ -12,7 +12,8 @@
   (interactive)
   (byte-compile-file "~/.emacs.d/init.el")
   (byte-compile-file "~/.emacs.d/custom-settings.el")
-  (byte-compile-file "~/.emacs.d/lisp/stylus-mode/stylus-mode.el"))
+  (byte-compile-file "~/.emacs.d/lisp/stylus-mode/stylus-mode.el")
+  (byte-compile-file "~/.emacs.d/lisp/wucuo/wucuo.el"))
 
 (provide 'compile-files)
 

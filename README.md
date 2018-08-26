@@ -20,7 +20,8 @@ Personal emacs configuration.
 
 ## Installation
 ### Prerequisites
-- [aspell](https://github.com/GNUAspell/aspell)
+- [hunspell](https://github.com/hunspell)
+- [dictionary](http://wordlist.aspell.net/dicts/)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [node](https://github.com/nodejs/node)
 - [npm](https://github.com/npm/npm)

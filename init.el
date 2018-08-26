@@ -259,22 +259,18 @@
   (setq clean-buffer-list-delay-general 1))
 
 ;; Spell checking.
-(use-package flyspell
+(use-package wucuo
+  :load-path "lisp/wucuo"
   :delight flyspell-mode
+  :commands wucuo-generic-check-word-predicate
   :hook ((prog-mode . flyspell-mode)
          (text-mode . flyspell-mode))
-  :config
-  (setq ispell-program-name "aspell"
-        ispell-extra-args '("--sug-mode=ultra" "--lang=en_US" "--run-together" "--run-together-limit=5" "--run-together-min=2"))
-  ;; Fix word correction suggestions.
-  (defadvice flyspell-correct-word (around my-flyspell-correct-word activate)
-    ;; Kill ispell and reset arguments.
-    (ispell-kill-ispell t)
-    (setq ispell-extra-args '(""))
-    ad-do-it
-    ;; Restore camel case arguments.
-    (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US" "--run-together" "--run-together-limit=5" "--run-together-min=2"))
-    (ispell-kill-ispell t)))
+  :init
+  (setq ispell-program-name "hunspell")
+  (setq ispell-local-dictionary "en_US")
+  (setq ispell-local-dictionary-alist
+        '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8)))
+  (setq flyspell-generic-check-word-predicate #'wucuo-generic-check-word-predicate))
 
 ;; Syntax checking.
 (use-package flycheck
