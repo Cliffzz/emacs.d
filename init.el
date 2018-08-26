@@ -169,6 +169,7 @@
 ;; Initialize load-path for packages.
 (setq load-path (eval-when-compile (append load-path (directory-files "~/.emacs.d/elpa" t "^[^.]" t))))
 (add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/gruvbox-theme-20180624.309")
+(autoload #'use-package-autoload-keymap "use-package")
 
 ;; Initialize package.el only at compile time.
 (eval-when-compile
@@ -348,7 +349,7 @@
 ;; Project integration.
 (use-package projectile
   :delight projectile-mode
-  :hook (prog-mode . projectile-mode)
+  :bind-keymap ("C-c p" . projectile-command-map)
   :config
   (defvar projectile-sort-order)
   (defvar projectile-cache-file)
