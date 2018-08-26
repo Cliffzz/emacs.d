@@ -434,10 +434,12 @@
   (defvar eshell-buffer-shorthand)
   (defvar eshell-highlight-prompt)
   (defvar eshell-plain-echo-behavior)
+  (defvar eshell-save-history-on-exit)
   (setq eshell-cmpl-cycle-completions nil
         eshell-buffer-maximum-lines 20000
-        eshell-history-size 350
+        eshell-history-size 10000
         eshell-hist-ignoredups t
+        eshell-save-history-on-exit t
         eshell-buffer-shorthand t
         eshell-highlight-prompt nil
         eshell-plain-echo-behavior t
