@@ -416,7 +416,9 @@
   (defvar doom-neotree-file-icons)
   (setq doom-neotree-file-icons t)
   (doom-themes-neotree-config)
-  (set-face-attribute 'doom-neotree-dir-face nil :foreground "#fabd2f"))
+  (set-face-attribute 'doom-neotree-dir-face nil :foreground "#fabd2f")
+  (set-face-attribute 'neo-file-link-face nil :foreground "#fdf4c1")
+  (set-face-attribute 'neo-root-dir-face nil :foreground "#b8bb26"))
 
 ;; Emacs completion using ivy.
 (use-package ivy
