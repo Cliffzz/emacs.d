@@ -249,6 +249,15 @@
     (setq show-trailing-whitespace 1))
   (add-hook 'prog-mode-hook 'cliffz-show-trailing-whitespace))
 
+;; Automatically close old buffers
+(use-package midnight
+  :defer 10
+  :commands midnight-mode
+  :delight midnight-mode
+  :config
+  (midnight-mode t)
+  (setq clean-buffer-list-delay-general 1))
+
 ;; Spell checking.
 (use-package flyspell
   :delight flyspell-mode
