@@ -760,6 +760,7 @@
   :commands (prettier-js)
   :init
   (defvar graphql-mode-map)
+  (defvar yaml-mode-map)
 
   (cond ((eq system-type 'windows-nt)
          (setq prettier-js-command "~/.emacs.d/node_modules/.bin/prettier.cmd")))
@@ -794,11 +795,17 @@
   (defun cliffz-set-prettier-js-config-graphql-mode ()
     "Set the prettier-js keybind for graphql-mode."
     (bind-key "C-c f" 'prettier-js graphql-mode-map))
+  (defun cliffz-set-prettier-js-config-yaml-mode ()
+    "Set the prettier-js keybind for yaml-mode."
+    (make-local-variable 'prettier-js-args)
+    (setq prettier-js-args '("--print-width" "100" "--tab-width" "2" "--single-quote" "--trailing-comma" "all"))
+    (bind-key "C-c f" 'prettier-js yaml-mode-map))
   (add-hook 'js2-mode-hook 'cliffz-set-prettier-js-config-js2-mode)
   (add-hook 'json-mode-hook 'cliffz-set-prettier-js-config-json-mode)
   (add-hook 'rjsx-mode-hook 'cliffz-set-prettier-js-config-rjsx-mode)
   (add-hook 'typescript-mode-hook 'cliffz-set-prettier-js-config-typescript-mode)
-  (add-hook 'graphql-mode-hook 'cliffz-set-prettier-js-config-graphql-mode))
+  (add-hook 'graphql-mode-hook 'cliffz-set-prettier-js-config-graphql-mode)
+  (add-hook 'yaml-mode-hook 'cliffz-set-prettier-js-config-yaml-mode))
 
 ;; Jade/Pug mode.
 (use-package pug-mode
