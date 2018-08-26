@@ -443,6 +443,7 @@
         eshell-buffer-shorthand t
         eshell-highlight-prompt nil
         eshell-plain-echo-behavior t
+        eshell-scroll-to-bottom-on-input 'all
         eshell-directory-name "~/.emacs.d/.cache/eshell/")
 
   ;; Visual commands
