@@ -335,7 +335,10 @@
 ;; Code auto completion.
 (use-package company
   :delight company-mode
-  :hook (prog-mode . global-company-mode))
+  :hook (prog-mode . global-company-mode)
+  :config
+  (setq company-idle-delay 0.2)
+  (setq company-minimum-prefix-length 2)
 
 ;; Smartly manage pairs.
 (use-package smartparens
