@@ -278,7 +278,10 @@
   (setq ispell-local-dictionary "en_US")
   (setq ispell-local-dictionary-alist
         '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8)))
-  (setq flyspell-generic-check-word-predicate #'wucuo-generic-check-word-predicate))
+  (setq flyspell-generic-check-word-predicate #'wucuo-generic-check-word-predicate)
+  :config
+  (set-face-attribute 'flyspell-incorrect nil :underline '(:style line :color "#d3869b"))
+  (set-face-attribute 'flyspell-duplicate nil :underline '(:style line :color "#d3869b")))
 
 ;; Syntax checking.
 (use-package flycheck
