@@ -176,7 +176,7 @@
           ("MELPA Stable" . "https://stable.melpa.org/packages/")
           ("GNU ELPA"     . "http://elpa.gnu.org/packages/"))
         package-archive-priorities
-        '(("ELPA Mirror"  . 0)
+        '(("ELPA Mirror"  . 3)
           ("MELPA"        . 2)
           ("MELPA Stable" . 1)
           ("GNU ELPA"     . 0)))
@@ -398,6 +398,26 @@
         column-number-mode t
         doom-modeline-height 30))
 
+;; Doom themes
+(use-package doom-themes
+  :commands doom-themes-neotree-config)
+
+;; File explorer
+(use-package neotree
+  :commands neotree-toggle
+  :bind (("C-c n" . 'neotree-toggle))
+  :config
+  (defun cliffz-hide-neotree-modeline ()
+    "Hide neotree modeline."
+    (setq-local mode-line-format nil))
+  (add-hook 'neotree-mode-hook 'cliffz-hide-neotree-modeline)
+  (setq neo-smart-open t
+        neo-autorefresh t)
+  (defvar doom-neotree-file-icons)
+  (setq doom-neotree-file-icons t)
+  (doom-themes-neotree-config)
+  (set-face-attribute 'doom-neotree-dir-face nil :foreground "#fabd2f"))
+
 ;; Emacs completion using ivy.
 (use-package ivy
   :delight ivy-mode
@@ -564,7 +584,13 @@
 
 ;; Jump to window.
 (use-package winum
-  :hook (after-init . winum-mode))
+  :hook (after-init . winum-mode)
+  :config
+  (declare-function winum-assign-0-to-neotree "init")
+  (defun winum-assign-0-to-neotree ()
+    "Assign neotree to window 10."
+    (when (string-match-p (buffer-name) ".*\\*NeoTree\\*.*") 10))
+  (add-to-list 'winum-assign-functions #'winum-assign-0-to-neotree))
 
 ;; Snippets.
 (use-package yasnippet
