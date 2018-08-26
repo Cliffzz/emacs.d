@@ -4,12 +4,12 @@
   "version": "1.0.0",
   "description": "Collection of node bins for emacs.",
   "engines": {
-    "node": "10.7.0",
+    "node": "10.9.0",
     "npm": "6.2.0"
   },
   "dependencies": {
     "js-yaml": "3.12.0",
-    "prettier": "1.14.0",
+    "prettier": "1.14.2",
     "prettier-eslint-cli": "4.7.1",
     "typescript": "3.0.1"
   }

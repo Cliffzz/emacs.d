@@ -176,7 +176,7 @@
           ("MELPA Stable" . "https://stable.melpa.org/packages/")
           ("GNU ELPA"     . "http://elpa.gnu.org/packages/"))
         package-archive-priorities
-        '(("ELPA Mirror"  . 3)
+        '(("ELPA Mirror"  . 0)
           ("MELPA"        . 2)
           ("MELPA Stable" . 1)
           ("GNU ELPA"     . 0)))
