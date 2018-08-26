@@ -128,9 +128,6 @@
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (setq display-line-numbers-grow-only t)
 
-;; Disable eldoc mode.
-(global-eldoc-mode -1)
-
 ;; TRAMP
 (defvar tramp-persistency-file-name)
 (setq tramp-persistency-file-name "~/.emacs.d/.cache/tramp")
@@ -637,6 +634,7 @@
   (declare-function tide-hl-identifier-mode "tide")
   (declare-function company-mode "tide")
   (setq tide-tsserver-executable "~/.emacs.d/node_modules/typescript/bin/tsserver")
+  (eldoc-mode +1)
   (flycheck-mode +1)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (tide-hl-identifier-mode +1)
