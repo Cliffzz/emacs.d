@@ -393,6 +393,7 @@
   :hook (after-init . doom-modeline-init)
   :config
   (set-face-attribute 'mode-line nil :background "#1d2021")
+  (set-face-attribute 'doom-modeline-bar nil :background "#fabd2f")
   (setq line-number-mode t
         column-number-mode t
         doom-modeline-height 30))
@@ -562,9 +563,8 @@
   :bind (("C-'" . 'avy-goto-char-timer)))
 
 ;; Jump to window.
-(use-package ace-window
-  :commands (ace-window)
-  :bind (("C-x o" . 'ace-window)))
+(use-package winum
+  :hook (after-init . winum-mode))
 
 ;; Snippets.
 (use-package yasnippet
