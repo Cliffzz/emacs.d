@@ -250,7 +250,7 @@
   (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
   (setq dashboard-banner-logo-title "Welcome to Cliffzes Emacs")
   (setq dashboard-items '((projects  . 10)
-                        (recents . 10))))
+                          (recents . 10))))
 
 ;; Delete trailing whitespaces on save.
 (use-package whitespace
@@ -385,7 +385,7 @@
         projectile-cache-file "~/.emacs.d/.cache/projectile.cache"
         projectile-completion-system 'ivy
         projectile-known-projects-file "~/.emacs.d/.cache/projectile-bookmarks.eld")
-    (projectile-mode +1))
+  (projectile-mode +1))
 
 ;; Mode line setup.
 (use-package smart-mode-line
