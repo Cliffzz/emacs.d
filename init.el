@@ -339,6 +339,7 @@
   :config
   (setq company-idle-delay 0.2)
   (setq company-minimum-prefix-length 2)
+  (setq company-backends '()))
 
 ;; Smartly manage pairs.
 (use-package smartparens
@@ -625,25 +626,32 @@
 ;; Typescript and javascript completion using tsserver.
 (use-package tide
   :delight tide-mode
-  :hook ((typescript-mode js2-mode rjsx-mode) . tide-setup)
+  :commands tide-setup
   :init
+  (defun cliffz-setup-tide ()
+    "Setup tide mode."
+    (defvar tide-tsserver-executable)
+    (declare-function flycheck-mode "tide")
+    (declare-function tide-hl-identifier-mode "tide")
+    (declare-function company-mode "tide")
+    (setq tide-tsserver-executable "~/.emacs.d/node_modules/typescript/bin/tsserver")
+    (tide-setup)
+    (eldoc-mode +1)
+    (flycheck-mode +1)
+    (setq flycheck-check-syntax-automatically '(save mode-enabled))
+    (tide-hl-identifier-mode +1)
+    (make-local-variable 'company-backends)
+    (setq company-backends '((company-tide company-dabbrev-code))))
+  (add-hook 'js2-mode-hook 'cliffz-setup-tide)
+  (add-hook 'rjsx-mode-hook 'cliffz-setup-tide)
+  (add-hook 'typescript-mode-hook 'cliffz-setup-tide)
   (defun cliffz-enable-tide-tsx ()
     "Enable tide for tsx files."
     (when (string-equal "tsx" (file-name-extension buffer-file-name))
-      (tide-setup)
+      (declare-function cliffz-setup-tide "init")
+      (cliffz-setup-tide)
       (flycheck-add-mode 'typescript-tslint 'web-mode)))
-  (add-hook 'web-mode-hook 'cliffz-enable-tide-tsx)
-  :config
-  (defvar tide-tsserver-executable)
-  (declare-function flycheck-mode "tide")
-  (declare-function tide-hl-identifier-mode "tide")
-  (declare-function company-mode "tide")
-  (setq tide-tsserver-executable "~/.emacs.d/node_modules/typescript/bin/tsserver")
-  (eldoc-mode +1)
-  (flycheck-mode +1)
-  (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (tide-hl-identifier-mode +1)
-  (company-mode +1))
+  (add-hook 'web-mode-hook 'cliffz-enable-tide-tsx))
 
 ;; Coffeescript mode.
 (use-package coffee-mode
@@ -805,7 +813,11 @@
 (use-package omnisharp
   :hook (csharp-mode . omnisharp-mode)
   :config
-  (add-to-list 'company-backends 'company-omnisharp))
+  (defun cliffz-load-csharp-autocompletion ()
+    "Load csharp auto completion."
+    (make-local-variable 'company-backends)
+    (setq company-backends '((company-omnisharp company-dabbrev-code))))
+  (add-hook 'csharp-mode-hook 'cliffz-load-csharp-autocompletion))
 
 ;; Lua mode.
 (use-package lua-mode
@@ -818,7 +830,8 @@
   :init
   (defun cliffz-load-lua-autocompletion ()
     "Load lua auto completion."
-    (add-to-list 'company-backends 'company-lua))
+    (make-local-variable 'company-backends)
+    (setq company-backends '((company-lua company-dabbrev-code))))
   (add-hook 'lua-mode-hook 'cliffz-load-lua-autocompletion))
 
 (provide 'init)
