@@ -446,6 +446,11 @@
         eshell-scroll-to-bottom-on-input 'all
         eshell-directory-name "~/.emacs.d/.cache/eshell/")
 
+  (defun eshell/clear ()
+    "Clear the eshell buffer."
+    (let ((inhibit-read-only t))
+      (erase-buffer)))
+
   ;; Visual commands
   (defvar eshell-visual-commands)
   (defun cliffz-set-eshell-visual-commands ()
