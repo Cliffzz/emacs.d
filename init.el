@@ -374,15 +374,18 @@
 ;; Project integration.
 (use-package projectile
   :delight projectile-mode
+  :commands projectile-mode
   :bind-keymap ("C-c p" . projectile-command-map)
-  :config
+  :init
   (defvar projectile-sort-order)
   (defvar projectile-cache-file)
   (defvar projectile-known-projects-file)
+  (setq projectile-enable-caching t)
   (setq projectile-sort-order 'recentf
         projectile-cache-file "~/.emacs.d/.cache/projectile.cache"
         projectile-completion-system 'ivy
-        projectile-known-projects-file "~/.emacs.d/.cache/projectile-bookmarks.eld"))
+        projectile-known-projects-file "~/.emacs.d/.cache/projectile-bookmarks.eld")
+    (projectile-mode +1))
 
 ;; Mode line setup.
 (use-package smart-mode-line
