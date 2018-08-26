@@ -240,6 +240,18 @@
                 exec-path))
             exec-path)))
 
+;; Dashboard
+(use-package dashboard
+  :commands dashboard-setup-startup-hook
+  :delight page-break-lines-mode
+  :init
+  (dashboard-setup-startup-hook)
+  :config
+  (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
+  (setq dashboard-banner-logo-title "Welcome to Cliffzes Emacs")
+  (setq dashboard-items '((projects  . 10)
+                        (recents . 10))))
+
 ;; Delete trailing whitespaces on save.
 (use-package whitespace
   :hook (before-save . whitespace-cleanup)
