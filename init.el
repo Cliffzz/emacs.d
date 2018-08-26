@@ -248,7 +248,7 @@
 ;; Spell checking.
 (use-package flyspell
   :delight flyspell-mode
-  :hook ((prog-mode . flyspell-prog-mode)
+  :hook ((prog-mode . flyspell-mode)
          (text-mode . flyspell-mode))
   :config
   (setq ispell-program-name "aspell"
