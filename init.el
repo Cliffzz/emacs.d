@@ -356,6 +356,7 @@
   (defvar projectile-known-projects-file)
   (setq projectile-sort-order 'recentf
         projectile-cache-file "~/.emacs.d/.cache/projectile.cache"
+        projectile-completion-system 'ivy
         projectile-known-projects-file "~/.emacs.d/.cache/projectile-bookmarks.eld"))
 
 ;; Mode line setup.
