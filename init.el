@@ -99,10 +99,6 @@
 (setq mouse-wheel-tilt-scroll t)
 (setq mouse-wheel-flip-direction t)
 
-;; Mode line.
-(setq line-number-mode t
-      column-number-mode t)
-
 ;; Font setup.
 (defvar cliffz-font-size 130)
 (cond ((eq system-type 'windows-nt)
@@ -387,17 +383,19 @@
         projectile-known-projects-file "~/.emacs.d/.cache/projectile-bookmarks.eld")
   (projectile-mode +1))
 
-;; Mode line setup.
-(use-package smart-mode-line
-  :commands (sml/setup)
+;; All the icons
+(use-package all-the-icons
   :init
-  (setq line-number-mode 1
+  (setq inhibit-compacting-font-caches t))
+
+;; Mode line setup.
+(use-package doom-modeline
+  :hook (after-init . doom-modeline-init)
+  :config
+  (set-face-attribute 'mode-line nil :background "#1d2021")
+  (setq line-number-mode t
         column-number-mode t
-        sml/shorten-directory t
-        sml/shorten-modes t
-        sml/name-width 40
-        sml/mode-width 'full)
-  (sml/setup))
+        doom-modeline-height 30))
 
 ;; Emacs completion using ivy.
 (use-package ivy

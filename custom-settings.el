@@ -13,7 +13,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company-lua lua-mode omnisharp csharp-mode es-mode yaml-mode dockerfile-mode markdown-toc markdown-mode graphql-mode pug-mode prettier-js web-mode indium nvm add-node-modules-path coffee-mode tide typescript-mode js2-refactor rjsx-mode js2-mode json-mode yasnippet ace-window avy expand-region dumb-jump undo-tree diff-hl magit shell-pop xterm-color eshell-prompt-extras ripgrep counsel ivy smart-mode-line projectile rainbow-delimiters smartparens company which-key flycheck dashboard exec-path-from-shell gruvbox-theme elpa-mirror delight use-package))))
+    (doom-modeline yaml-mode xterm-color which-key web-mode use-package undo-tree tide smartparens smart-mode-line shrink-path shell-pop rjsx-mode ripgrep rainbow-delimiters pug-mode projectile prettier-js omnisharp nvm markdown-toc magit json-mode js2-refactor indium gruvbox-theme graphql-mode expand-region exec-path-from-shell eshell-prompt-extras es-mode elpa-mirror eldoc-eval dumb-jump dockerfile-mode diff-hl delight dashboard counsel company-lua coffee-mode all-the-icons add-node-modules-path ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
