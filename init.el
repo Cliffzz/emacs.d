@@ -686,6 +686,35 @@
 (use-package add-node-modules-path
   :hook ((typescript-mode js2-mode web-mode) . add-node-modules-path))
 
+;; Node version management.
+(use-package nvm
+  :if (file-exists-p "~/.nvm")
+  :commands (nvm-use)
+  :init
+  (defun cliffz-nvm-use (version)
+    (interactive "sVersion: ")
+    (nvm-use version))
+  (declare-function cliffz-set-nvm-keybind-descriptions "init")
+  (defun cliffz-set-nvm-keybind-descriptions (mode)
+    "Set the nvm-use keybind description for the given mode."
+    (which-key-add-major-mode-key-based-replacements mode
+      "C-c n" "nvm use"))
+  (defun cliffz-set-nvm-keybinds-js2-mode ()
+    "Set nvm keybinds for js2-mode"
+    (bind-key "C-c n" 'cliffz-nvm-use js2-mode-map)
+    (cliffz-set-nvm-keybind-descriptions 'js2-mode))
+  (defun cliffz-set-nvm-keybinds-rjsx-mode ()
+    "Set nvm keybinds for rjsx-mode"
+    (bind-key "C-c n" 'cliffz-nvm-use rjsx-mode-map)
+    (cliffz-set-nvm-keybind-descriptions 'rjsx-mode))
+  (defun cliffz-set-nvm-keybinds-typescript-mode ()
+    "Set nvm keybinds for typescript-mode"
+    (bind-key "C-c n" 'cliffz-nvm-use typescript-mode-map)
+    (cliffz-set-nvm-keybind-descriptions 'typescript-mode))
+  (add-hook 'js2-mode-hook 'cliffz-set-nvm-keybinds-js2-mode)
+  (add-hook 'rjsx-mode-hook 'cliffz-set-nvm-keybinds-rjsx-mode)
+  (add-hook 'typescript-mode-hook 'cliffz-set-nvm-keybinds-typescript-mode))
+
 ;; Javascript debugger.
 (use-package indium
   :commands (indium-connect-to-nodejs cliffz-set-indium-keybind-descriptions)
