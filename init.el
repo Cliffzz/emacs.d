@@ -405,7 +405,7 @@
 ;; File explorer
 (use-package neotree
   :commands neotree-toggle
-  :bind (("C-c n" . 'neotree-toggle))
+  :bind (("C-x t" . 'neotree-toggle))
   :config
   (defun cliffz-hide-neotree-modeline ()
     "Hide neotree modeline."
