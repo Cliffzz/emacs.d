@@ -202,6 +202,10 @@
 (use-package delight
   :demand t)
 
+(use-package eldoc
+  :commands eldoc-mode
+  :delight eldoc-mode)
+
 ;; Dependency for custom keybinds.
 (use-package bind-key
   :demand t)
