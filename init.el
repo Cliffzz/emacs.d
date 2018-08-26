@@ -36,10 +36,10 @@
 (toggle-scroll-bar -1)
 
 ;; Themed title bar. (macOS only)
- (cond ((eq system-type 'darwin)
-        (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-        (add-to-list 'default-frame-alist '(ns-appearance . dark))
-        (setq frame-title-format nil)))
+(cond ((eq system-type 'darwin)
+       (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+       (add-to-list 'default-frame-alist '(ns-appearance . dark))
+       (setq frame-title-format nil)))
 
 ;; Disable scrollbars on new frame.
 (defun cliffz-base-defaults-disable-scroll-bars (frame)
@@ -483,7 +483,7 @@
   (defvar xterm-color-preserve-properties)
   (defun cliffz-set-xterm-color-properties ()
     "Set xterm color properties."
-         (setq xterm-color-preserve-properties t))
+    (setq xterm-color-preserve-properties t))
   (add-hook 'eshell-before-prompt-hook 'cliffz-set-xterm-color-properties)
   (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
   (setq eshell-output-filter-functions (remove 'eshell-handle-ansi-color eshell-output-filter-functions)))
@@ -675,7 +675,7 @@
 
 ;; Add project node modules to path.
 (use-package add-node-modules-path
-    :hook ((typescript-mode js2-mode web-mode) . add-node-modules-path))
+  :hook ((typescript-mode js2-mode web-mode) . add-node-modules-path))
 
 ;; Javascript debugger.
 (use-package indium
