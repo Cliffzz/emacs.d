@@ -124,13 +124,6 @@
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (setq display-line-numbers-grow-only t)
 
-;; TRAMP
-(defvar tramp-persistency-file-name)
-(setq tramp-persistency-file-name "~/.emacs.d/.cache/tramp")
-(cond ((eq system-type 'windows-nt)
-       (defvar tramp-default-method)
-       (setq tramp-default-method "plink")))
-
 ;; Recent files file location.
 (defvar recentf-save-file)
 (setq recentf-save-file "~/.emacs.d/.cache/recentf")
@@ -235,6 +228,16 @@
                        (exec-path-from-shell-initialize)))
                 exec-path))
             exec-path)))
+
+;; TRAMP
+(use-package tramp
+  :init
+  (cond ((eq system-type 'windows-nt)
+         (defvar tramp-default-method)
+         (setq tramp-default-method "plink")))
+  :config
+  (setq tramp-persistency-file-name "~/.emacs.d/.cache/tramp")
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
 
 ;; Dashboard
 (use-package dashboard
