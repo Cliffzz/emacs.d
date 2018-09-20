@@ -246,10 +246,13 @@
   :init
   (dashboard-setup-startup-hook)
   :config
+  (defvar show-week-agenda-p)
   (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
   (setq dashboard-banner-logo-title "Welcome to Cliffzes Emacs")
+  (setq show-week-agenda-p t)
   (setq dashboard-items '((projects  . 10)
-                          (recents . 10))))
+                          (recents . 10)
+                          (agenda . 10))))
 
 ;; Delete trailing whitespaces on save.
 (use-package whitespace
