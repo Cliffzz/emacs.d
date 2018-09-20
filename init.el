@@ -609,6 +609,14 @@
         '("~/.emacs.d/snippets"))
   (yas-reload-all))
 
+;; Org mode
+(use-package org
+  :commands (org-mode org-agenda)
+  :mode (("\\.org\'" . org-mode))
+  :bind (("C-c o a" . 'org-agenda))
+  :init
+  (setq org-agenda-files (list "~/.emacs.d/org/")))
+
 ;; JSON mode.
 (use-package json-mode
   :mode
