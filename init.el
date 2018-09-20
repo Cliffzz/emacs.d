@@ -417,8 +417,6 @@
     "Hide neotree modeline."
     (setq-local mode-line-format nil))
   (add-hook 'neotree-mode-hook 'cliffz-hide-neotree-modeline)
-  (setq neo-smart-open t
-        neo-autorefresh t)
   (defvar doom-neotree-file-icons)
   (setq doom-neotree-file-icons t)
   (doom-themes-neotree-config)
