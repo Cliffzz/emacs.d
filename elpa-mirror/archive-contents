@@ -79,4 +79,5 @@
  (yaml-mode . [(20180409 607) ((emacs (24 1))) "Major mode for editing YAML files" tar])
  (yasnippet . [(20180621 50) ((cl-lib (0 5))) "Yet another snippet extension for Emacs." tar])
  (rjsx-mode . [(20180823 1645) ((emacs (24 4)) (js2-mode (20170504))) "Real support for JSX" tar])
+ (org-bullets . [(20180208 2343) nil "Show bullets in org8 characters" tar])
 )

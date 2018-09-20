@@ -620,6 +620,10 @@
   :init
   (setq org-agenda-files (list "~/.emacs.d/org/")))
 
+;; Org bullets
+(use-package org-bullets
+  :hook (org-mode . org-bullets-mode))
+
 ;; JSON mode.
 (use-package json-mode
   :mode
