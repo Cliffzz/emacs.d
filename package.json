@@ -2,7 +2,7 @@
   "name": "node-bins",
   "private": true,
   "version": "1.0.0",
-  "description": "Collection of node bins for emacs.",
+  "description": "Cliffzz's emacs configuration",
   "engines": {
     "node": ">=6",
   },

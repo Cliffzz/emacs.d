@@ -248,7 +248,7 @@
   :config
   (defvar show-week-agenda-p)
   (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
-  (setq dashboard-banner-logo-title "Welcome to Cliffzes Emacs")
+  (setq dashboard-banner-logo-title "Welcome to Cliffzz's Emacs")
   (setq show-week-agenda-p t)
   (setq dashboard-items '((projects  . 10)
                           (recents . 10)
