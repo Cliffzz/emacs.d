@@ -1,15 +1,24 @@
 {
-  "name": "node-bins",
+  "name": "emacs.d",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Cliffzz's emacs configuration",
   "engines": {
-    "node": ">=6",
+    "node": ">=6"
+  },
+  "scripts": {
+    "release": "standard-version"
   },
   "dependencies": {
     "js-yaml": "3.12.0",
     "prettier": "1.14.2",
     "prettier-eslint-cli": "4.7.1",
     "typescript": "3.0.1"
+  },
+  "devDependencies": {
+    "standard-version": "4.4.0"
+  },
+  "standard-version": {
+    "tagPrefix": ""
   }
 }
