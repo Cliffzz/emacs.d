@@ -4,8 +4,7 @@
   "version": "1.0.0",
   "description": "Collection of node bins for emacs.",
   "engines": {
-    "node": "10.9.0",
-    "npm": "6.2.0"
+    "node": ">=6",
   },
   "dependencies": {
     "js-yaml": "3.12.0",

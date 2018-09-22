@@ -24,7 +24,6 @@ Personal emacs configuration.
 - [dictionary](http://wordlist.aspell.net/dicts/)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [node](https://github.com/nodejs/node)
-- [npm](https://github.com/npm/npm)
 - [omnisharp-roslyn](https://github.com/OmniSharp/omnisharp-roslyn)
 - [Iosevka](https://github.com/be5invis/Iosevka)
 - [luacheck](https://github.com/mpeterv/luacheck)
