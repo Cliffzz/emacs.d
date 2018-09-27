@@ -803,6 +803,13 @@
   :config
   (set-face-attribute 'indium-breakpoint-face  nil :foreground "#fb4934"))
 
+;; Mocha test runner.
+(use-package mocha
+  :commands (mocha-test-file mocha-test-at-point mocha-test-project)
+  :bind (("C-c m f" . mocha-test-file)
+         ("C-c m p" . mocha-test-at-point)
+         ("C-c m P" . mocha-test-project)))
+
 ;; Web mode.
 (use-package web-mode
   :mode
