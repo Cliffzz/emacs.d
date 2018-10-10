@@ -13,7 +13,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (org-bullets yaml-mode xterm-color winum which-key web-mode use-package undo-tree tide smartparens shell-pop rjsx-mode ripgrep rainbow-delimiters pug-mode prettier-js omnisharp nvm neotree markdown-toc magit json-mode indium gruvbox-theme graphql-mode expand-region exec-path-from-shell eshell-prompt-extras es-mode epresent elpa-mirror dumb-jump doom-themes doom-modeline dockerfile-mode diff-hl delight dashboard counsel company-lua coffee-mode avy add-node-modules-path))))
+    (feature-mode yaml-mode xterm-color winum which-key web-mode use-package undo-tree tide smartparens shell-pop rjsx-mode ripgrep rainbow-delimiters pug-mode prettier-js org-bullets omnisharp nvm neotree markdown-toc magit json-mode indium gruvbox-theme graphql-mode expand-region exec-path-from-shell eshell-prompt-extras es-mode elpa-mirror dumb-jump doom-themes doom-modeline dockerfile-mode diff-hl delight dashboard counsel company-lua coffee-mode avy add-node-modules-path))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
