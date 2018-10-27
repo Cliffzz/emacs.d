@@ -947,6 +947,11 @@
     (setq company-backends '((company-lua company-dabbrev-code))))
   (add-hook 'lua-mode-hook 'cliffz-load-lua-autocompletion))
 
+;; Gherkin / cucumber mode.
+(use-package feature-mode
+  :mode
+  (("\\.feature\\'" . feature-mode)))
+
 (provide 'init)
 
 ;;; init.el ends here

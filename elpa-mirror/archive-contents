@@ -27,6 +27,7 @@
  (exec-path-from-shell . [(20180324 204) nil "Get environment variables such as $PATH from the shell" tar])
  (expand-region . [(20180817 1134) nil "Increase selected region by semantic units." tar])
  (f . [(20180106 922) ((s (1 7 0)) (dash (2 2 0))) "Modern API for working with files and directories" tar])
+ (feature-mode . [(20170907 1448) nil "Major mode for editing Gherkin (i.e. Cucumber) user stories" tar])
  (flycheck . [(20180823 826) ((dash (2 12 1)) (pkg-info (0 4)) (let-alist (1 0 4)) (seq (1 11)) (emacs (24 3))) "Onfly syntax checking" tar])
  (ghub . [(20180821 1430) ((emacs (24 4)) (let-alist (1 0 5))) "minuscule client library for the Github API" tar])
  (git-commit . [(20180802 2018) ((emacs (25 1)) (dash (20180413)) (with-editor (20180414))) "Edit Git commit messages" tar])
