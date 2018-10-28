@@ -1,7 +1,7 @@
 {
   "name": "emacs.d",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Cliffzz's emacs configuration",
   "engines": {
     "node": ">=6"

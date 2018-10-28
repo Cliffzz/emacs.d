@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/Cliffzz/.emacs.d/compare/0.1.0...0.2.0) (2018-10-28)
+
+
+### Features
+
+* **cucumber:** add cucumber/gherkin language support ([#3](https://github.com/Cliffzz/.emacs.d/issues/3)) ([d383486](https://github.com/Cliffzz/.emacs.d/commit/d383486))
+* **javascript:** add mocha test runner ([01d4b9e](https://github.com/Cliffzz/.emacs.d/commit/01d4b9e))
+
+
+
 <a name="0.1.0"></a>
 # 0.1.0 (2018-09-22)
 
