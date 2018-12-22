@@ -399,7 +399,13 @@
 
 ;; Mode line setup.
 (use-package doom-modeline
-  :hook (after-init . doom-modeline-init)
+  :commands doom-modeline-init
+  :init
+  (defun cliffz-init-doom-modeline (frame)
+    "Init doom modeline on a new frame."
+    (with-selected-frame frame
+      (doom-modeline-init)))
+  (add-hook 'after-make-frame-functions 'cliffz-init-doom-modeline)
   :config
   (set-face-attribute 'mode-line nil :background "#1d2021")
   (set-face-attribute 'doom-modeline-bar nil :background "#fabd2f")
