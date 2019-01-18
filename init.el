@@ -718,6 +718,7 @@
     (declare-function tide-hl-identifier-mode "tide")
     (declare-function company-mode "tide")
     (setq tide-tsserver-executable "~/.emacs.d/node_modules/typescript/bin/tsserver")
+    (setq tide-completion-detailed t)
     (tide-setup)
     (eldoc-mode +1)
     (flycheck-mode +1)
