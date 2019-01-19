@@ -4,7 +4,7 @@
 
 Cliffzz's emacs configuration.
 
-<img width="1680" src="https://user-images.githubusercontent.com/2283434/44535830-46d27580-a6fb-11e8-86a5-f7a3d505750d.png">
+<img width="1920" src="https://user-images.githubusercontent.com/2283434/51430294-8608e200-1c19-11e9-9937-b0f9602f0150.png">
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 
