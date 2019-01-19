@@ -157,7 +157,7 @@
 
 ;; Initialize load-path for packages.
 (setq load-path (eval-when-compile (append load-path (directory-files "~/.emacs.d/elpa" t "^[^.]" t))))
-(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/gruvbox-theme-20181013.1144")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/doom-themes-20181220.220")
 (autoload #'use-package-autoload-keymap "use-package")
 
 ;; Initialize package.el only at compile time.
@@ -202,11 +202,6 @@
 ;; Elpa mirror.
 (use-package elpa-mirror
   :commands (elpamr-create-mirror-for-installed))
-
-;; Set theme.
-(use-package gruvbox-theme
-  :init
-  (load-theme 'gruvbox-dark-medium t))
 
 ;; Bind compile files command.
 (use-package compile-files
@@ -286,8 +281,8 @@
         '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8)))
   (setq flyspell-generic-check-word-predicate #'wucuo-generic-check-word-predicate)
   :config
-  (set-face-attribute 'flyspell-incorrect nil :underline '(:style line :color "#d3869b"))
-  (set-face-attribute 'flyspell-duplicate nil :underline '(:style line :color "#d3869b")))
+  (set-face-attribute 'flyspell-incorrect nil :underline '(:style line :color "#ff6c6b"))
+  (set-face-attribute 'flyspell-duplicate nil :underline '(:style line :color "DarkOrange")))
 
 ;; Syntax checking.
 (use-package flycheck
@@ -343,13 +338,13 @@
       :fringe-bitmap bitmap
       :fringe-face 'flycheck-fringe-info))
 
-  (set-face-attribute 'flycheck-fringe-error nil :foreground "#fb4933")
-  (set-face-attribute 'flycheck-fringe-warning nil :foreground "#fabd2f")
-  (set-face-attribute 'flycheck-fringe-info nil :foreground "#83a598")
+  (set-face-attribute 'flycheck-fringe-error nil :foreground "#ff6c6b")
+  (set-face-attribute 'flycheck-fringe-warning nil :foreground "#ecBe7b")
+  (set-face-attribute 'flycheck-fringe-info nil :foreground "#98be65")
 
-  (set-face-attribute 'flycheck-error nil :underline '(:style line :color "#fb4933"))
-  (set-face-attribute 'flycheck-warning nil :underline '(:style line :color "#fabd2f"))
-  (set-face-attribute 'flycheck-info nil :underline '(:style line :color "#83a598")))
+  (set-face-attribute 'flycheck-error nil :underline '(:style line :color "#ff6c6b"))
+  (set-face-attribute 'flycheck-warning nil :underline '(:style line :color "#ecBe7b"))
+  (set-face-attribute 'flycheck-info nil :underline '(:style line :color "#98be65")))
 
 ;; Keybinds auto completion.
 (use-package which-key
@@ -407,15 +402,32 @@
       (doom-modeline-init)))
   (add-hook 'after-make-frame-functions 'cliffz-init-doom-modeline)
   :config
-  (set-face-attribute 'mode-line nil :background "#1d2021")
-  (set-face-attribute 'doom-modeline-bar nil :background "#fabd2f")
   (setq line-number-mode t
         column-number-mode t
         doom-modeline-height 30))
 
+(use-package solaire-mode
+  :demand t
+  :commands solaire-mode-in-minibuffer turn-on-solaire-mode solaire-mode-swap-bg
+  :hook ((change-major-mode after-revert ediff-prepare-buffer) . turn-on-solaire-mode)
+  :config
+  (add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer))
+
 ;; Doom themes
 (use-package doom-themes
-  :commands doom-themes-neotree-config)
+  :demand t
+  :commands doom-themes-visual-bell-config doom-themes-neotree-config
+  :init
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t)
+  :config
+  (defun cliffz-init-doom-theme (frame)
+    "Init doom modeline on a new frame."
+    (with-selected-frame frame
+      (load-theme 'doom-one t)
+      (doom-themes-visual-bell-config)
+      (solaire-mode-swap-bg)))
+  (add-hook 'after-make-frame-functions 'cliffz-init-doom-theme))
 
 ;; File explorer
 (use-package neotree
@@ -428,10 +440,7 @@
   (add-hook 'neotree-mode-hook 'cliffz-hide-neotree-modeline)
   (defvar doom-neotree-file-icons)
   (setq doom-neotree-file-icons t)
-  (doom-themes-neotree-config)
-  (set-face-attribute 'doom-neotree-dir-face nil :foreground "#fabd2f")
-  (set-face-attribute 'neo-file-link-face nil :foreground "#fdf4c1")
-  (set-face-attribute 'neo-root-dir-face nil :foreground "#b8bb26"))
+  (doom-themes-neotree-config))
 
 ;; Emacs completion using ivy.
 (use-package ivy
@@ -567,10 +576,7 @@
   (vc-mode 1)
   (defvar diff-hl-side)
   (setq diff-hl-side 'right)
-  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
-  (set-face-attribute 'diff-hl-change nil :foreground "#83a598" :background "#282828")
-  (set-face-attribute 'diff-hl-delete nil :foreground "#fb4933")
-  (set-face-attribute 'diff-hl-insert nil :foreground "#b8bb26"))
+  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
 
 ;; Undo tree.
 (use-package undo-tree
@@ -653,10 +659,7 @@
                 js-switch-indent-offset 4
                 js-indent-level 4
                 js2-strict-trailing-comma-warning nil
-                js2-include-node-externs t)
-  (set-face-attribute 'js2-error nil :underline '(:style line :color "#fb4934"))
-  (set-face-attribute 'js2-warning nil :underline '(:style line :color "#fabd2f"))
-  (set-face-attribute 'js2-external-variable nil :underline '(:style line :color "#b8bb26")))
+                js2-include-node-externs t))
 
 (use-package rjsx-mode
   :mode
@@ -665,10 +668,7 @@
   (setq-default js2-basic-offset 4
                 js-switch-indent-offset 4
                 js-indent-level 4
-                js2-strict-trailing-comma-warning nil)
-  (set-face-attribute 'js2-error nil :underline '(:style line :color "#fb4934"))
-  (set-face-attribute 'js2-warning nil :underline '(:style line :color "#fabd2f"))
-  (set-face-attribute 'js2-external-variable nil :underline '(:style line :color "#b8bb26")))
+                js2-strict-trailing-comma-warning nil))
 
 ;; Javascript refactor.
 (use-package js2-refactor
@@ -806,9 +806,7 @@
 
   (add-hook 'js2-mode-hook 'cliffz-set-indium-keybinds-js2-mode)
   (add-hook 'rjsx-mode-hook 'cliffz-set-indium-keybinds-rjsx-mode)
-  (add-hook 'typescript-mode-hook 'cliffz-set-indium-keybinds-typescript-mode)
-  :config
-  (set-face-attribute 'indium-breakpoint-face  nil :foreground "#fb4934"))
+  (add-hook 'typescript-mode-hook 'cliffz-set-indium-keybinds-typescript-mode))
 
 ;; Mocha test runner.
 (use-package mocha
