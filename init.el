@@ -239,9 +239,8 @@
   (add-to-list 'recentf-exclude no-littering-etc-directory)
   (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
   (setq dashboard-banner-logo-title "Welcome to Cliffzz's Emacs")
-  (setq dashboard-items '((projects  . 10)
-                          (recents . 10)
-                          (agenda . 10))))
+  (setq dashboard-items '((projects  . 15)
+                          (recents . 15))))
 
 ;; Delete trailing whitespaces on save.
 (use-package whitespace
