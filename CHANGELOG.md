@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/Cliffzz/.emacs.d/compare/0.2.0...0.3.0) (2019-01-20)
+
+
+### Bug Fixes
+
+* **dashboard:** disable agenda items ([#14](https://github.com/Cliffzz/.emacs.d/issues/14)) ([bc72cd3](https://github.com/Cliffzz/.emacs.d/commit/bc72cd3))
+* **keybinds:** bind keys to their specifc major mode ([#15](https://github.com/Cliffzz/.emacs.d/issues/15)) ([e69f822](https://github.com/Cliffzz/.emacs.d/commit/e69f822))
+* **mode-line:** show icons in mode-line ([#11](https://github.com/Cliffzz/.emacs.d/issues/11)) ([9a248f6](https://github.com/Cliffzz/.emacs.d/commit/9a248f6))
+* **modeline:** initialize doom-modeline when a new frame is created ([#6](https://github.com/Cliffzz/.emacs.d/issues/6)) ([eb24dc0](https://github.com/Cliffzz/.emacs.d/commit/eb24dc0))
+
+
+### Features
+
+* **no-littering:** keep emacs.d clean with no-littering ([#12](https://github.com/Cliffzz/.emacs.d/issues/12)) ([fff7d8c](https://github.com/Cliffzz/.emacs.d/commit/fff7d8c))
+* **theme:** use doom-one theme ([#9](https://github.com/Cliffzz/.emacs.d/issues/9)) ([b752224](https://github.com/Cliffzz/.emacs.d/commit/b752224))
+* **tide:** enable detailed js/ts completion ([#8](https://github.com/Cliffzz/.emacs.d/issues/8)) ([c10ca4d](https://github.com/Cliffzz/.emacs.d/commit/c10ca4d))
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/Cliffzz/.emacs.d/compare/0.1.0...0.2.0) (2018-10-28)
 
