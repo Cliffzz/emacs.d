@@ -387,6 +387,7 @@
   :config
   (setq line-number-mode t
         column-number-mode t
+        doom-modeline-icon t
         doom-modeline-height 30))
 
 (use-package solaire-mode
