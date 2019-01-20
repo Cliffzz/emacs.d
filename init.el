@@ -204,7 +204,8 @@
 (use-package compile-files
   :load-path "lisp/compile-files"
   :commands (compile-files)
-  :bind (("C-c c" . 'compile-files)))
+  :init
+  (bind-key "C-c c" 'compile-files emacs-lisp-mode-map))
 
 ;; Fix path variables in macOS.
 (use-package exec-path-from-shell
@@ -778,10 +779,34 @@
 
 ;; Mocha test runner.
 (use-package mocha
-  :commands (mocha-test-file mocha-test-at-point mocha-test-project)
-  :bind (("C-c m f" . mocha-test-file)
-         ("C-c m p" . mocha-test-at-point)
-         ("C-c m P" . mocha-test-project)))
+  :commands (mocha-test-file mocha-test-at-point mocha-test-project cliffz-set-mocha-keybind-descriptions)
+  :init
+  (declare-function which-key-add-major-mode-key-based-replacements "which-key")
+  (defun cliffz-set-mocha-keybind-descriptions (mode)
+    "Set the mocha keybind descriptions for the given mode."
+    (which-key-add-major-mode-key-based-replacements mode
+      "C-c m" "mocha"))
+  (defun cliffz-set-mocha-keybinds-js2-mode ()
+    "Set the mocha keybinds for js2-mode"
+    (bind-key "C-c m f" 'mocha-test-file js2-mode-map)
+    (bind-key "C-c m p" 'mocha-test-at-point js2-mode-map)
+    (bind-key "C-c m P" 'mocha-test-project js2-mode-map)
+    (cliffz-set-mocha-keybind-descriptions 'js2-mode))
+  (defun cliffz-set-mocha-keybinds-rjsx-mode ()
+    "Set the mocha keybinds for rjsx-mode"
+    (bind-key "C-c m f" 'mocha-test-file rjsx-mode-map)
+    (bind-key "C-c m p" 'mocha-test-at-point rjsx-mode-map)
+    (bind-key "C-c m P" 'mocha-test-project rjsx-mode-map)
+    (cliffz-set-mocha-keybind-descriptions 'rjsx-mode))
+  (defun cliffz-set-mocha-keybinds-typescript-mode ()
+    "Set the mocha keybinds for typescript-mode"
+    (bind-key "C-c m f" 'mocha-test-file typescript-mode-map)
+    (bind-key "C-c m p" 'mocha-test-at-point typescript-mode-map)
+    (bind-key "C-c m P" 'mocha-test-project typescript-mode-map)
+    (cliffz-set-mocha-keybind-descriptions 'typescript-mode))
+  (add-hook 'js2-mode-hook 'cliffz-set-mocha-keybinds-js2-mode)
+  (add-hook 'rjsx-mode-hook 'cliffz-set-mocha-keybinds-rjsx-mode)
+  (add-hook 'typescript-mode-hook 'cliffz-set-mocha-keybinds-typescript-mode))
 
 ;; Web mode.
 (use-package web-mode
