@@ -87,8 +87,7 @@
 (unless (string= (getenv "CI") "true")
   (defvar network-security-level)
   (defvar nsm-settings-file)
-  (setq network-security-level 'high)
-  (setq nsm-settings-file "~/.emacs.d/.cache/network-security.data"))
+  (setq network-security-level 'high))
 
 ;; Smooth scrolling.
 (setq scroll-step 1
@@ -124,27 +123,12 @@
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (setq display-line-numbers-grow-only t)
 
-;; Recent files file location.
-(defvar recentf-save-file)
-(setq recentf-save-file "~/.emacs.d/.cache/recentf")
-
 ;; Backups.
-(defvar backup-dir (expand-file-name "~/.emacs.d/.cache/backups/"))
-(defvar tramp-backup-directory-alist)
-(setq backup-directory-alist ( list (cons ".*" backup-dir))
-      tramp-backup-directory-alist backup-directory-alist
-      backup-by-copying t
+(setq backup-by-copying t
       delete-old-versions t
       version-control t
       kept-new-versions 12
       kept-old-versions 4)
-
-;; Auto saves.
-(defvar autosave-dir (expand-file-name "~/.emacs.d/.cache/autosaves/"))
-(defvar tramp-auto-save-directory)
-(setq auto-save-list-file-prefix autosave-dir
-      auto-save-file-name-transforms `((".*" ,autosave-dir t))
-      tramp-auto-save-directory autosave-dir)
 
 ;; Disable package.el initialization by default.
 (setq package-enable-at-startup nil
@@ -229,10 +213,7 @@
   :init
   (cond ((eq system-type 'windows-nt)
          (defvar tramp-default-method)
-         (setq tramp-default-method "plink")))
-  :config
-  (setq tramp-persistency-file-name "~/.emacs.d/.cache/tramp")
-  (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
+         (setq tramp-default-method "plink"))))
 
 ;; Dashboard
 (use-package dashboard
@@ -367,13 +348,9 @@
   :bind-keymap ("C-c p" . projectile-command-map)
   :init
   (defvar projectile-sort-order)
-  (defvar projectile-cache-file)
-  (defvar projectile-known-projects-file)
-  (setq projectile-enable-caching t)
-  (setq projectile-sort-order 'recentf
-        projectile-cache-file "~/.emacs.d/.cache/projectile.cache"
-        projectile-completion-system 'ivy
-        projectile-known-projects-file "~/.emacs.d/.cache/projectile-bookmarks.eld")
+  (setq projectile-enable-caching t
+        projectile-sort-order 'recentf
+        projectile-completion-system 'ivy)
   (projectile-mode +1))
 
 ;; All the icons
@@ -498,8 +475,7 @@
         eshell-buffer-shorthand t
         eshell-highlight-prompt nil
         eshell-plain-echo-behavior t
-        eshell-scroll-to-bottom-on-input 'all
-        eshell-directory-name "~/.emacs.d/.cache/eshell/")
+        eshell-scroll-to-bottom-on-input 'all)
 
   (defun eshell/clear ()
     "Clear the eshell buffer."
