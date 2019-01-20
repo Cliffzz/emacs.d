@@ -26,7 +26,6 @@ Cliffzz's emacs configuration.
 -   [dictionary](http://wordlist.aspell.net/dicts/)
 -   [ripgrep](https://github.com/BurntSushi/ripgrep)
 -   [node](https://github.com/nodejs/node)
--   [omnisharp-roslyn](https://github.com/OmniSharp/omnisharp-roslyn)
 -   [Iosevka](https://github.com/be5invis/Iosevka)
 -   [luacheck](https://github.com/mpeterv/luacheck)
 
@@ -52,5 +51,5 @@ npm install
 To improve performance run:
 
 ```
-C-c c compile-files
+M-x compile-files
 ```
