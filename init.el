@@ -157,7 +157,7 @@
 
 ;; Initialize load-path for packages.
 (setq load-path (eval-when-compile (append load-path (directory-files "~/.emacs.d/elpa" t "^[^.]" t))))
-(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/doom-themes-20181220.220")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/doom-themes-20190109.538")
 (autoload #'use-package-autoload-keymap "use-package")
 
 ;; Initialize package.el only at compile time.
@@ -411,17 +411,21 @@
 (use-package doom-themes
   :demand t
   :commands doom-themes-visual-bell-config doom-themes-neotree-config
-  :init
+  :config
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t)
-  :config
   (defun cliffz-init-doom-theme (frame)
     "Init doom modeline on a new frame."
     (with-selected-frame frame
       (load-theme 'doom-one t)
       (doom-themes-visual-bell-config)
       (solaire-mode-swap-bg)))
-  (add-hook 'after-make-frame-functions 'cliffz-init-doom-theme))
+  (add-hook 'after-make-frame-functions 'cliffz-init-doom-theme)
+  (if (not (daemonp))
+      (progn
+        (load-theme 'doom-one t)
+        (doom-themes-visual-bell-config)
+        (solaire-mode-swap-bg))))
 
 ;; File explorer
 (use-package neotree
