@@ -394,13 +394,7 @@
 
 ;; Mode line setup.
 (use-package doom-modeline
-  :commands doom-modeline-init
-  :init
-  (defun cliffz-init-doom-modeline (frame)
-    "Init doom modeline on a new frame."
-    (with-selected-frame frame
-      (doom-modeline-init)))
-  (add-hook 'after-make-frame-functions 'cliffz-init-doom-modeline)
+  :hook (after-init . doom-modeline-mode)
   :config
   (setq line-number-mode t
         column-number-mode t
