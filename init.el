@@ -171,6 +171,19 @@
 (setq use-package-always-ensure t
       use-package-always-defer t)
 
+;; Keep emacs.d clean
+(use-package no-littering
+  :demand t
+  :commands no-littering-expand-var-file-name
+  :init
+  (setq no-littering-etc-directory
+        (expand-file-name ".cache/etc" user-emacs-directory))
+  (setq no-littering-var-directory
+        (expand-file-name ".cache/var" user-emacs-directory))
+  :config
+  (setq auto-save-file-name-transforms
+        `((".*" ,(no-littering-expand-var-file-name "auto-save/") t))))
+
 ;; Change mode line names.
 (use-package delight
   :demand t)
