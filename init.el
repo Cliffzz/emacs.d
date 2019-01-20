@@ -254,17 +254,15 @@
 
 ;; Spell checking.
 (use-package wucuo
-  :load-path "lisp/wucuo"
+  :hook
+  (prog-mode . wucuo-start)
+  (text-mode . wucuo-start)
   :delight flyspell-mode
-  :commands wucuo-generic-check-word-predicate
-  :hook ((prog-mode . flyspell-mode)
-         (text-mode . flyspell-mode))
   :init
   (setq ispell-program-name "hunspell")
   (setq ispell-local-dictionary "en_US")
   (setq ispell-local-dictionary-alist
         '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8)))
-  (setq flyspell-generic-check-word-predicate #'wucuo-generic-check-word-predicate)
   :config
   (set-face-attribute 'flyspell-incorrect nil :underline '(:style line :color "#ff6c6b"))
   (set-face-attribute 'flyspell-duplicate nil :underline '(:style line :color "DarkOrange")))
