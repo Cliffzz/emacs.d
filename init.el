@@ -235,6 +235,8 @@
   :init
   (dashboard-setup-startup-hook)
   :config
+  (add-to-list 'recentf-exclude no-littering-var-directory)
+  (add-to-list 'recentf-exclude no-littering-etc-directory)
   (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
   (setq dashboard-banner-logo-title "Welcome to Cliffzz's Emacs")
   (setq dashboard-items '((projects  . 10)
