@@ -76,6 +76,7 @@
  (which-key . [(20181114 1432) ((emacs (24 4))) "Display available keybindings in popup" tar])
  (winum . [(20181119 1705) ((cl-lib (0 5)) (dash (2 13 0))) "Navigate windows and frames using numbers." tar])
  (with-editor . [(20181113 1845) ((emacs (24 4)) (async (1 9))) "Use the Emacsclient as $EDITOR" tar])
+ (wucuo . [(20181106 2257) ((emacs (24 4))) "Spell check code containing camel case words" tar])
  (xterm-color . [(20180202 2318) ((cl-lib (0 5))) "ANSI & XTERM 256 color support" tar])
  (yaml-mode . [(20180409 607) ((emacs (24 1))) "Major mode for editing YAML files" tar])
  (yasnippet . [(20181015 1212) ((cl-lib (0 5))) "Yet another snippet extension for Emacs." tar])
