@@ -241,10 +241,8 @@
   :init
   (dashboard-setup-startup-hook)
   :config
-  (defvar show-week-agenda-p)
   (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
   (setq dashboard-banner-logo-title "Welcome to Cliffzz's Emacs")
-  (setq show-week-agenda-p t)
   (setq dashboard-items '((projects  . 10)
                           (recents . 10)
                           (agenda . 10))))
@@ -257,15 +255,6 @@
     "Show trailing whitespace."
     (setq show-trailing-whitespace 1))
   (add-hook 'prog-mode-hook 'cliffz-show-trailing-whitespace))
-
-;; Automatically close old buffers
-(use-package midnight
-  :defer 10
-  :commands midnight-mode
-  :delight midnight-mode
-  :config
-  (midnight-mode t)
-  (setq clean-buffer-list-delay-general 1))
 
 ;; Spell checking.
 (use-package wucuo
@@ -622,14 +611,6 @@
         '("~/.emacs.d/snippets"))
   (yas-reload-all))
 
-;; Org mode
-(use-package org
-  :commands (org-mode org-agenda)
-  :mode (("\\.org\'" . org-mode))
-  :bind (("C-c o a" . 'org-agenda))
-  :init
-  (setq org-agenda-files (list "~/.emacs.d/org/")))
-
 ;; Org bullets
 (use-package org-bullets
   :hook (org-mode . org-bullets-mode))
@@ -919,28 +900,6 @@
 (use-package yaml-mode
   :mode
   (("\\.yml\\'" . yaml-mode)))
-
-;; Elastic search mode.
-(use-package es-mode
-  :mode
-  (("\\.es\\'" . es-mode))
-  :commands
-  (es-command-center))
-
-;; C# mode.
-(use-package csharp-mode
-  :mode
-  (("\\.cs\\'" . csharp-mode)))
-
-;; Omnisharp.
-(use-package omnisharp
-  :hook (csharp-mode . omnisharp-mode)
-  :config
-  (defun cliffz-load-csharp-autocompletion ()
-    "Load csharp auto completion."
-    (make-local-variable 'company-backends)
-    (setq company-backends '((company-omnisharp company-dabbrev-code))))
-  (add-hook 'csharp-mode-hook 'cliffz-load-csharp-autocompletion))
 
 ;; Lua mode.
 (use-package lua-mode
