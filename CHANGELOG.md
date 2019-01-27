@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.1"></a>
+## [0.3.1](https://github.com/Cliffzz/.emacs.d/compare/0.3.0...0.3.1) (2019-01-27)
+
+
+### Bug Fixes
+
+* increase neotree width ([3abed9b](https://github.com/Cliffzz/.emacs.d/commit/3abed9b))
+* show hidden files in neotree ([707f815](https://github.com/Cliffzz/.emacs.d/commit/707f815))
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/Cliffzz/.emacs.d/compare/0.2.0...0.3.0) (2019-01-20)
 
