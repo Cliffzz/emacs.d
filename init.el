@@ -419,6 +419,7 @@
   (add-hook 'neotree-mode-hook 'cliffz-hide-neotree-modeline)
   (defvar doom-neotree-file-icons)
   (setq doom-neotree-file-icons t)
+  (setq neo-window-width 40)
   (doom-themes-neotree-config))
 
 ;; Emacs completion using ivy.
