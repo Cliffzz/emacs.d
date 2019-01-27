@@ -420,6 +420,7 @@
   (defvar doom-neotree-file-icons)
   (setq doom-neotree-file-icons t)
   (setq neo-window-width 40)
+  (setq neo-show-hidden-files t)
   (doom-themes-neotree-config))
 
 ;; Emacs completion using ivy.
