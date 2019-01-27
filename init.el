@@ -254,6 +254,7 @@
 
 ;; Spell checking.
 (use-package wucuo
+  :disabled t
   :hook
   (prog-mode . wucuo-start)
   (text-mode . wucuo-start)
