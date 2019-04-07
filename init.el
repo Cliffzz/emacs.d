@@ -383,10 +383,13 @@
 
 (use-package solaire-mode
   :demand t
-  :commands solaire-mode-in-minibuffer turn-on-solaire-mode solaire-mode-swap-bg
-  :hook ((change-major-mode after-revert ediff-prepare-buffer) . turn-on-solaire-mode)
-  :config
-  (add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer))
+  :commands solaire-global-mode solaire-mode-swap-bg
+  :init
+  (defun cliffz-init-solaire-mode (frame)
+    "Init solaire-mode on a new frame."
+    (with-selected-frame frame
+      (solaire-global-mode)))
+  (add-hook 'after-make-frame-functions 'cliffz-init-solaire-mode))
 
 ;; Doom themes
 (use-package doom-themes
@@ -406,6 +409,7 @@
       (progn
         (load-theme 'doom-one t)
         (doom-themes-visual-bell-config)
+        (solaire-global-mode)
         (solaire-mode-swap-bg))))
 
 ;; File explorer
