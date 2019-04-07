@@ -227,7 +227,9 @@
   :init
   (cond ((eq system-type 'windows-nt)
          (defvar tramp-default-method)
-         (setq tramp-default-method "plink"))))
+         (setq tramp-default-method "plink")))
+  :config
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
 
 ;; Dashboard
 (use-package dashboard
