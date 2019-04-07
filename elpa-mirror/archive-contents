@@ -10,7 +10,7 @@
  (counsel . [(20190406 1901) ((emacs (24 3)) (swiper (0 11 0))) "Various completion functions using Ivy" tar])
  (dash . [(20190320 1406) nil "A modern list library for Emacs" tar])
  (dash-functional . [(20180107 1618) ((dash (2 0 0)) (emacs (24))) "Collection of useful combinators for Emacs Lisp" tar])
- (dashboard . [(20190320 725) ((emacs (24 4)) (page-break-lines (0 11))) "A startup screen extracted from Spacemacs" tar])
+ (dashboard . [(20190113 59) ((emacs (24 4)) (page-break-lines (0 11))) "A startup screen extracted from Spacemacs" tar])
  (delight . [(1 5) nil "A dimmer switch for your lighter text." tar])
  (diff-hl . [(20190223 2333) ((cl-lib (0 2)) (emacs (24 3))) "Highlight uncommitted changes using VC" tar])
  (dockerfile-mode . [(20181104 1800) ((emacs (24)) (s (1 12))) "Major mode for editing Docker's Dockerfiles" tar])
