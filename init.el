@@ -233,15 +233,24 @@
 
 ;; Dashboard
 (use-package dashboard
-  :commands dashboard-setup-startup-hook
-  :delight page-break-lines-mode
+  :commands (dashboard-refresh-buffer)
+  :if (< (length command-line-args) 2)
+  :preface
+  (defun cliffz-dashboard-banner ()
+    "Sets a dashboard banner including information on package initialization
+     time and garbage collections."
+    (setq dashboard-banner-logo-title
+          (format "Emacs ready in %.2f seconds with %d garbage collections."
+                  (float-time
+                   (time-subtract after-init-time before-init-time)) gcs-done)))
   :init
-  (dashboard-setup-startup-hook)
+  (add-hook 'after-init-hook 'dashboard-refresh-buffer)
+  (add-hook 'dashboard-mode-hook 'cliffz-dashboard-banner)
   :config
   (add-to-list 'recentf-exclude no-littering-var-directory)
   (add-to-list 'recentf-exclude no-littering-etc-directory)
-  (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
-  (setq dashboard-banner-logo-title "Welcome to Cliffzz's Emacs")
+  (dashboard-setup-startup-hook)
+  (setq dashboard-startup-banner 'logo)
   (setq dashboard-items '((projects  . 15)
                           (recents . 15))))
 
