@@ -11,9 +11,9 @@
   },
   "dependencies": {
     "js-yaml": "3.13.1",
-    "prettier": "1.16.4",
+    "prettier": "1.17.0",
     "prettier-eslint-cli": "4.7.1",
-    "typescript": "3.4.2"
+    "typescript": "3.4.4"
   },
   "devDependencies": {
     "standard-version": "5.0.2"
