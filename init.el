@@ -233,7 +233,7 @@
 
 ;; Dashboard
 (use-package dashboard
-  :commands (dashboard-refresh-buffer)
+  :commands (dashboard-refresh-buffer dashboard-setup-startup-hook)
   :if (< (length command-line-args) 2)
   :preface
   (defun cliffz-dashboard-banner ()
