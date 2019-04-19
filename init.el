@@ -233,15 +233,24 @@
 
 ;; Dashboard
 (use-package dashboard
-  :commands dashboard-setup-startup-hook
-  :delight page-break-lines-mode
+  :defer nil
+  :commands (dashboard-refresh-buffer dashboard-setup-startup-hook)
+  :if (< (length command-line-args) 2)
+  :preface
+  (defun cliffz-dashboard-banner ()
+    "Sets a dashboard banner including information on package initialization
+     time and garbage collections."
+    (setq dashboard-banner-logo-title
+          (format "Emacs ready in %.2f seconds with %d garbage collections."
+                  (float-time
+                   (time-subtract after-init-time before-init-time)) gcs-done)))
   :init
-  (dashboard-setup-startup-hook)
+  (add-hook 'after-init-hook 'dashboard-refresh-buffer)
+  (add-hook 'dashboard-mode-hook 'cliffz-dashboard-banner)
   :config
-  (add-to-list 'recentf-exclude no-littering-var-directory)
-  (add-to-list 'recentf-exclude no-littering-etc-directory)
+  (dashboard-setup-startup-hook)
   (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
-  (setq dashboard-banner-logo-title "Welcome to Cliffzz's Emacs")
+  (setq dashboard-startup-banner 'logo)
   (setq dashboard-items '((projects  . 15)
                           (recents . 15))))
 
@@ -385,10 +394,13 @@
 
 (use-package solaire-mode
   :demand t
-  :commands solaire-mode-in-minibuffer turn-on-solaire-mode solaire-mode-swap-bg
-  :hook ((change-major-mode after-revert ediff-prepare-buffer) . turn-on-solaire-mode)
-  :config
-  (add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer))
+  :commands solaire-global-mode solaire-mode-swap-bg
+  :init
+  (defun cliffz-init-solaire-mode (frame)
+    "Init solaire-mode on a new frame."
+    (with-selected-frame frame
+      (solaire-global-mode)))
+  (add-hook 'after-make-frame-functions 'cliffz-init-solaire-mode))
 
 ;; Doom themes
 (use-package doom-themes
@@ -408,6 +420,7 @@
       (progn
         (load-theme 'doom-one t)
         (doom-themes-visual-bell-config)
+        (solaire-global-mode)
         (solaire-mode-swap-bg))))
 
 ;; File explorer
