@@ -233,6 +233,7 @@
 
 ;; Dashboard
 (use-package dashboard
+  :defer nil
   :commands (dashboard-refresh-buffer dashboard-setup-startup-hook)
   :if (< (length command-line-args) 2)
   :preface
@@ -247,9 +248,8 @@
   (add-hook 'after-init-hook 'dashboard-refresh-buffer)
   (add-hook 'dashboard-mode-hook 'cliffz-dashboard-banner)
   :config
-  (add-to-list 'recentf-exclude no-littering-var-directory)
-  (add-to-list 'recentf-exclude no-littering-etc-directory)
   (dashboard-setup-startup-hook)
+  (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
   (setq dashboard-startup-banner 'logo)
   (setq dashboard-items '((projects  . 15)
                           (recents . 15))))
