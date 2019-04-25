@@ -306,49 +306,12 @@
       (flycheck-add-mode 'typescript-tslint 'web-mode)))
   (add-hook 'web-mode-hook 'cliffz-enable-tslint-tsx)
   ;; Flycheck Theme.
-  (declare-function flycheck-define-error-level "flycheck")
-  (define-fringe-bitmap 'my-flycheck-fringe-indicator
-    (vector #b00000000
-            #b00000000
-            #b00000000
-            #b00000000
-            #b00000000
-            #b00000000
-            #b00000000
-            #b00011100
-            #b00111110
-            #b00111110
-            #b00111110
-            #b00011100
-            #b00000000
-            #b00000000
-            #b00000000
-            #b00000000
-            #b00000000))
-  (let ((bitmap 'my-flycheck-fringe-indicator))
-    (flycheck-define-error-level 'error
-      :severity 2
-      :overlay-category 'flycheck-error-overlay
-      :fringe-bitmap bitmap
-      :fringe-face 'flycheck-fringe-error)
-    (flycheck-define-error-level 'warning
-      :severity 1
-      :overlay-category 'flycheck-warning-overlay
-      :fringe-bitmap bitmap
-      :fringe-face 'flycheck-fringe-warning)
-    (flycheck-define-error-level 'info
-      :severity 0
-      :overlay-category 'flycheck-info-overlay
-      :fringe-bitmap bitmap
-      :fringe-face 'flycheck-fringe-info))
-
-  (set-face-attribute 'flycheck-fringe-error nil :foreground "#ff6c6b")
-  (set-face-attribute 'flycheck-fringe-warning nil :foreground "#ecBe7b")
-  (set-face-attribute 'flycheck-fringe-info nil :foreground "#98be65")
-
   (set-face-attribute 'flycheck-error nil :underline '(:style line :color "#ff6c6b"))
   (set-face-attribute 'flycheck-warning nil :underline '(:style line :color "#ecBe7b"))
   (set-face-attribute 'flycheck-info nil :underline '(:style line :color "#98be65")))
+  (setq flycheck-indication-mode 'right-fringe)
+  (define-fringe-bitmap 'flycheck-fringe-bitmap-double-arrow
+    [16 48 112 240 112 48 16] nil nil 'center)
 
 ;; Keybinds auto completion.
 (use-package which-key
