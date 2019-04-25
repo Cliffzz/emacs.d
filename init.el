@@ -286,7 +286,7 @@
         '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8)))
   :config
   (set-face-attribute 'flyspell-incorrect nil :underline '(:style line :color "#ff6c6b"))
-  (set-face-attribute 'flyspell-duplicate nil :underline '(:style line :color "DarkOrange")))
+  (set-face-attribute 'flyspell-duplicate nil :underline '(:style line :color "#ecBe7b")))
 
 ;; Syntax checking.
 (use-package flycheck
