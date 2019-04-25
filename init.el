@@ -538,14 +538,24 @@
   :bind (("C-x g" . 'magit-status)))
 
 ;; Highlight git changes.
-(use-package diff-hl
-  :delight diff-hl-mode
-  :hook (prog-mode . diff-hl-mode)
+(use-package git-gutter-fringe
+  :commands git-gutter-mode
+  :hook
+  (prog-mode . git-gutter-mode)
+  (text-mode . git-gutter-mode)
+  :init
+  (with-eval-after-load 'git-gutter
+    (require 'git-gutter-fringe))
+  (setq git-gutter-fr:side 'left-fringe)
   :config
-  (vc-mode 1)
-  (defvar diff-hl-side)
-  (setq diff-hl-side 'right)
-  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
+  (setq-default fringes-outside-margins t)
+  ;; Thin fringe theme.
+  (define-fringe-bitmap 'git-gutter-fr:added [224]
+    nil nil '(center repeated))
+  (define-fringe-bitmap 'git-gutter-fr:modified [224]
+    nil nil '(center repeated))
+  (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240]
+    nil nil 'bottom))
 
 ;; Undo tree.
 (use-package undo-tree
