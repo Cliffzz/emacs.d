@@ -109,6 +109,15 @@
                     :weight 'normal
                     :width 'normal)
 
+;; Set fringe size
+(fringe-mode '0)
+(defun cliffz-enable-fringe ()
+  "Enable fringes."
+  (setq left-fringe-width 4
+        right-fringe-width 4))
+(add-hook 'prog-mode-hook 'cliffz-enable-fringe)
+(add-hook 'text-mode-hook 'cliffz-enable-fringe)
+
 ;; Highlight current line.
 (global-hl-line-mode 1)
 
