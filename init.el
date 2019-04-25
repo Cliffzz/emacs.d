@@ -401,6 +401,7 @@
         doom-modeline-icon t
         doom-modeline-height 30))
 
+;; Praise the sun.
 (use-package solaire-mode
   :demand t
   :commands solaire-global-mode solaire-mode-swap-bg
