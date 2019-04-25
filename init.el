@@ -306,12 +306,13 @@
       (flycheck-add-mode 'typescript-tslint 'web-mode)))
   (add-hook 'web-mode-hook 'cliffz-enable-tslint-tsx)
   ;; Flycheck Theme.
-  (set-face-attribute 'flycheck-error nil :underline '(:style line :color "#ff6c6b"))
-  (set-face-attribute 'flycheck-warning nil :underline '(:style line :color "#ecBe7b"))
-  (set-face-attribute 'flycheck-info nil :underline '(:style line :color "#98be65")))
   (setq flycheck-indication-mode 'right-fringe)
   (define-fringe-bitmap 'flycheck-fringe-bitmap-double-arrow
     [16 48 112 240 112 48 16] nil nil 'center)
+
+  (set-face-attribute 'flycheck-error nil :underline '(:style line :color "#ff6c6b"))
+  (set-face-attribute 'flycheck-warning nil :underline '(:style line :color "#ecBe7b"))
+  (set-face-attribute 'flycheck-info nil :underline '(:style line :color "#98be65")))
 
 ;; Keybinds auto completion.
 (use-package which-key
