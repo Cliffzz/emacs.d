@@ -109,6 +109,15 @@
                     :weight 'normal
                     :width 'normal)
 
+;; Set fringe size
+(fringe-mode '0)
+(defun cliffz-enable-fringe ()
+  "Enable fringes."
+  (setq left-fringe-width 4
+        right-fringe-width 4))
+(add-hook 'prog-mode-hook 'cliffz-enable-fringe)
+(add-hook 'text-mode-hook 'cliffz-enable-fringe)
+
 ;; Highlight current line.
 (global-hl-line-mode 1)
 
@@ -277,7 +286,7 @@
         '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8)))
   :config
   (set-face-attribute 'flyspell-incorrect nil :underline '(:style line :color "#ff6c6b"))
-  (set-face-attribute 'flyspell-duplicate nil :underline '(:style line :color "DarkOrange")))
+  (set-face-attribute 'flyspell-duplicate nil :underline '(:style line :color "#ecBe7b")))
 
 ;; Syntax checking.
 (use-package flycheck
@@ -297,45 +306,9 @@
       (flycheck-add-mode 'typescript-tslint 'web-mode)))
   (add-hook 'web-mode-hook 'cliffz-enable-tslint-tsx)
   ;; Flycheck Theme.
-  (declare-function flycheck-define-error-level "flycheck")
-  (define-fringe-bitmap 'my-flycheck-fringe-indicator
-    (vector #b00000000
-            #b00000000
-            #b00000000
-            #b00000000
-            #b00000000
-            #b00000000
-            #b00000000
-            #b00011100
-            #b00111110
-            #b00111110
-            #b00111110
-            #b00011100
-            #b00000000
-            #b00000000
-            #b00000000
-            #b00000000
-            #b00000000))
-  (let ((bitmap 'my-flycheck-fringe-indicator))
-    (flycheck-define-error-level 'error
-      :severity 2
-      :overlay-category 'flycheck-error-overlay
-      :fringe-bitmap bitmap
-      :fringe-face 'flycheck-fringe-error)
-    (flycheck-define-error-level 'warning
-      :severity 1
-      :overlay-category 'flycheck-warning-overlay
-      :fringe-bitmap bitmap
-      :fringe-face 'flycheck-fringe-warning)
-    (flycheck-define-error-level 'info
-      :severity 0
-      :overlay-category 'flycheck-info-overlay
-      :fringe-bitmap bitmap
-      :fringe-face 'flycheck-fringe-info))
-
-  (set-face-attribute 'flycheck-fringe-error nil :foreground "#ff6c6b")
-  (set-face-attribute 'flycheck-fringe-warning nil :foreground "#ecBe7b")
-  (set-face-attribute 'flycheck-fringe-info nil :foreground "#98be65")
+  (setq flycheck-indication-mode 'right-fringe)
+  (define-fringe-bitmap 'flycheck-fringe-bitmap-double-arrow
+    [16 48 112 240 112 48 16] nil nil 'center)
 
   (set-face-attribute 'flycheck-error nil :underline '(:style line :color "#ff6c6b"))
   (set-face-attribute 'flycheck-warning nil :underline '(:style line :color "#ecBe7b"))
@@ -392,6 +365,7 @@
         doom-modeline-icon t
         doom-modeline-height 30))
 
+;; Praise the sun.
 (use-package solaire-mode
   :demand t
   :commands solaire-global-mode solaire-mode-swap-bg
@@ -564,14 +538,24 @@
   :bind (("C-x g" . 'magit-status)))
 
 ;; Highlight git changes.
-(use-package diff-hl
-  :delight diff-hl-mode
-  :hook (prog-mode . diff-hl-mode)
+(use-package git-gutter-fringe
+  :commands git-gutter-mode
+  :hook
+  (prog-mode . git-gutter-mode)
+  (text-mode . git-gutter-mode)
+  :init
+  (with-eval-after-load 'git-gutter
+    (require 'git-gutter-fringe))
+  (setq git-gutter-fr:side 'left-fringe)
   :config
-  (vc-mode 1)
-  (defvar diff-hl-side)
-  (setq diff-hl-side 'right)
-  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
+  (setq-default fringes-outside-margins t)
+  ;; Thin fringe theme.
+  (define-fringe-bitmap 'git-gutter-fr:added [224]
+    nil nil '(center repeated))
+  (define-fringe-bitmap 'git-gutter-fr:modified [224]
+    nil nil '(center repeated))
+  (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240]
+    nil nil 'bottom))
 
 ;; Undo tree.
 (use-package undo-tree
