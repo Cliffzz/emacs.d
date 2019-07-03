@@ -932,15 +932,15 @@
   :mode
   (("\\.yml\\'" . yaml-mode)))
 
+;; Lua autocompletion.
+(use-package company-lua
+  :commands (company-lua))
+
 ;; Lua mode.
 (use-package lua-mode
   :mode
-  (("\\.lua\\'" . lua-mode)))
-
-;; Lua autocompletion.
-(use-package company-lua
-  :after (lua-mode)
-  :init
+  (("\\.lua\\'" . lua-mode))
+  :config
   (defun cliffz-load-lua-autocompletion ()
     "Load lua auto completion."
     (make-local-variable 'company-backends)
