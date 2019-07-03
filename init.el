@@ -324,7 +324,7 @@
 ;; Code auto completion.
 (use-package company
   :delight company-mode
-  :hook (prog-mode . global-company-mode)
+  :hook ((prog-mode text-mode) . global-company-mode)
   :config
   (setq company-idle-delay 0.2)
   (setq company-minimum-prefix-length 2)
@@ -892,6 +892,21 @@
   (("\\.graphql\\'" . graphql-mode))
   :config
   (setq graphql-indent-level 4))
+
+;; Restclient autocompletion.
+(use-package company-restclient
+  :commands (company-restclient))
+
+;; Restclient mode.
+(use-package restclient
+  :mode
+  (("\\.restclient\\'" . restclient-mode))
+  :config
+  (defun cliffz-load-restclient-autocompletion ()
+    "Load restclient auto completion."
+    (make-local-variable 'company-backends)
+    (setq company-backends '((company-restclient company-dabbrev-code))))
+  (add-hook 'restclient-mode-hook 'cliffz-load-restclient-autocompletion))
 
 ;; Markdown mode.
 (use-package markdown-mode
