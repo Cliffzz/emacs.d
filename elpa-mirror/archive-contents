@@ -9,6 +9,7 @@
  (company-lua . [(20171108 2306) ((company (0 8 12)) (s (1 10 0)) (f (0 17 0)) (lua-mode (20151025))) "Company backend for Lua" tar])
  (company-restclient . [(20190426 1312) ((cl-lib (0 5)) (company (0 8 0)) (emacs (24)) (know-your-http-well (0 2 0)) (restclient (0 0 0))) "companymode" tar])
  (counsel . [(20190414 1926) ((emacs (24 3)) (swiper (0 11 0))) "Various completion functions using Ivy" tar])
+ (coverlay . [(20190414 940) ((emacs (24 1)) (cl-lib (0 5))) "Test coverage overlays" tar])
  (dash . [(20190413 1058) nil "A modern list library for Emacs" tar])
  (dash-functional . [(20180107 1618) ((dash (2 0 0)) (emacs (24))) "Collection of useful combinators for Emacs Lisp" tar])
  (dashboard . [(20190320 725) ((emacs (24 4)) (page-break-lines (0 11))) "A startup screen extracted from Spacemacs" tar])

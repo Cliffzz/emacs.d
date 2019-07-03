@@ -379,7 +379,7 @@
 ;; Doom themes
 (use-package doom-themes
   :demand t
-  :commands doom-themes-visual-bell-config doom-themes-neotree-config
+  :commands doom-themes-visual-bell-config doom-themes-neotree-config doom-blend doom-color
   :config
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t)
@@ -951,6 +951,45 @@
 (use-package feature-mode
   :mode
   (("\\.feature\\'" . feature-mode)))
+
+;; Code coverage overlay
+(use-package coverlay
+  :commands (coverlay-load-file coverlay-reload-file coverlay-display-stats coverlay-toggle-overlays cliffz-set-coverlay-keybind-descriptions)
+  :init
+  (declare-function which-key-add-major-mode-key-based-replacements "which-key")
+  (defun cliffz-set-coverlay-keybind-descriptions (mode)
+    "Set the coverage keybind descriptions for the given mode."
+    (which-key-add-major-mode-key-based-replacements mode
+      "C-c c" "coverage"))
+
+  (defun cliffz-set-coverlay-keybinds-js2-mode ()
+    "Set the coverlay coverage keybinds for js2-mode"
+    (bind-key "C-c c f" 'coverlay-load-file js2-mode-map)
+    (bind-key "C-c c r" 'coverlay-reload-file js2-mode-map)
+    (bind-key "C-c c s" 'coverlay-display-stats js2-mode-map)
+    (bind-key "C-c c t" 'coverlay-toggle-overlays js2-mode-map)
+    (cliffz-set-coverlay-keybind-descriptions 'js2-mode))
+  (defun cliffz-set-coverlay-keybinds-rjsx-mode ()
+    "Set the coverlay coverage keybinds for rjsx-mode"
+    (bind-key "C-c c f" 'coverlay-load-file rjsx-mode-map)
+    (bind-key "C-c c r" 'coverlay-reload-file rjsx-mode-map)
+    (bind-key "C-c c s" 'coverlay-display-stats rjsx-mode-map)
+    (bind-key "C-c c t" 'coverlay-toggle-overlays rjsx-mode-map)
+    (cliffz-set-coverlay-keybind-descriptions 'rjsx-mode))
+  (defun cliffz-set-coverlay-keybinds-typescript-mode ()
+    "Set the coverlay coverage  keybinds for typescript-mode"
+    (bind-key "C-c c f" 'coverlay-load-file typescript-mode-map)
+    (bind-key "C-c c r" 'coverlay-reload-file typescript-mode-map)
+    (bind-key "C-c c s" 'coverlay-display-stats typescript-mode-map)
+    (bind-key "C-c c t" 'coverlay-toggle-overlays typescript-mode-map)
+    (cliffz-set-coverlay-keybind-descriptions 'typescript-mode))
+
+  (add-hook 'js2-mode-hook 'cliffz-set-coverlay-keybinds-js2-mode)
+  (add-hook 'rjsx-mode-hook 'cliffz-set-coverlay-keybinds-rjsx-mode)
+  (add-hook 'typescript-mode-hook 'cliffz-set-coverlay-keybinds-typescript-mode)
+  :config
+  (setq coverlay:untested-line-background-color (doom-blend 'red 'bg 0.3)
+      coverlay:tested-line-background-color (doom-color 'bg)))
 
 (provide 'init)
 
