@@ -381,10 +381,15 @@
     :load-path "elpa/doom-themes-20190702.1424"
     :commands doom-themes-visual-bell-config)
 
+;; Doom neotree
+(use-package doom-themes-ext-neotree.el
+    :load-path "elpa/doom-themes-20190702.1424"
+    :commands doom-themes-neotree-config)
+
 ;; Doom themes
 (use-package doom-themes
   :demand t
-  :commands doom-themes-neotree-config doom-blend doom-color
+  :commands doom-blend doom-color
   :config
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t)
