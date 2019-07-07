@@ -27,6 +27,9 @@
 ;; Setup external file for custom settings
 (setq custom-file "~/.emacs.d/custom-settings.el")
 
+;; init file path
+(defvar init-file "~/.emacs.d/init.el")
+
 ;; Start maximized.
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
@@ -245,21 +248,31 @@
   :defer nil
   :commands (dashboard-refresh-buffer dashboard-setup-startup-hook)
   :if (< (length command-line-args) 2)
-  :preface
-  (defun cliffz-dashboard-banner ()
-    "Sets a dashboard banner including information on package initialization
-     time and garbage collections."
-    (setq dashboard-banner-logo-title
-          (format "Emacs ready in %.2f seconds with %d garbage collections."
-                  (float-time
-                   (time-subtract after-init-time before-init-time)) gcs-done)))
   :init
   (add-hook 'after-init-hook 'dashboard-refresh-buffer)
-  (add-hook 'dashboard-mode-hook 'cliffz-dashboard-banner)
   :config
   (dashboard-setup-startup-hook)
   (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
-  (setq dashboard-startup-banner 'logo)
+  (setq dashboard-center-content t)
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-set-navigator t)
+  (setq dashboard-startup-banner "~/.emacs.d/logo.png")
+  (setq dashboard-banner-logo-title "Cliffz Emacs")
+  (setq dashboard-footer (concat "Version: " emacs-version))
+  (setq dashboard-navigator-buttons
+        `(((,(when (display-graphic-p)
+               (all-the-icons-octicon "mark-github" :height 1.1 :v-adjust 0.0))
+            "Homepage" "Browse homepage"
+            (lambda (&rest _) (browse-url "https://github.com/Cliffzz/.emacs.d")))
+           (,(when (display-graphic-p)
+               (all-the-icons-octicon "tools" :height 1.0 :v-adjust 0.0))
+            "Settings" "Open init file"
+            (lambda (&rest _) (find-file init-file)))
+           (,(when (display-graphic-p)
+               (all-the-icons-material "update" :height 1.35 :v-adjust -0.24))
+            "Compile" "Compile config"
+            (lambda (&rest _) (compile-files))))))
   (setq dashboard-items '((projects  . 15)
                           (recents . 15))))
 
@@ -354,7 +367,8 @@
 ;; All the icons
 (use-package all-the-icons
   :init
-  (setq inhibit-compacting-font-caches t))
+  (setq inhibit-compacting-font-caches t)
+  :commands all-the-icons-octicon all-the-icons-material)
 
 ;; Mode line setup.
 (use-package doom-modeline
