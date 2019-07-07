@@ -376,10 +376,15 @@
       (solaire-global-mode)))
   (add-hook 'after-make-frame-functions 'cliffz-init-solaire-mode))
 
+;; Doom visual bell
+(use-package doom-themes-ext-visual-bell
+    :load-path "elpa/doom-themes-20190702.1424"
+    :commands doom-themes-visual-bell-config)
+
 ;; Doom themes
 (use-package doom-themes
   :demand t
-  :commands doom-themes-visual-bell-config doom-themes-neotree-config doom-blend doom-color
+  :commands doom-themes-neotree-config doom-blend doom-color
   :config
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t)
