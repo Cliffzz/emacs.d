@@ -1,6 +1,25 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [0.4.0](https://github.com/Cliffzz/.emacs.d/compare/0.3.1...0.4.0) (2019-07-07)
+
+
+### Bug Fixes
+
+* **theme:** fix loading of doom neo tree config when using byte compiled config ([#26](https://github.com/Cliffzz/.emacs.d/issues/26)) ([7e0ded5](https://github.com/Cliffzz/.emacs.d/commit/7e0ded5))
+* **theme:** fix loading of doom visual bell config when using byte compiled config ([#25](https://github.com/Cliffzz/.emacs.d/issues/25)) ([4a393f5](https://github.com/Cliffzz/.emacs.d/commit/4a393f5))
+* fix lua mode autocompletion ([#22](https://github.com/Cliffzz/.emacs.d/issues/22)) ([f673b63](https://github.com/Cliffzz/.emacs.d/commit/f673b63))
+* use remote path when using tramp ([#18](https://github.com/Cliffzz/.emacs.d/issues/18)) ([a3c7ddc](https://github.com/Cliffzz/.emacs.d/commit/a3c7ddc))
+
+
+### Features
+
+* **dashboard:** update look and feel ([#27](https://github.com/Cliffzz/.emacs.d/issues/27)) ([280dc62](https://github.com/Cliffzz/.emacs.d/commit/280dc62))
+* add code coverage report overlay ([#19](https://github.com/Cliffzz/.emacs.d/issues/19)) ([094f054](https://github.com/Cliffzz/.emacs.d/commit/094f054))
+* add rest client mode ([#23](https://github.com/Cliffzz/.emacs.d/issues/23)) ([e874aae](https://github.com/Cliffzz/.emacs.d/commit/e874aae))
+
+
 
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/Cliffzz/.emacs.d/compare/0.3.0...0.3.1) (2019-01-27)

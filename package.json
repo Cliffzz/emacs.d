@@ -1,13 +1,13 @@
 {
   "name": "emacs.d",
   "private": true,
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Cliffzz's emacs configuration",
   "engines": {
     "node": ">=6"
   },
   "scripts": {
-    "release": "standard-version"
+    "release": "standard-version -a"
   },
   "dependencies": {
     "js-yaml": "3.13.1",
