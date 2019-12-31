@@ -22,7 +22,7 @@
     (package-install 'use-package)))
 
 ;; Manually call `package-initalize' when running in `noninteractive' mode.
-(eval-when-compile
+(eval-and-compile
   (if noninteractive
       (package-initialize)))
 
