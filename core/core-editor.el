@@ -15,7 +15,7 @@
 ;; Disable file locks.
 (setq create-lockfiles nil)
 
-;; Disable auto sae files.
+;; Disable auto save files.
 (setq auto-save-default nil
       auto-save-list-file-prefix nil)
 
@@ -34,6 +34,49 @@
 (use-package smartparens
   :hook
   (prog-mode . smartparens-mode))
+
+;; Code/text auto completion, needs to be configured per langauge.
+(use-package company
+  :hook
+  (prog-mode . global-company-mode)
+  :config
+  (setq company-idle-delay 0.2)
+  (setq company-minimum-prefix-length 2)
+  (setq company-backends '()))
+
+;; Syntax checking, needs to be configured per langauge.
+(use-package flycheck
+  :commands
+  (flycheck-mode))
+
+;; Emacs completion using ivy.
+(use-package ivy
+  :init
+  (ivy-mode)
+  :config
+  (setq ivy-use-virtual-buffers t
+        ivy-use-selectable-prompt t
+        enable-recursive-minibuffers t
+        ivy-height 20
+        ivy-count-format "(%d/%d) "))
+
+;; Ivy enhanced versions of emacs commands and use `counsel-rg' for project search.
+(use-package counsel
+  :bind
+  (("C-c s" . 'counsel-rg))
+  :config
+  (counsel-mode))
+
+;; `I-Search' replacement using ivy.
+(use-package swiper
+  :commands
+  (swiper)
+  :bind
+  (("C-s" . 'swiper)))
+
+(use-package rg
+  :config
+  (rg-enable-default-bindings (kbd "C-c S")))
 
 ;; Universal go to definition.
 (use-package dumb-jump
@@ -57,7 +100,7 @@
 ;; Provide a visualization of undos in a file.
 (use-package undo-tree
   :commands
-  (global-undo-tree-mode)
+  (undo-tree-undo undo-tree-redo)
   :init
   (global-undo-tree-mode)
   :bind (("C-/" . 'undo-tree-undo)
@@ -67,6 +110,26 @@
 (use-package winum
   :config
   (winum-mode))
+
+;; Project integration.
+(use-package projectile
+  :commands projectile-mode
+  :bind-keymap ("C-c p" . projectile-command-map)
+  :init
+  (defvar projectile-sort-order)
+  (setq projectile-sort-order 'recentf
+        projectile-completion-system 'ivy)
+  (projectile-mode +1))
+
+;; Git Emacs interface.
+(use-package magit
+  :commands (magit-status)
+  :bind (("C-x g" . 'magit-status)))
+
+;; Highlight git changes.
+(use-package git-gutter-fringe
+  :init
+  (global-git-gutter-mode))
 
 (provide 'core-editor)
 ;;; core-editor.el ends here
