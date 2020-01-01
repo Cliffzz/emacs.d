@@ -17,9 +17,6 @@
 ;; with fonts that are larger than the system default.
 (setq frame-inhibit-implied-resize t)
 
-;; Start Emacs maximized.
-(push '(fullscreen . maximized) default-frame-alist)
-
 ;; Prevent loading of UI elements.
 (push '(menu-bar-lines . 0) default-frame-alist)
 (push '(tool-bar-lines . 0) default-frame-alist)
@@ -28,13 +25,6 @@
 ;; Theme Emacs title bar.
 (push '(ns-transparent-titlebar . t) default-frame-alist)
 (setq frame-title-format nil)
-
-;; Disable startup message.
-(setq inhibit-startup-message t)
-
-;; Disable default welcome message.
-(defun display-startup-echo-area-message ()
-  (message nil))
 
 ;; Set fringe width.
 (fringe-mode '4)

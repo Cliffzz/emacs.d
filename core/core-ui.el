@@ -21,6 +21,13 @@
 (add-hook 'minibuffer-setup-hook #'defer-garbage-collection-hook)
 (add-hook 'minibuffer-exit-hook #'restore-garbage-collection-hook)
 
+;; Disable startup message.
+(setq inhibit-startup-message t)
+
+;; Disable default welcome message.
+(defun display-startup-echo-area-message ()
+  (message nil))
+
 ;; Disable cursor alarms.
 (setq ring-bell-function 'ignore)
 
