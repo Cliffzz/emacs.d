@@ -16,7 +16,8 @@
 ;; Load Emacs core config files for an interactive session.
 (defun initialize-core ()
   (require 'core-ui)
-  (require 'core-editor))
+  (require 'core-editor)
+  (require 'core-terminal))
 
 (provide 'core)
 ;;; core.el ends here

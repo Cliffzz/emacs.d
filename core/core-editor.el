@@ -19,12 +19,6 @@
 (setq auto-save-default nil
       auto-save-list-file-prefix nil)
 
-;; Set remote path as `TRAMP' path, after `TRAMP' has been loaded.
-(use-package tramp
-  :defer t
-  :config
-  (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
-
 ;; Unobtrusively trim spaces from end of line.
 (use-package ws-butler
   :config
