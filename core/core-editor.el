@@ -124,7 +124,7 @@
 ;; Git Emacs interface.
 (use-package magit
   :commands (magit-status)
-  :bind (("C-x g" . 'magit-status)))
+  :bind (("C-c g" . 'magit-status)))
 
 ;; Highlight git changes.
 (use-package git-gutter-fringe
