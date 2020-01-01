@@ -6,8 +6,11 @@
 ;; Load `init', this isn't automatically loaded in `noninteractive' mode.
 (load (concat user-emacs-directory "init.el"))
 
-;; Compile core.
-(byte-recompile-directory (concat user-emacs-directory "core") 0)
+;; Load all modules to trigger package installation.
+(mapc 'load (file-expand-wildcards (concat user-emacs-directory "core/*.el")))
 
 (provide 'install)
+
+;; Local Variables:
+;; no-byte-compile: t
 ;;; install.el ends here
