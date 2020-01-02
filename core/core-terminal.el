@@ -4,6 +4,18 @@
 ;; Don't pause the output through $PAGER
 (setenv "PAGER" "cat")
 
+;; Suppress compiler warning.
+(defvar eshell-history-size)
+(defvar eshell-plain-echo-behavior)
+(defvar eshell-save-history-on-exit)
+(defvar eshell-buffer-maximum-lines)
+(defvar eshell-truncate-timer)
+(defvar eshell-hist-ignoredups)
+(defvar eshell-scroll-to-bottom-on-input)
+(defvar eshell-prompt-function)
+(defvar tramp-remote-path)
+(declare-function eshell-truncate-buffer "core-terminal")
+
 ;; Asynchronously truncate terminal buffer when `eshell-buffer-maximum-lines' is reached instead of every line.
 (setq eshell-buffer-maximum-lines 10000)
 
@@ -44,6 +56,7 @@
   :bind
   (("C-c t" . 'shell-pop))
   :config
+  (declare-function shell-pop--set-shell-type "shell-pop")
   (setq shell-pop-shell-type '("eshell" "*eshell*" (lambda () (eshell)))
         shell-pop-full-span t
         shell-pop-window-size 25)
