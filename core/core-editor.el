@@ -40,6 +40,7 @@
 
 ;; Syntax checking, needs to be configured per langauge.
 (use-package flycheck
+  :pin melpa
   :commands
   (flycheck-mode))
 
