@@ -24,5 +24,18 @@
 
 (add-hook 'json-mode-hook #'configure-json-syntax-checking)
 
+;; Prettier, code formatting.
+(use-package prettier-js
+  :commands (prettier-js)
+  :init
+  (defun set-prettier-json-config ()
+    (make-local-variable 'prettier-js-command)
+    (make-local-variable 'prettier-js-args)
+    (setq prettier-js-command "prettier")
+    (setq prettier-js-args '("--print-width" "100" "--tab-width" "2" "--single-quote" "--trailing-comma" "all"))
+    (bind-key "C-c f" 'prettier-js json-mode-map))
+
+  (add-hook 'json-mode-hook 'set-prettier-json-config))
+
 (provide 'modules-json)
 ;;; modules-json.el ends here
