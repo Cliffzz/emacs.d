@@ -70,12 +70,23 @@
   (autoload 'epe-theme-lambda "eshell-prompt-extras")
   (setq eshell-prompt-function 'epe-theme-lambda))
 
+;; Move up the path to target instead of multiple cd.
 (use-package eshell-up
   :commands
   (eshell-up)
   :init
   (defun eshell/up ($1)
     (eshell-up $1)))
+
+;; Node version management.
+(use-package nvm
+  :commands
+  (nvm-use)
+  :init
+  (defun eshell/nvm-use ($1)
+    (nvm-use (number-to-string $1))
+    (eshell-mode)
+    (eshell/clear)))
 
 (provide 'core-terminal)
 ;;; core-terminal.el ends here
