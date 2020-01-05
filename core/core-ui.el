@@ -105,7 +105,8 @@
 
 ;; Colorize parentheses.
 (use-package rainbow-delimiters
-  :hook (prog-mode . rainbow-delimiters-mode))
+  :hook
+  (prog-mode . rainbow-delimiters-mode))
 
 ;; Dashboard
 (use-package dashboard
@@ -130,7 +131,8 @@
 
 ;; Setup modeline.
 (use-package doom-modeline
-  :hook (after-init . doom-modeline-mode))
+  :hook
+  (after-init . doom-modeline-mode))
 
 ;; Help to visually distinguish file-visiting windows from other types of windows by giving them a slightly different
 ;; -- often brighter -- background.
