@@ -44,6 +44,40 @@
   :commands
   (flycheck-mode))
 
+;; Language server protocol support, needs to be configured per langauge.
+(use-package lsp-mode
+  :pin melpa
+  :commands
+  (lsp)
+  :init
+  (setq lsp-auto-guess-root t
+        lsp-keep-workspace-alive nil))
+
+;; UI modules for `lsp-mode'.
+(use-package lsp-ui
+  :pin melpa
+  :hook
+  (lsp-mode . lsp-ui-mode)
+  :bind
+  (:map lsp-ui-mode-map
+        (("C-." . lsp-ui-peek-find-definitions)
+         ("C-," . lsp-ui-peek-find-references)))
+  :config
+  (setq lsp-prefer-flymake nil
+        lsp-ui-flycheck-live-reporting nil
+        lsp-ui-doc-enable t
+        lsp-ui-sideline-ignore-duplicate t
+        lsp-ui-sideline-show-hover t
+        lsp-ui-sideline-show-code-actions nil))
+
+;; `company-mode' completion for `lsp-mode', enable caching for increased performance.
+(use-package company-lsp
+  :pin melpa
+  :commands
+  (company-lsp)
+  :config
+  (setq company-lsp-cache-candidates 'auto))
+
 ;; Emacs completion using ivy.
 (use-package ivy
   :init
