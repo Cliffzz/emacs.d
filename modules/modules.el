@@ -15,7 +15,8 @@
   (require 'modules-restclient)
   (require 'modules-markdown)
   (require 'modules-docker)
-  (require 'modules-yaml))
+  (require 'modules-yaml)
+  (require 'modules-cucumber))
 
 (provide 'modules)
 ;;; modules.el ends here

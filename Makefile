@@ -5,7 +5,7 @@ build: | clean install compile
 
 clean:
 	npm uninstall -g jsonlint typescript-language-server typescript prettier-eslint-cli prettier vscode-json-languageserver vscode-html-languageserver-bin dockerfile-language-server-nodejs yaml-language-server
-	rm -rf elpa **.elc **/**.elc
+	rm -rf elpa **.elc **/**.elc **/**/**.elc
 
 compile:
 	emacs --script .make/compile.el
