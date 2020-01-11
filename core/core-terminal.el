@@ -39,11 +39,6 @@
 ;; Automatcially scroll terminal to bottom on input.
 (setq eshell-scroll-to-bottom-on-input 't)
 
-;; Add `clear' command to terminal that clears the entire terminal buffer.
-(defun eshell/clear ()
-  (let ((inhibit-read-only t))
-    (erase-buffer)))
-
 ;; Set remote path as `TRAMP' path, after `TRAMP' has been loaded.
 (defun set-tramp-remote-path ()
   (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
