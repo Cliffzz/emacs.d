@@ -13,7 +13,8 @@
   (require 'modules-stylus)
   (require 'modules-graphql)
   (require 'modules-restclient)
-  (require 'modules-markdown))
+  (require 'modules-markdown)
+  (require 'modules-docker))
 
 (provide 'modules)
 ;;; modules.el ends here
