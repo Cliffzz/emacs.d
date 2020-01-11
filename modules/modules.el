@@ -7,7 +7,8 @@
   (require 'modules-json)
   (require 'modules-javascript)
   (require 'modules-typescript)
-  (require 'modules-coffeescript))
+  (require 'modules-coffeescript)
+  (require 'modules-html))
 
 (provide 'modules)
 ;;; modules.el ends here
