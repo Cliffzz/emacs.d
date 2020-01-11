@@ -12,7 +12,8 @@
   (require 'modules-pug)
   (require 'modules-stylus)
   (require 'modules-graphql)
-  (require 'modules-restclient))
+  (require 'modules-restclient)
+  (require 'modules-markdown))
 
 (provide 'modules)
 ;;; modules.el ends here
