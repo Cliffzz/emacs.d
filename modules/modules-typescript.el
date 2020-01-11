@@ -1,5 +1,12 @@
 ;;; modules-typescript.el -*- lexical-binding: t; -*-
 
+;; Only run `web-mode-hook', when file is a `tsx' file.
+(defun set-tsx-mode-hook (hook-to-run)
+  (add-hook 'web-mode-hook
+            (lambda ()
+              (when (string-equal "tsx" (file-name-extension buffer-file-name))
+                (funcall hook-to-run)))))
+
 ;; Major mode for editing typescript files.
 (use-package typescript-mode
   :mode
@@ -16,7 +23,7 @@
   (add-node-modules-path)
   :init
   (add-hook 'typescript-mode-hook #'add-node-modules-path)
-  (add-hook 'web-mode-hook #'add-node-modules-path))
+  (set-tsx-mode-hook #'add-node-modules-path))
 
 ;; Prettier, code formatting.
 (use-package prettier-js
@@ -41,7 +48,7 @@
     (bind-key "C-c f" 'prettier-js web-mode-map))
 
   (add-hook 'typescript-mode-hook #'set-prettier-ts-config)
-  (add-hook 'web-mode-hook #'set-prettier-tsx-config))
+  (set-tsx-mode-hook #'set-prettier-tsx-config))
 
 ;; Enable langauge server completion.
 (defun setup-ts-completion ()
@@ -50,12 +57,15 @@
   (setq company-backends '(company-lsp)))
 
 (add-hook 'typescript-mode-hook #'setup-ts-completion)
-(add-hook 'web-mode-hook #'setup-ts-completion)
+(set-tsx-mode-hook #'setup-ts-completion)
 
 ;; Typescript syntax checking with eslint + language server.
 (defvar flycheck-disabled-checkers)
 (defun configure-ts-syntax-checking ()
   (flycheck-mode)
+
+  (declare-function flycheck-add-mode "flycheck")
+
   (flycheck-add-mode 'javascript-eslint 'typescript-mode)
   (flycheck-add-mode 'javascript-eslint 'web-mode)
 
@@ -67,11 +77,11 @@
   (flycheck-add-next-checker 'lsp-ui 'javascript-eslint))
 
 (add-hook 'typescript-mode-hook #'configure-ts-syntax-checking)
-(add-hook 'web-mode-hook #'configure-ts-syntax-checking)
+(set-tsx-mode-hook #'configure-ts-syntax-checking)
 
 ;; Enable langauge server.
 (add-hook 'typescript-mode-hook #'lsp)
-(add-hook 'web-mode-hook #'lsp)
+(set-tsx-mode-hook #'lsp)
 
 (provide 'modules-typescript)
 ;;; modules-typescript.el ends here
