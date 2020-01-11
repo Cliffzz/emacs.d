@@ -14,7 +14,8 @@
   (require 'modules-graphql)
   (require 'modules-restclient)
   (require 'modules-markdown)
-  (require 'modules-docker))
+  (require 'modules-docker)
+  (require 'modules-yaml))
 
 (provide 'modules)
 ;;; modules.el ends here
