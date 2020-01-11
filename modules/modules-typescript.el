@@ -29,7 +29,6 @@
 (use-package prettier-js
   :commands (prettier-js)
   :init
-  (message "prettier ts")
   (declare-function set-prettier-ts-config "modules-typescript")
   (declare-function set-prettier-tsx-config "modules-typescript")
 
