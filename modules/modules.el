@@ -8,7 +8,8 @@
   (require 'modules-javascript)
   (require 'modules-typescript)
   (require 'modules-coffeescript)
-  (require 'modules-html))
+  (require 'modules-html)
+  (require 'modules-pug))
 
 (provide 'modules)
 ;;; modules.el ends here
