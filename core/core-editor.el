@@ -40,13 +40,11 @@
 
 ;; Syntax checking, needs to be configured per langauge.
 (use-package flycheck
-  :pin melpa
   :commands
   (flycheck-mode))
 
 ;; Language server protocol support, needs to be configured per langauge.
 (use-package lsp-mode
-  :pin melpa
   :commands
   (lsp)
   :init
@@ -55,7 +53,6 @@
 
 ;; UI modules for `lsp-mode'.
 (use-package lsp-ui
-  :pin melpa
   :hook
   (lsp-mode . lsp-ui-mode)
   :bind
@@ -72,7 +69,6 @@
 
 ;; `company-mode' completion for `lsp-mode', enable caching for increased performance.
 (use-package company-lsp
-  :pin melpa
   :commands
   (company-lsp)
   :config
