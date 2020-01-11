@@ -1,6 +1,5 @@
 ;;; core-terminal.el -*- lexical-binding: t; -*-
 
-
 ;; Don't pause the output through $PAGER
 (setenv "PAGER" "cat")
 
