@@ -6,7 +6,8 @@
 (defun initialize-modules ()
   (require 'modules-json)
   (require 'modules-javascript)
-  (require 'modules-typescript))
+  (require 'modules-typescript)
+  (require 'modules-coffeescript))
 
 (provide 'modules)
 ;;; modules.el ends here
