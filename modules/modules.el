@@ -9,7 +9,8 @@
   (require 'modules-typescript)
   (require 'modules-coffeescript)
   (require 'modules-html)
-  (require 'modules-pug))
+  (require 'modules-pug)
+  (require 'modules-stylus))
 
 (provide 'modules)
 ;;; modules.el ends here

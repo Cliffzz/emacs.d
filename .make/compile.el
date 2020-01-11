@@ -6,6 +6,9 @@
 ;; Load `init', this isn't automatically loaded in `noninteractive' mode.
 (load (concat user-emacs-directory "init.el"))
 
+;; Compile `site-elisp'.
+(byte-recompile-directory (concat user-emacs-directory "site-elisp") 0)
+
 ;; Compile `core'.
 (byte-recompile-directory (concat user-emacs-directory "core") 0)
 
