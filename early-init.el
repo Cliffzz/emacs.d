@@ -29,4 +29,7 @@
 ;; Set fringe width.
 (fringe-mode '4)
 
+;; Start Emacs maximized.
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
 (provide 'early-init)
