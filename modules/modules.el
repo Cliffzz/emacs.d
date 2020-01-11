@@ -10,7 +10,8 @@
   (require 'modules-coffeescript)
   (require 'modules-html)
   (require 'modules-pug)
-  (require 'modules-stylus))
+  (require 'modules-stylus)
+  (require 'modules-graphql))
 
 (provide 'modules)
 ;;; modules.el ends here
