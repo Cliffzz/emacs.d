@@ -84,9 +84,9 @@
   (nvm-use)
   :init
   (defun eshell/nvm-use ($1)
-    (nvm-use (number-to-string $1))
-    (eshell-mode)
-    (eshell/clear)))
+    (nvm-use $1)
+    (setq eshell-path-env (getenv "PATH"))
+    (message (concat "Now using node v" $1))))
 
 (provide 'core-terminal)
 ;;; core-terminal.el ends here
