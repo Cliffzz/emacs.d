@@ -1,0 +1,19 @@
+{
+  "name": "emacs.d",
+  "private": true,
+  "version": "0.4.0",
+  "description": "Cliffzz's emacs configuration",
+  "engines": {
+    "node": "12"
+  },
+  "scripts": {
+    "release": "standard-version -a"
+  },
+  "dependencies": {
+    "standard-version": "^7.0.1"
+  },
+  "devDependencies": {},
+  "standard-version": {
+    "tagPrefix": ""
+  }
+}
