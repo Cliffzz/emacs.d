@@ -64,7 +64,7 @@
          ("C-," . lsp-ui-peek-find-references)))
   :config
   (setq lsp-prefer-flymake nil
-        lsp-ui-doc-enable t
+        lsp-ui-doc-enable nil
         lsp-ui-sideline-ignore-duplicate t
         lsp-ui-sideline-show-hover t
         lsp-ui-sideline-show-code-actions nil))
