@@ -6,7 +6,7 @@ on:
     - master
 
 jobs:
-  build:
+  test:
 
     runs-on: macOS-latest
 
@@ -23,6 +23,10 @@ jobs:
       with:
          node-version: '12.x'
 
+    - name: Symlink Emacs config
+      run: |
+        ln -s "$(pwd)" ~/.emacs.d
+
     - name: Build
       run: |
         make install
@@ -30,7 +34,7 @@ jobs:
         
     - name: Test Emacs startup
       run: |
-        emacs --kill
+        emacs --batch early-init.el init.el
         
     - name: Clean
       run: |
