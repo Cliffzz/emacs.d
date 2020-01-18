@@ -27,7 +27,8 @@
 (setq frame-title-format nil)
 
 ;; Set fringe width.
-(fringe-mode '4)
+(unless noninteractive
+  (fringe-mode '4))
 
 ;; Start Emacs maximized.
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
