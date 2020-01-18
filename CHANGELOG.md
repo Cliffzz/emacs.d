@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/Cliffzz/.emacs.d/compare/0.4.0...0.5.0) (2020-01-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* New configuration, re-clone repo to start fresh
+
+### Features
+
+* update to emacs 27 + use lsp + split config ([#30](https://github.com/Cliffzz/.emacs.d/issues/30)) ([fa4b5bb](https://github.com/Cliffzz/.emacs.d/commit/fa4b5bb6688f8c9bc70357a1ab70c15c0a332640))
+
 ## [0.4.0](https://github.com/Cliffzz/.emacs.d/compare/0.3.1...0.4.0) (2019-07-07)
 
 
