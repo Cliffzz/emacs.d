@@ -8,13 +8,15 @@
 (eval-when-compile
   (setq package-user-dir (expand-file-name "elpa" user-emacs-directory)
         package-archives
-        '(("elpa"         . "http://elpa.gnu.org/packages/")
+        '(("elpa"         . "https://elpa.gnu.org/packages/")
+          ("elpa-mirror"  . "https://raw.githubusercontent.com/Cliffzz/.emacs.d/master/elpa-mirror/")
           ("melpa"        . "https://melpa.org/packages/")
           ("melpa-stable" . "https://stable.melpa.org/packages/"))
         package-archive-priorities
-        '(("elpa"          . 5)
-          ("melpa"         . 10)
-          ("melpa-stable"  . 0))))
+        '(("elpa"         . 5)
+          ("elpa-mirror"  . 15)
+          ("melpa"        . 10)
+          ("melpa-stable" . 0))))
 
 ;; Install `use-package' automatically if it isn't installed, assume it's installed if `package-user-dir' exists,
 ;; skip when compiled.
