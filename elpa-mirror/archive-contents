@@ -20,6 +20,7 @@
  (epl . [(20180205 2049) ((cl-lib (0 3))) "Emacs Package Library" tar])
  (eshell-prompt-extras . [(20191104 1230) ((emacs (25))) "Display extra information for your eshell prompt." tar])
  (eshell-up . [(20170425 1737) ((emacs (24))) "Quickly go to a specific parent directory in eshell" tar])
+ (exec-path-from-shell . [(20191229 112) nil "Get environment variables such as $PATH from the shell" tar])
  (expand-region . [(20200106 2058) nil "Increase selected region by semantic units." tar])
  (f . [(20191110 1357) ((s (1 7 0)) (dash (2 2 0))) "Modern API for working with files and directories" tar])
  (feature-mode . [(20190801 1137) nil "Major mode for editing Gherkin (i.e. Cucumber) user stories" tar])
