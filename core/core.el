@@ -11,7 +11,8 @@
 
 ;; Bootstrap Emacs config.
 (defun initalize ()
-  (require 'core-packages))
+  (require 'core-packages)
+  (require 'core-path))
 
 ;; Load Emacs core config files for an interactive session.
 (defun initialize-core ()
