@@ -19,9 +19,6 @@
 (setq auto-save-default nil
       auto-save-list-file-prefix nil)
 
-;; Disable global eldoc mode.
-(global-eldoc-mode -1)
-
 ;; Unobtrusively trim spaces from end of line.
 (use-package ws-butler
   :config
@@ -67,6 +64,8 @@
         lsp-ui-doc-enable nil
         lsp-ui-sideline-ignore-duplicate t
         lsp-ui-sideline-show-hover t
+        lsp-eldoc-enable-hover nil
+        lsp-eldoc-render-all nil
         lsp-ui-sideline-show-code-actions nil))
 
 ;; `company-mode' completion for `lsp-mode', enable caching for increased performance.
