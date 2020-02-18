@@ -10,7 +10,7 @@
     "release": "standard-version -a"
   },
   "dependencies": {
-    "standard-version": "^7.0.1"
+    "standard-version": "^7.1.0"
   },
   "devDependencies": {},
   "standard-version": {
