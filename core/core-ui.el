@@ -83,8 +83,8 @@
 
 ;; Default font.
 (set-face-attribute 'default nil
-                    :family "JetBrains Mono"
-                    :height 130
+                    :family "Iosevka"
+                    :height 125
                     :weight 'normal
                     :width 'normal)
 
@@ -131,7 +131,7 @@
   :config
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t)
-  (load-theme 'doom-wilmersdorf t)
+  (load-theme 'doom-one t)
   (doom-themes-visual-bell-config))
 
 ;; Setup modeline.
@@ -157,9 +157,9 @@
   (define-fringe-bitmap 'flycheck-fringe-bitmap-double-arrow
     [16 48 112 240 112 48 16] nil nil 'center)
 
-  (set-face-attribute 'flycheck-error nil :underline '(:style line :color "#e1c1ee"))
-  (set-face-attribute 'flycheck-warning nil :underline '(:style line :color "#cfcf9c"))
-  (set-face-attribute 'flycheck-info nil :underline '(:style line :color "#5b94ab")))
+  (set-face-attribute 'flycheck-error nil :underline '(:style line :color "#ff6c6b"))
+  (set-face-attribute 'flycheck-warning nil :underline '(:style line :color "#ecBe7b"))
+  (set-face-attribute 'flycheck-info nil :underline '(:style line :color "#98be65")))
 
 ;; Thin git fringe theme.
 (use-package git-gutter-fringe
