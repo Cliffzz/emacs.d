@@ -97,7 +97,7 @@
                         '(javascript-jshint javascript-standard)))
 
   (declare-function flycheck-add-next-checker "flycheck")
-  (flycheck-add-next-checker 'lsp-ui 'javascript-eslint)
+  (flycheck-add-next-checker 'lsp 'javascript-eslint)
 
   (defvar lsp-ui-sideline-show-hover)
   (make-local-variable 'lsp-ui-sideline-show-hover)

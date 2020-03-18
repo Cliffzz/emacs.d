@@ -44,7 +44,7 @@
                         '(json-python-json)))
 
   (declare-function flycheck-add-next-checker "flycheck")
-  (flycheck-add-next-checker 'lsp-ui 'json-jsonlint))
+  (flycheck-add-next-checker 'lsp 'json-jsonlint))
 
 (add-hook 'json-mode-hook #'configure-json-syntax-checking)
 
