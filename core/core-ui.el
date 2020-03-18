@@ -93,6 +93,11 @@
   (setq show-trailing-whitespace 1))
 (add-hook 'prog-mode-hook #'show-trailing-whitespace)
 
+;;Garbage collector magic hack.
+(use-package gcmh
+  :config
+  (gcmh-mode t))
+
 ;; Icon fonts for Emacs.
 (use-package all-the-icons
   :commands

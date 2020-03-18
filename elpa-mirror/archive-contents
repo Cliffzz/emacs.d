@@ -26,6 +26,7 @@
  (feature-mode . [(20190801 1137) nil "Major mode for editing Gherkin (i.e. Cucumber) user stories" tar])
  (flycheck . [(20200224 2057) ((dash (2 12 1)) (pkg-info (0 4)) (let-alist (1 0 4)) (seq (1 11)) (emacs (24 3))) "Onfly syntax checking" tar])
  (fringe-helper . [(20140620 2109) nil "helper functions for fringe bitmaps" tar])
+ (gcmh . [(20200213 944) ((emacs (24))) "the Garbage Collector Magic Hack" tar])
  (git-commit . [(20200207 1819) ((emacs (25 1)) (dash (20180910)) (transient (20190812)) (with-editor (20181103))) "Edit Git commit messages" tar])
  (git-gutter . [(20161105 1356) ((emacs (24 3))) "Port of Sublime Text plugin GitGutter" tar])
  (git-gutter-fringe . [(20170113 533) ((git-gutter (0 88)) (fringe-helper (0 1 1)) (cl-lib (0 5)) (emacs (24))) "Fringe version of git-gutter.el" tar])

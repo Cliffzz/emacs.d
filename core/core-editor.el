@@ -60,7 +60,8 @@
         (("C-." . lsp-ui-peek-find-definitions)
          ("C-," . lsp-ui-peek-find-references)))
   :config
-  (setq lsp-prefer-flymake nil
+  (setq read-process-output-max (* 1024 1024)
+        lsp-idle-delay 1.000
         lsp-ui-doc-enable nil
         lsp-ui-sideline-ignore-duplicate t
         lsp-ui-sideline-show-hover t
