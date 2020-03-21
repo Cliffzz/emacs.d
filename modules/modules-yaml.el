@@ -7,15 +7,14 @@
 
 ;; Prettier, code formatting.
 (use-package prettier-js
-  :commands (prettier-js)
-  :init
-  (declare-function set-prettier-yaml-config "modules-yaml")
-  (defun set-prettier-yaml-config ()
-    (make-local-variable 'prettier-js-args)
-    (setq prettier-js-args '("--print-width" "100" "--tab-width" "2" "--single-quote" "--trailing-comma" "all"))
-    (bind-key "C-c f" 'prettier-js yaml-mode-map))
+  :commands (prettier-js))
 
-  (add-hook 'yaml-mode-hook #'set-prettier-yaml-config))
+(defun set-prettier-yaml-config ()
+  (make-local-variable 'prettier-js-args)
+  (setq prettier-js-args '("--print-width" "100" "--tab-width" "2" "--single-quote" "--trailing-comma" "all"))
+  (bind-key "C-c f" 'prettier-js yaml-mode-map))
+
+(add-hook 'yaml-mode-hook #'set-prettier-yaml-config)
 
 ;; Enable langauge server completion.
 (defun setup-yaml-completion ()

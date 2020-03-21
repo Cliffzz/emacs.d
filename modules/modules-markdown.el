@@ -16,15 +16,14 @@
 
 ;; Prettier, code formatting.
 (use-package prettier-js
-  :commands (prettier-js)
-  :init
-  (declare-function set-prettier-markdown-config "modules-markdown")
-  (defun set-prettier-markdown-config ()
-    (make-local-variable 'prettier-js-args)
-    (setq prettier-js-args '("--print-width" "100" "--tab-width" "4" "--single-quote" "--trailing-comma" "all"))
-    (bind-key "C-c f" 'prettier-js markdown-mode-map))
+  :commands (prettier-js))
 
-  (add-hook 'markdown-mode-hook #'set-prettier-markdown-config))
+(defun set-prettier-markdown-config ()
+  (make-local-variable 'prettier-js-args)
+  (setq prettier-js-args '("--print-width" "100" "--tab-width" "4" "--single-quote" "--trailing-comma" "all"))
+  (bind-key "C-c f" 'prettier-js markdown-mode-map))
+
+(add-hook 'markdown-mode-hook #'set-prettier-markdown-config)
 
 (provide 'modules-markdown)
 ;;; modules-markdown.el ends here

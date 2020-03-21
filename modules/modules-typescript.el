@@ -27,27 +27,25 @@
 
 ;; Prettier, code formatting.
 (use-package prettier-js
-  :commands (prettier-js)
-  :init
-  (declare-function set-prettier-ts-config "modules-typescript")
-  (declare-function set-prettier-tsx-config "modules-typescript")
+  :commands (prettier-js))
 
-  (defun set-prettier-ts-config ()
-    (make-local-variable 'prettier-js-command)
-    (make-local-variable 'prettier-js-args)
-    (setq prettier-js-command "prettier-eslint")
-    (setq prettier-js-args '("--print-width" "100" "--tab-width" "4" "--single-quote" "--trailing-comma" "all"))
-    (bind-key "C-c f" 'prettier-js typescript-mode-map))
+(defun set-prettier-ts-config ()
+  (interactive)
+  (make-local-variable 'prettier-js-command)
+  (make-local-variable 'prettier-js-args)
+  (setq prettier-js-command "prettier-eslint")
+  (setq prettier-js-args '("--print-width" "100" "--tab-width" "4" "--single-quote" "--trailing-comma" "all"))
+  (bind-key "C-c f" 'prettier-js typescript-mode-map))
 
-  (defun set-prettier-tsx-config ()
-    (make-local-variable 'prettier-js-command)
-    (make-local-variable 'prettier-js-args)
-    (setq prettier-js-command "prettier-eslint")
-    (setq prettier-js-args '("--print-width" "100" "--tab-width" "4" "--single-quote" "--trailing-comma" "all"))
-    (bind-key "C-c f" 'prettier-js web-mode-map))
+(defun set-prettier-tsx-config ()
+  (make-local-variable 'prettier-js-command)
+  (make-local-variable 'prettier-js-args)
+  (setq prettier-js-command "prettier-eslint")
+  (setq prettier-js-args '("--print-width" "100" "--tab-width" "4" "--single-quote" "--trailing-comma" "all"))
+  (bind-key "C-c f" 'prettier-js web-mode-map))
 
-  (add-hook 'typescript-mode-hook #'set-prettier-ts-config)
-  (set-tsx-mode-hook #'set-prettier-tsx-config))
+(add-hook 'typescript-mode-hook #'set-prettier-ts-config)
+(set-tsx-mode-hook #'set-prettier-tsx-config)
 
 ;; Enable langauge server completion.
 (defun setup-ts-completion ()

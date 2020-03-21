@@ -66,18 +66,17 @@
 
 ;; Prettier, code formatting.
 (use-package prettier-js
-  :commands (prettier-js)
-  :init
-  (declare-function set-prettier-js-config "modules-javascript")
-  (defun set-prettier-js-config ()
-    (make-local-variable 'prettier-js-command)
-    (make-local-variable 'prettier-js-args)
-    (setq prettier-js-command "prettier-eslint")
-    (setq prettier-js-args '("--print-width" "100" "--tab-width" "4" "--single-quote" "--trailing-comma" "all"))
-    (bind-key "C-c f" 'prettier-js js-mode-map))
+  :commands (prettier-js))
 
-  (add-hook 'js2-mode-hook #'set-prettier-js-config)
-  (set-js-mode-hook #'set-prettier-js-config))
+(defun set-prettier-js-config ()
+  (make-local-variable 'prettier-js-command)
+  (make-local-variable 'prettier-js-args)
+  (setq prettier-js-command "prettier-eslint")
+  (setq prettier-js-args '("--print-width" "100" "--tab-width" "4" "--single-quote" "--trailing-comma" "all"))
+  (bind-key "C-c f" 'prettier-js js-mode-map))
+
+(add-hook 'js2-mode-hook #'set-prettier-js-config)
+(set-js-mode-hook #'set-prettier-js-config)
 
 ;; Enable langauge server completion.
 (defun setup-js-completion ()
