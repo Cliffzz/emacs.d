@@ -48,8 +48,13 @@
   :commands
   (lsp)
   :init
-  (setq lsp-auto-guess-root t
-        lsp-keep-workspace-alive nil))
+  (setq read-process-output-max (* 1024 1024)
+        lsp-idle-delay 1.000
+        lsp-eslint-server-command
+        `(
+          "node"
+          ,(file-truename (concat user-emacs-directory ".bin/vscode-eslint/server/out/eslintServer.js"))
+          "--stdio")))
 
 ;; UI modules for `lsp-mode'.
 (use-package lsp-ui
@@ -60,9 +65,7 @@
         (("C-." . lsp-ui-peek-find-definitions)
          ("C-," . lsp-ui-peek-find-references)))
   :config
-  (setq read-process-output-max (* 1024 1024)
-        lsp-idle-delay 1.000
-        lsp-ui-doc-enable nil
+  (setq lsp-ui-doc-enable nil
         lsp-ui-sideline-ignore-duplicate t
         lsp-ui-sideline-show-hover t
         lsp-eldoc-enable-hover nil
