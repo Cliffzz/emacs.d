@@ -52,7 +52,6 @@
  (page-break-lines . [(20200305 244) ((emacs (24 4))) "Display ^L page breaks as tidy horizontal lines" tar])
  (pkg-info . [(20150517 1143) ((epl (0 8))) "Information about packages" tar])
  (popup . [(20160709 1429) ((cl-lib (0 5))) "Visual Popup User Interface" tar])
- (prettier-js . [(20180109 726) nil "Minor mode to format JS code on file save" tar])
  (projectile . [(20200307 1701) ((emacs (25 1)) (pkg-info (0 4))) "Manage and navigate projects in Emacs easily" tar])
  (pug-mode . [(20180513 2126) ((emacs (24 4)) (cl-lib (0 5))) "Major mode for jade/pug template files" tar])
  (rainbow-delimiters . [(20191018 1233) nil "Highlight brackets according to their depth" tar])

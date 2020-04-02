@@ -5,17 +5,6 @@
   :mode
   (("\\.yml\\'" . yaml-mode)))
 
-;; Prettier, code formatting.
-(use-package prettier-js
-  :commands (prettier-js))
-
-(defun set-prettier-yaml-config ()
-  (make-local-variable 'prettier-js-args)
-  (setq prettier-js-args '("--print-width" "100" "--tab-width" "2" "--single-quote" "--trailing-comma" "all"))
-  (bind-key "C-c f" 'prettier-js yaml-mode-map))
-
-(add-hook 'yaml-mode-hook #'set-prettier-yaml-config)
-
 ;; Enable langauge server completion.
 (defun setup-yaml-completion ()
   (defvar company-backends)

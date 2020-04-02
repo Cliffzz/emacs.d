@@ -15,17 +15,6 @@
   (defvar web-mode-markup-indent-offset)
   (setq web-mode-markup-indent-offset 4))
 
-;; Prettier, code formatting.
-(use-package prettier-js
-  :commands (prettier-js))
-
-(defun set-prettier-html-config ()
-  (make-local-variable 'prettier-js-args)
-  (setq prettier-js-args '("--print-width" "100" "--tab-width" "4" "--single-quote" "--trailing-comma" "all"))
-  (bind-key "C-c f" 'prettier-js web-mode-map))
-
-(set-html-mode-hook #'set-prettier-html-config)
-
 ;; Enable langauge server completion.
 (defun setup-html-completion ()
   (defvar company-backends)

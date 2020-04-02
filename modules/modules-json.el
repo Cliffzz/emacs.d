@@ -13,19 +13,6 @@
           json-reformat:indent-width 2))
   (add-hook 'json-mode-hook 'json-mode-indentation))
 
-;; Prettier, code formatting.
-(use-package prettier-js
-  :commands (prettier-js))
-
-(defun set-prettier-json-config ()
-  (make-local-variable 'prettier-js-command)
-  (make-local-variable 'prettier-js-args)
-  (setq prettier-js-command "prettier")
-  (setq prettier-js-args '("--print-width" "100" "--tab-width" "2" "--single-quote" "--trailing-comma" "all"))
-  (bind-key "C-c f" 'prettier-js json-mode-map))
-
-(add-hook 'json-mode-hook 'set-prettier-json-config)
-
 ;; Enable langauge server completion.
 (defun setup-json-completion ()
   (defvar company-backends)
