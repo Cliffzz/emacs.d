@@ -50,6 +50,7 @@
   :init
   (setq read-process-output-max (* 1024 1024)
         lsp-idle-delay 1.000
+        lsp-file-watch-threshold 100000
         lsp-eslint-server-command
         `(
           "node"
