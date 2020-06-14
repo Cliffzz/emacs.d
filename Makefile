@@ -11,14 +11,10 @@ compile:
 	emacs --script .make/compile.el
 
 install:
-	npm install -g jsonlint@1.6.3 typescript-language-server@0.4.0 typescript@3.8.3 vscode-json-languageserver@1.2.3 vscode-html-languageserver-bin@1.4.0 dockerfile-language-server-nodejs@0.0.22
+	npm install -g jsonlint@1.6.3 typescript-language-server@0.4.0 typescript@3.9.5 vscode-html-languageserver-bin@1.4.0 dockerfile-language-server-nodejs@0.0.24
 	mkdir .bin
-	cd .bin
-	git clone https://github.com/microsoft/vscode-eslint.git
-	cd vscode-eslint
-	npm install
-	npm run webpack
-	cd ../../
+	git clone https://github.com/microsoft/vscode-eslint.git .bin/vscode-eslint
+	cd .bin/vscode-eslint && npm install nan && npm install && npm run webpack
 	emacs --script .make/install.el
 
 mirror-elpa:
