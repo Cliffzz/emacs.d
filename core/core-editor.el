@@ -31,11 +31,11 @@
 
 ;; Code/text auto completion, needs to be configured per langauge.
 (use-package company
-  :hook
-  (prog-mode . global-company-mode)
+  :commands
+  (company-mode)
   :config
-  (setq company-idle-delay 0.2)
-  (setq company-minimum-prefix-length 2)
+  (setq company-idle-delay 0.0)
+  (setq company-minimum-prefix-length 1)
   (setq company-backends '()))
 
 ;; Syntax checking, needs to be configured per langauge.
@@ -45,12 +45,17 @@
 
 ;; Language server protocol support, needs to be configured per langauge.
 (use-package lsp-mode
+  :hook
+  (lsp-mode . lsp-enable-which-key-integration)
   :commands
   (lsp)
   :init
   (setq read-process-output-max (* 1024 1024)
-        lsp-idle-delay 1.000
+        lsp-idle-delay 0.500
         lsp-file-watch-threshold 100000
+        lsp-keymap-prefix "C-c l"
+        lsp-eldoc-enable-hover nil
+        lsp-eldoc-render-all nil
         lsp-eslint-server-command
         `(
           "node"
@@ -59,26 +64,23 @@
 
 ;; UI modules for `lsp-mode'.
 (use-package lsp-ui
-  :hook
-  (lsp-mode . lsp-ui-mode)
+  :commands
+  (lsp-ui-mode)
   :bind
   (:map lsp-ui-mode-map
         (("C-." . lsp-ui-peek-find-definitions)
          ("C-," . lsp-ui-peek-find-references)))
   :config
-  (setq lsp-ui-doc-enable nil
-        lsp-ui-sideline-ignore-duplicate t
+  (setq lsp-ui-sideline-show-diagnostics t
         lsp-ui-sideline-show-hover t
-        lsp-eldoc-enable-hover nil
-        lsp-eldoc-render-all nil
-        lsp-ui-sideline-show-code-actions nil))
+        lsp-ui-sideline-show-code-actions nil
+        lsp-ui-sideline-update-mode 'line'
+        lsp-ui-doc-enable nil))
 
-;; `company-mode' completion for `lsp-mode', enable caching for increased performance.
-(use-package company-lsp
+;; `ivy-mode' for `lsp-mode'
+(use-package lsp-ivy
   :commands
-  (company-lsp)
-  :config
-  (setq company-lsp-cache-candidates 'auto))
+  (lsp-ivy-workspace-symbol))
 
 ;; Emacs completion using ivy.
 (use-package ivy

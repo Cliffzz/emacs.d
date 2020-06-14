@@ -13,7 +13,8 @@
 (defun setup-restclient-completion ()
   (defvar company-backends)
   (make-local-variable 'company-backends)
-  (setq company-backends '(company-restclient)))
+  (setq company-backends '(company-restclient))
+  (company-mode))
 
 (add-hook 'restclient-mode-hook #'setup-restclient-completion)
 
