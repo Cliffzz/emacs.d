@@ -64,33 +64,6 @@
   (set-js2-refactor-keybind-descriptions 'js2-mode)
   (set-js2-refactor-keybind-descriptions 'js-mode))
 
-;; Enable langauge server completion.
-(defun setup-js-completion ()
-  (defvar company-backends)
-  (make-local-variable 'company-backends)
-  (setq company-backends '(company-lsp)))
-
-(add-hook 'js2-mode-hook #'setup-js-completion)
-(set-js-mode-hook #'setup-js-completion)
-
-;; Javascript syntax checking with eslint + language server.
-(defvar flycheck-disabled-checkers)
-(defun configure-js-syntax-checking ()
-  (flycheck-mode)
-  (setq-default flycheck-disabled-checkers
-                (append flycheck-disabled-checkers
-                        '(javascript-jshint javascript-standard)))
-
-  (declare-function flycheck-add-next-checker "flycheck")
-  (flycheck-add-next-checker 'lsp 'javascript-eslint)
-
-  (defvar lsp-ui-sideline-show-hover)
-  (make-local-variable 'lsp-ui-sideline-show-hover)
-  (setq lsp-ui-sideline-show-hover nil))
-
-(add-hook 'js2-mode-hook #'configure-js-syntax-checking)
-(set-js-mode-hook #'configure-js-syntax-checking)
-
 ;; Enable langauge server.
 (add-hook 'js2-mode-hook #'lsp)
 (set-js-mode-hook #'lsp)

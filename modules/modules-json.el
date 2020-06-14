@@ -13,30 +13,12 @@
           json-reformat:indent-width 2))
   (add-hook 'json-mode-hook 'json-mode-indentation))
 
-;; Enable langauge server completion.
-(defun setup-json-completion ()
-  (defvar company-backends)
-  (make-local-variable 'company-backends)
-  (setq company-backends '(company-lsp)))
-
-(add-hook 'json-mode-hook #'setup-json-completion)
-
-;; JSON syntax checking with jsonlint + language server.
+;; JSON syntax checking with jsonlint.
 (defvar flycheck-disabled-checkers)
 (defun configure-json-syntax-checking ()
-  (flycheck-mode)
-  ;; Flycheck
-  (setq-default flycheck-disabled-checkers
-                (append flycheck-disabled-checkers
-                        '(json-python-json)))
-
-  (declare-function flycheck-add-next-checker "flycheck")
-  (flycheck-add-next-checker 'lsp 'json-jsonlint))
+  (flycheck-mode))
 
 (add-hook 'json-mode-hook #'configure-json-syntax-checking)
-
-;; Enable langauge server.
-(add-hook 'json-mode-hook #'lsp)
 
 (provide 'modules-json)
 ;;; modules-json.el ends here

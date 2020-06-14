@@ -25,35 +25,6 @@
   (add-hook 'typescript-mode-hook #'add-node-modules-path)
   (set-tsx-mode-hook #'add-node-modules-path))
 
-;; Enable langauge server completion.
-(defun setup-ts-completion ()
-  (defvar company-backends)
-  (make-local-variable 'company-backends)
-  (setq company-backends '(company-lsp)))
-
-(add-hook 'typescript-mode-hook #'setup-ts-completion)
-(set-tsx-mode-hook #'setup-ts-completion)
-
-;; Typescript syntax checking with eslint + language server.
-(defvar flycheck-disabled-checkers)
-(defun configure-ts-syntax-checking ()
-  (flycheck-mode)
-
-  (declare-function flycheck-add-mode "flycheck")
-
-  (flycheck-add-mode 'javascript-eslint 'typescript-mode)
-  (flycheck-add-mode 'javascript-eslint 'web-mode)
-
-  (setq-default flycheck-disabled-checkers
-                (append flycheck-disabled-checkers
-                        '(typescript-tslint)))
-
-  (declare-function flycheck-add-next-checker "flycheck")
-  (flycheck-add-next-checker 'lsp-ui 'javascript-eslint))
-
-(add-hook 'typescript-mode-hook #'configure-ts-syntax-checking)
-(set-tsx-mode-hook #'configure-ts-syntax-checking)
-
 ;; Enable langauge server.
 (add-hook 'typescript-mode-hook #'lsp)
 (set-tsx-mode-hook #'lsp)
