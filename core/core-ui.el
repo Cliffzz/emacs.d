@@ -174,5 +174,9 @@
   (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240]
     nil nil 'bottom))
 
+;; Autocompletion front-end with icons.
+(use-package company-box
+  :hook (company-mode . company-box-mode))
+
 (provide 'core-ui)
 ;;; core-ui.el ends here

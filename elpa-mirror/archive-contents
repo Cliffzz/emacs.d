@@ -7,6 +7,7 @@
  (coffee-mode . [(20200315 1133) ((emacs (24 3))) "Major mode for CoffeeScript code" tar])
  (company . [(20200525 101) ((emacs (24 3))) "Modular text completion framework" tar])
  (company-lsp . [(20190612 1553) ((emacs (25 1)) (lsp-mode (6 0)) (company (0 9 0)) (s (1 2 0)) (dash (2 11 0))) "Company completion backend for lsp-mode." tar])
+ (company-box . [(20200511 401) ((emacs (26 0 91)) (dash (2 13)) (dash-functional (1 2 0)) (company (0 9 6))) "Company front-end with icons" tar])
  (company-restclient . [(20190426 1312) ((cl-lib (0 5)) (company (0 8 0)) (emacs (24)) (know-your-http-well (0 2 0)) (restclient (0 0 0))) "companymode" tar])
  (counsel . [(20200613 1920) ((emacs (24 5)) (swiper (0 13 0))) "Various completion functions using Ivy" tar])
  (dash . [(20200524 1947) nil "A modern list library for Emacs" tar])
