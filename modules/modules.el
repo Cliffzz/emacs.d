@@ -14,6 +14,7 @@
   (require 'modules-graphql)
   (require 'modules-restclient)
   (require 'modules-markdown)
+  (require 'modules-org)
   (require 'modules-docker)
   (require 'modules-yaml)
   (require 'modules-cucumber))

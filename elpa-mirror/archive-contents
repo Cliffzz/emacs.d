@@ -50,6 +50,8 @@
  (multiple-cursors . [(20191210 1759) ((cl-lib (0 5))) "Multiple cursors for Emacs." tar])
  (no-littering . [(20200603 416) ((cl-lib (0 5))) "help keeping ~/.emacs.d clean" tar])
  (nvm . [(20200501 1414) ((s (1 8 0)) (dash (2 4 0)) (f (0 14 0)) (dash-functional (2 4 0))) "Manage Node versions within Emacs" tar])
+ (org-bullets . [(20200317 1740) nil "Show bullets in org8 characters" tar])
+ (org-plus-contrib . [(20200615) nil "Outline-based notes management and organizer" tar])
  (page-break-lines . [(20200305 244) ((emacs (24 4))) "Display ^L page breaks as tidy horizontal lines" tar])
  (pkg-info . [(20150517 1143) ((epl (0 8))) "Information about packages" tar])
  (popup . [(20200610 317) ((cl-lib (0 5))) "Visual Popup User Interface" tar])

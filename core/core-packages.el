@@ -11,12 +11,14 @@
         '(("elpa"         . "https://elpa.gnu.org/packages/")
           ("elpa-mirror"  . "https://raw.githubusercontent.com/Cliffzz/.emacs.d/master/elpa-mirror/")
           ("melpa"        . "https://melpa.org/packages/")
-          ("melpa-stable" . "https://stable.melpa.org/packages/"))
+          ("melpa-stable" . "https://stable.melpa.org/packages/")
+          ("org" . "https://orgmode.org/elpa/"))
         package-archive-priorities
         '(("elpa"         . 5)
-          ("elpa-mirror"  . 15)
+          ("elpa-mirror"  . 20)
           ("melpa"        . 10)
-          ("melpa-stable" . 0))))
+          ("melpa-stable" . 0)
+          ("org"          . 15))))
 
 ;; Install `use-package' automatically if it isn't installed, assume it's installed if `package-user-dir' exists,
 ;; skip when compiled.
